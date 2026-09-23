@@ -96,14 +96,33 @@ Then train:
 
 `chain_train.sh`'s queue currently runs, in order: x86 -O2 → arm -O0 → arm -O2, resuming the
 same adapter across all of them. Both scripts wrap `mlx_lm.lora --model ./gemma-mlx-4bit
---train` at batch size 4 (~10.7GB peak, measured on a 32GB machine), checkpointing to
-`./adapters/` every 50 iterations.
+--train`, checkpointing to `./adapters/` every 50 iterations.
 
 Iteration counts are derived from the data rather than hardcoded — one pass over the
-dataset, so roughly 14k iters for the 57k-row x86 sets and 2.8k for the smaller arm -O0 one.
-Expect on the order of a day per full dataset; throughput is ~250 tokens/sec regardless of
-batch size, since the GPU is already saturated at batch 1. You are not meant to sit through
-that in one go — see below.
+dataset, so ~28k iters for the 57k-row x86 sets and ~5.6k for the smaller arm -O0 one.
+Expect on the order of a day per full dataset. You are not meant to sit through that in one
+go — see below.
+
+### Why the training flags are what they are
+
+Every one of these deviates from what the scripts originally used, and each was measured
+rather than guessed:
+
+- **`--mask-prompt`** — the single biggest one. Without it, loss is computed over the prompt
+  too, and since these prompts are a long decompiled function while the `-O2` completions are
+  a bare identifier, ~97% of the gradient went into learning to reproduce decompiled C rather
+  than to name it. Measured directly: 3317 trained tokens per 2 iterations unmasked vs 70
+  masked.
+- **`--max-seq-length 2048`** (mlx_lm's default; the scripts had lowered it to 1024) —
+  truncation keeps the *first* N tokens, so any sample over the limit loses its tail, i.e. the
+  answer. At 1024 that silently discarded 13–17% of every dataset. 2048 brings `re_data` down
+  to 0.3%.
+- **`--batch-size 2`** — 15.0GB peak at seq 2048 on a 32GB machine; batch 4 needs 23GB, which
+  is too close to the limit if the server is also running. Costs little, since throughput is
+  ~250 tokens/sec regardless of batch size — the GPU is already saturated at batch 1.
+- **`--learning-rate 1e-4`** — mlx_lm defaults to 1e-5, which is a full-fine-tune value rather
+  than a LoRA one. Masking the prompt also cuts the per-step loss signal sharply, so this
+  offsets that. This is the one knob here chosen by convention rather than measurement.
 
 **Safe to interrupt anytime** — Ctrl+C, closing the laptop lid (sleep just pauses the
 process), or a hard shutdown loses at most the last 50 iterations. Data prep only needs

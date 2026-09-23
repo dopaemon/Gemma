@@ -8,7 +8,11 @@ ADAPTER_DIR="./adapters"
 LOG_DIR="./chain_logs"
 mkdir -p "$LOG_DIR"
 
-BATCH_SIZE=4                      # measured 10.7GB peak on a 32GB machine, leaves room for the server
+BATCH_SIZE=2                      # measured 15.0GB peak at seq 2048 on 32GB; batch 4 hits 23GB
+MAX_SEQ=2048                      # mlx_lm's own default. At 1024, 13-17% of samples were over
+                                  # the limit, and truncation cuts the tail - which is the answer.
+LEARNING_RATE=1e-4                # mlx_lm defaults to 1e-5, low for LoRA; masking the prompt (below)
+                                  # also shrinks the per-step loss signal, so this compensates.
 
 # Queue: "prep_script:data_dir:iters:label". iters=auto means one pass over that
 # dataset — the prep scripts emit the full 50k+ rows now, so a fixed count like
@@ -51,8 +55,10 @@ run_job() {
         --iters "$iters" \
         --save-every 50 \
         --batch-size "$BATCH_SIZE" \
-        --max-seq-length 1024 \
+        --max-seq-length "$MAX_SEQ" \
+        --learning-rate "$LEARNING_RATE" \
         --grad-checkpoint \
+        --mask-prompt \
         "${resume[@]}" \
         >> "$LOG_DIR/$(basename "$data_dir").log" 2>&1
 
