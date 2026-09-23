@@ -43,11 +43,6 @@ at it as a custom provider.
 `api.py` is a thin wrapper around `mlx_lm.server` that adds:
 
 - **Bearer auth** — rejects requests without the right `API_KEY`.
-- **Tool-schema stripping** — this server doesn't execute tools, so any `tools`/`tool_choice`
-  in the request body is dropped before reaching the model, and the tokenizer's tool-calling
-  mode is disabled. Otherwise Gemma pauses mid-answer to emit a `<tool_call>` (picked up from
-  a caller's system prompt, like Codex's), and mlx_lm ends the turn right there — truncating
-  what should've been a full answer to a couple hundred tokens.
 - **Single-model routing** — every request is forced onto the one model this server was
   started with, regardless of what `model` name the client sends (useful behind a router
   like 9router that may pass through an unrelated model id).
@@ -64,12 +59,12 @@ at it as a custom provider.
 API_KEY=secret ADAPTER_PATH=./adapters uv run api.py
 ```
 
-Only do this when you actually want the reverse-engineering behavior. The adapter was
-trained on completions that are always a single function name, so attaching it for every
-request biases the model to stop after a couple hundred tokens even on unrelated
-general-purpose chat/coding — the same symptom as the tool-calling issue above, but
-unfixable from the server side since it's baked into the adapter weights. Run a second
-`api.py` on a different port if you need both RE and general-purpose chat available at once.
+This specializes the model for naming decompiled functions. It does not degrade general
+chat — measured at 3157 completion tokens with the adapter vs 3406 without, on the same
+long-form prompt, both ending naturally.
+
+Tool calling still works with the adapter attached, so Codex can use this as a normal
+coding-agent backend either way.
 
 ## Training the RE adapter
 

@@ -5,8 +5,6 @@ Thin wrapper around mlx_lm's built-in server, with Bearer API-key auth added.
 Usage:
     API_KEY=secret .venv/bin/python3 api.py
 """
-import io
-import json
 import os
 import sys
 
@@ -27,34 +25,8 @@ class AuthAPIHandler(srv.APIHandler):
         self.wfile.write(b'{"error": "invalid api key"}')
         return False
 
-    def _strip_tools(self):
-        # Gemma-4 has native tool calling: given a tools schema, it will
-        # happily pause mid-answer to emit a <tool_call>. mlx_lm's server
-        # treats that as a state-machine transition, but callers like
-        # Codex/9router - built for a real tool-execution loop - just end
-        # the turn there, truncating what would've been a long answer to a
-        # couple hundred tokens. This server doesn't execute tools, so strip
-        # the schema before it ever reaches the chat template.
-        length = int(self.headers.get("Content-Length", 0))
-        if not length:
-            return
-        raw = self.rfile.read(length)
-        try:
-            body = json.loads(raw)
-        except json.JSONDecodeError:
-            self.rfile = io.BytesIO(raw)
-            return
-        if "tools" in body:
-            body.pop("tools", None)
-            body.pop("tool_choice", None)
-            raw = json.dumps(body).encode()
-            self.headers.replace_header("Content-Length", str(len(raw)))
-        self.rfile = io.BytesIO(raw)
-
     def do_POST(self):
         if self._authorized():
-            if self.path in ("/v1/completions", "/v1/chat/completions", "/chat/completions"):
-                self._strip_tools()
             super().do_POST()
 
     def do_GET(self):
@@ -79,16 +51,7 @@ _original_load = srv.ModelProvider.load
 
 
 def _load_default_only(self, model_path, adapter_path=None, draft_model_path=None):
-    model, tokenizer = _original_load(self, "default_model", None, "default_model")
-    # Gemma's chat template makes tokenizer.has_tool_calling True unconditionally
-    # (it's a model-level property, not derived from the request). mlx_lm uses it
-    # to insert <tool_call> as a stop sequence for EVERY generation, so even after
-    # _strip_tools removes the tools schema, the model still reads Codex's system
-    # prompt describing tools in plain text and emits a <tool_call>, which the
-    # server treats as end-of-turn. Disable it so <tool_call> is just text.
-    tokenizer._tool_call_start = None
-    tokenizer._tool_call_end = None
-    return model, tokenizer
+    return _original_load(self, "default_model", None, "default_model")
 
 
 srv.ModelProvider.load = _load_default_only
@@ -110,11 +73,10 @@ sys.argv = [
     "--top-p", "0.95",
     "--top-k", "64",
 ]
-# The RE QLoRA adapter was trained on completions that are always a single
-# function name. Loaded for every request, it biases the model to emit EOS
-# after a couple hundred tokens even on unrelated general-purpose chat/coding
-# tasks (e.g. via Codex) - cutting long explanations short. Only attach it
-# when explicitly asked for, via ADAPTER_PATH=./adapters.
+# The RE adapter is opt-in because it specializes the model for one task
+# (naming decompiled functions), not because it breaks general use - measured
+# at 3157 vs 3406 completion tokens on the same long-form chat prompt, both
+# ending naturally. Attach it via ADAPTER_PATH=./adapters.
 adapter_path = os.environ.get("ADAPTER_PATH")
 if adapter_path:
     sys.argv += ["--adapter-path", adapter_path]
