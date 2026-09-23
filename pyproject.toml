@@ -1,0 +1,9 @@
+[project]
+name = "heretic-re-server"
+version = "0.1.0"
+description = "Local OpenAI-compatible server for an abliterated Gemma model, plus LoRA fine-tuning for reverse-engineering tasks."
+requires-python = ">=3.11"
+dependencies = [
+    "mlx-lm>=0.31.3",
+    "datasets>=4.8.5",
+]

@@ -1,0 +1,18 @@
+.venv/
+.DS_Store
+*.log
+__pycache__/
+*.pyc
+
+# Model weights and tokenizers — download/convert per README instead of committing.
+Gemma4-E4B-8B-Heretic-Ultra/
+gemma-mlx-4bit/
+
+# LoRA checkpoints (large, reproducible via train_re.sh / chain_train.sh).
+adapters/*.safetensors
+
+# Training data caches (rebuilt by prep_data*.py) and run logs.
+re_data/
+re_data_o2/
+chain_logs/
+STOP
