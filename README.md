@@ -95,13 +95,28 @@ pruning old checkpoints.
 `mix_data.py` exists because training the datasets back-to-back lets whichever ran last
 dominate the adapter, and the two families want different answers — the `-O0` sets expect
 ~200 words of reasoning, the `-O2` sets a bare identifier. Shuffled together, the model
-learns to pick the format from the prompt. It also drops the ~4% of samples that exceed
-`--max-seq-length`, since mlx_lm truncates those to their *first* N tokens and would
-otherwise be training on answers with the tail cut off.
+learns to pick the format from the prompt.
+
+It also drops two kinds of row. Samples over `max_seq_length` (~4%), since mlx_lm truncates
+those to their *first* N tokens and would otherwise be training on answers with the tail cut
+off. And samples where the answer is already sitting in the prompt — the `-O2` sets say
+symbols are stripped, but frequently kept the signature Ghidra recovered, so the prompt reads
+`size_t mbrtowc(wchar_t *__pwc, ...)` and the expected answer is `mbrtowc`:
+
+| dataset | rows whose answer appears in their own prompt |
+|---|---|
+| `re_data` (x86 -O0) | 1.0% |
+| `re_data_arm_o0` | 2.6% |
+| `re_data_o2` (x86 -O2) | 39.0% |
+| `re_data_arm_o2` | 54.9% |
+
+Those rows teach copying an identifier out of the input, which is precisely the shortcut that
+fails on a genuinely stripped binary where every name is `FUN_0040dead`. Dropping them costs
+29% of the corpus (179,747 rows to 127,147) and removes most of the `-O2` sets.
 
 `train_re.sh` wraps `mlx_lm.lora`, checkpointing to `./adapters/` every 500 iterations and
 keeping the last 3 — at rank 64 each one is ~600MB, and mlx_lm never deletes them. Iteration
-count is one pass over the corpus, ~90k iters at batch 2. At ~0.15 it/s that is about a week.
+count is one pass over the corpus, ~64k iters at batch 2. At ~0.15 it/s that is about five days.
 You are not meant to sit through it in one go — see below.
 
 ### Why the training flags are what they are
@@ -121,7 +136,7 @@ rather than guessed:
 - **`batch_size: 2`** — 18.4GB peak at seq 2048 and the capacity below, on a 32GB machine.
   Costs little, since the GPU is already saturated at batch 1.
 - **`num_layers: 42` / `rank: 64`** — mlx_lm defaults to 16 layers at rank 8, which froze the
-  bottom two thirds of the model and left 6.9M trainable parameters for a 180k-sample corpus
+  bottom two thirds of the model and left 6.9M trainable parameters for a 127k-sample corpus
   teaching two different answer formats. Measured with `sweep_capacity.sh`:
 
   | rank | layers | trainable | peak GB | it/s |

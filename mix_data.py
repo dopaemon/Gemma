@@ -10,6 +10,7 @@ Shuffling them together teaches both formats at once, keyed off the prompt.
 """
 import json
 import random
+import re
 from pathlib import Path
 
 from transformers import AutoTokenizer
@@ -26,6 +27,30 @@ TEMPLATE_OVERHEAD = 16  # chat-template turn markers mlx_lm adds around the pair
 
 tokenizer = AutoTokenizer.from_pretrained("./gemma-mlx-4bit")
 
+# The -O2 sets claim stripped symbols but often kept the signature Ghidra
+# recovered, so the answer sits in the prompt: 39% of re_data_o2 and 55% of
+# re_data_arm_o2, against 1-3% for the -O0 sets. Those rows teach copying an
+# identifier out of the input, which is exactly the shortcut that fails on a
+# genuinely stripped binary where every name is FUN_0040dead.
+NAME_IN_PROSE = re.compile(r"Function\s*Name\s*:\s*`?([A-Za-z_][\w:~<>.]*)")
+
+
+def answer_name(completion):
+    m = NAME_IN_PROSE.search(completion)
+    return (m.group(1) if m else completion.strip()) or None
+
+
+def leaks(row):
+    name = answer_name(row["completion"])
+    if not name:
+        return False
+    # Compare on the bare identifier: `~iostream` and `getline<wchar_t,...>` both
+    # hinge on the part a decompiler would print in the signature.
+    core = name.lstrip("~").split("<")[0].split("::")[-1]
+    if len(core) < 3:  # 1-2 char names collide with variables by chance
+        return False
+    return re.search(r"\b" + re.escape(core) + r"\b", row["prompt"]) is not None
+
 
 def fits(batch):
     lens = [
@@ -39,20 +64,26 @@ def fits(batch):
 
 
 def merge(split):
-    rows, dropped = [], 0
+    rows = []
     for src in SOURCES:
         with (Path(src) / f"{split}.jsonl").open() as f:
             parsed = [json.loads(line) for line in f]
+
+        unleaked = [r for r in parsed if not leaks(r)]
         kept = []
-        for i in range(0, len(parsed), 1000):
-            chunk = parsed[i : i + 1000]
+        for i in range(0, len(unleaked), 1000):
+            chunk = unleaked[i : i + 1000]
             kept += [r for r, ok in zip(chunk, fits(chunk)) if ok]
-        dropped += len(parsed) - len(kept)
+
         rows += [json.dumps(r, ensure_ascii=False) for r in kept]
-        print(f"  {src}/{split}.jsonl: {len(kept)} kept, {len(parsed) - len(kept)} over {MAX_SEQ} tokens")
+        print(
+            f"  {src}/{split}.jsonl: {len(kept)} kept"
+            f" | {len(parsed) - len(unleaked)} leaked the answer"
+            f" | {len(unleaked) - len(kept)} over {MAX_SEQ} tokens"
+        )
     random.shuffle(rows)
     (OUT / f"{split}.jsonl").write_text("\n".join(rows) + "\n")
-    print(f"  -> {OUT}/{split}.jsonl: {len(rows)} ({dropped} dropped)\n")
+    print(f"  -> {OUT}/{split}.jsonl: {len(rows)}\n")
 
 
 if __name__ == "__main__":

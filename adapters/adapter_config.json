@@ -7,7 +7,7 @@
     "fine_tune_type": "lora",
     "grad_accumulation_steps": 1,
     "grad_checkpoint": true,
-    "iters": 89873,
+    "iters": 63573,
     "learning_rate": 3e-05,
     "lora_parameters": {
         "rank": 64,
@@ -18,7 +18,7 @@
         "name": "cosine_decay",
         "arguments": [
             3e-05,
-            89873,
+            63573,
             3e-06
         ],
         "warmup": 200,

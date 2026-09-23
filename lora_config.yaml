@@ -17,13 +17,13 @@ lora_parameters:
   # alpha/rank. Its 20.0 default is therefore tied to rank 8; keeping 20.0 at
   # rank 64 would have scaled every update up eightfold. 2.0 is alpha 128.
   scale: 2.0
-  dropout: 0.0   # one pass over 180k samples never repeats a sample; nothing to regularize
+  dropout: 0.0   # one pass over 127k samples never repeats a sample; nothing to regularize
 
 batch_size: 2          # 18.4GB peak of 32GB at rank 64/42 layers, measured
 max_seq_length: 2048
 mask_prompt: true
 grad_checkpoint: true
-iters: 89873           # one epoch: 179747 rows / batch 2
+iters: 63573           # one epoch: 127147 rows / batch 2
 
 # 1e-4 - the value this repo used to carry - diverges at this capacity: val loss
 # climbed 2.511 -> 5.205 over 150 iters. 3e-5 reached 0.867 and 1e-5 reached
@@ -32,7 +32,7 @@ iters: 89873           # one epoch: 179747 rows / batch 2
 learning_rate: 3e-5
 lr_schedule:
   name: cosine_decay
-  arguments: [3e-5, 89873, 3e-6]
+  arguments: [3e-5, 63573, 3e-6]
   warmup: 200
   warmup_init: 1e-7
 
