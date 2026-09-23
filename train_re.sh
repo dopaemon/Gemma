@@ -1,22 +1,13 @@
 #!/bin/bash
 # Resumable QLoRA training. Safe to Ctrl+C anytime and rerun later —
 # it auto-detects the last saved checkpoint and continues from there.
+# All hyperparameters live in lora_config.yaml.
 set -euo pipefail
+cd "$(dirname "$0")"
 
-MODEL="./gemma-mlx-4bit"          # converted+quantized model (step done separately)
+CONFIG="./lora_config.yaml"
 ADAPTER_DIR="./adapters"
-DATA_DIR="./re_data_all"         # all four sets shuffled together — see mix_data.py
-SAVE_EVERY=50                     # checkpoint every 50 iters (short study sessions = frequent saves)
-BATCH_SIZE=2                      # measured 15.0GB peak at seq 2048 on 32GB; batch 4 hits 23GB
-MAX_SEQ=2048                      # mlx_lm's own default. At 1024, 13-17% of samples were over
-                                  # the limit, and truncation cuts the tail - which is the answer.
-LEARNING_RATE=1e-4                # mlx_lm defaults to 1e-5, low for LoRA; masking the prompt (below)
-                                  # also shrinks the per-step loss signal, so this compensates.
-
-# One pass over the data. Hardcoding this used to be fine when the prep scripts
-# capped at 2000 rows, but they now emit the full dataset (50k+), where a fixed
-# 1800 would only ever touch ~3% of it.
-ITERS=$(( $(wc -l < "$DATA_DIR/train.jsonl") / BATCH_SIZE ))
+KEEP_CHECKPOINTS=3   # rank 64 makes these ~600MB each; 1800 of them would fill the disk
 
 mkdir -p "$ADAPTER_DIR"
 
@@ -29,16 +20,18 @@ else
     echo "No checkpoint found, starting fresh."
 fi
 
+# mlx_lm never deletes old checkpoints, so do it alongside the run rather than
+# discovering a full disk on day four.
+prune_checkpoints() {
+    while sleep 300; do
+        ls -t "$ADAPTER_DIR"/*_adapters.safetensors 2>/dev/null \
+            | tail -n +$((KEEP_CHECKPOINTS + 1)) \
+            | while read -r old; do rm -f "$old"; done
+    done
+}
+prune_checkpoints &
+trap 'kill %1 2>/dev/null || true' EXIT
+
 .venv/bin/mlx_lm.lora \
-    --model "$MODEL" \
-    --train \
-    --data "$DATA_DIR" \
-    --adapter-path "$ADAPTER_DIR" \
-    --iters "$ITERS" \
-    --save-every "$SAVE_EVERY" \
-    --batch-size "$BATCH_SIZE" \
-    --max-seq-length "$MAX_SEQ" \
-    --learning-rate "$LEARNING_RATE" \
-    --grad-checkpoint \
-    --mask-prompt \
+    --config "$CONFIG" \
     ${RESUME_FLAG[@]+"${RESUME_FLAG[@]}"}   # bash 3.2 calls an empty array unbound under set -u

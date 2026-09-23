@@ -2,23 +2,32 @@
     "adapter_path": "./adapters",
     "batch_size": 2,
     "clear_cache_threshold": 0,
-    "config": null,
+    "config": "./lora_config.yaml",
     "data": "./re_data_all",
     "fine_tune_type": "lora",
     "grad_accumulation_steps": 1,
     "grad_checkpoint": true,
     "iters": 89873,
-    "learning_rate": 0.0001,
+    "learning_rate": 3e-05,
     "lora_parameters": {
-        "rank": 8,
-        "dropout": 0.0,
-        "scale": 20.0
+        "rank": 64,
+        "scale": 2.0,
+        "dropout": 0.0
     },
-    "lr_schedule": null,
+    "lr_schedule": {
+        "name": "cosine_decay",
+        "arguments": [
+            3e-05,
+            89873,
+            3e-06
+        ],
+        "warmup": 200,
+        "warmup_init": 1e-07
+    },
     "mask_prompt": true,
     "max_seq_length": 2048,
     "model": "./gemma-mlx-4bit",
-    "num_layers": 16,
+    "num_layers": 42,
     "optimizer": "adam",
     "optimizer_config": {
         "adam": {},
@@ -30,12 +39,12 @@
     "project_name": null,
     "report_to": null,
     "resume_adapter_file": null,
-    "save_every": 50,
+    "save_every": 500,
     "seed": 0,
-    "steps_per_eval": 200,
+    "steps_per_eval": 2000,
     "steps_per_report": 10,
     "test": false,
     "test_batches": 500,
     "train": true,
-    "val_batches": 25
+    "val_batches": 100
 }
