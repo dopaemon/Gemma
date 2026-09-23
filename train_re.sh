@@ -5,7 +5,7 @@ set -euo pipefail
 
 MODEL="./gemma-mlx-4bit"          # converted+quantized model (step done separately)
 ADAPTER_DIR="./adapters"
-DATA_DIR="./re_data"
+DATA_DIR="./re_data_all"         # all four sets shuffled together — see mix_data.py
 SAVE_EVERY=50                     # checkpoint every 50 iters (short study sessions = frequent saves)
 BATCH_SIZE=2                      # measured 15.0GB peak at seq 2048 on 32GB; batch 4 hits 23GB
 MAX_SEQ=2048                      # mlx_lm's own default. At 1024, 13-17% of samples were over
@@ -41,4 +41,4 @@ fi
     --learning-rate "$LEARNING_RATE" \
     --grad-checkpoint \
     --mask-prompt \
-    "${RESUME_FLAG[@]}"
+    ${RESUME_FLAG[@]+"${RESUME_FLAG[@]}"}   # bash 3.2 calls an empty array unbound under set -u

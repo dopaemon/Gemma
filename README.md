@@ -82,21 +82,24 @@ Each downloads its full dataset from HuggingFace (no row cap — tens of thousan
 several GB each, cached under `~/.cache/huggingface/datasets`) and writes `{train,valid}.jsonl`
 to `re_data/`, `re_data_o2/`, `re_data_arm_o0/`, `re_data_arm_o2/` respectively.
 
-Then train:
+Then merge them into one corpus and train:
 
 ```bash
-./train_re.sh       # single dataset (x86 -O0), resumes from the latest checkpoint in ./adapters if present
-./chain_train.sh     # queue of dataset/iteration jobs, run back-to-back; edit the QUEUE array to add more
+uv run mix_data.py   # shuffles all four into ./re_data_all
+./train_re.sh        # resumes from the latest checkpoint in ./adapters if present
 ```
 
-`chain_train.sh`'s queue currently runs, in order: x86 -O2 → arm -O0 → arm -O2, resuming the
-same adapter across all of them. Both scripts wrap `mlx_lm.lora --model ./gemma-mlx-4bit
---train`, checkpointing to `./adapters/` every 50 iterations.
+`mix_data.py` exists because training the datasets back-to-back lets whichever ran last
+dominate the adapter, and the two families want different answers — the `-O0` sets expect
+~200 words of reasoning, the `-O2` sets a bare identifier. Shuffled together, the model
+learns to pick the format from the prompt. It also drops the ~4% of samples that exceed
+`--max-seq-length`, since mlx_lm truncates those to their *first* N tokens and would
+otherwise be training on answers with the tail cut off.
 
-Iteration counts are derived from the data rather than hardcoded — one pass over the
-dataset, so ~28k iters for the 57k-row x86 sets and ~5.6k for the smaller arm -O0 one.
-Expect on the order of a day per full dataset. You are not meant to sit through that in one
-go — see below.
+`train_re.sh` wraps `mlx_lm.lora --model ./gemma-mlx-4bit --train`, checkpointing to
+`./adapters/` every 50 iterations. Iteration count is derived from the data rather than
+hardcoded — one pass over the corpus, ~90k iters at batch 2. At ~0.25 it/s that is several
+days. You are not meant to sit through it in one go — see below.
 
 ### Why the training flags are what they are
 
@@ -110,8 +113,8 @@ rather than guessed:
   masked.
 - **`--max-seq-length 2048`** (mlx_lm's default; the scripts had lowered it to 1024) —
   truncation keeps the *first* N tokens, so any sample over the limit loses its tail, i.e. the
-  answer. At 1024 that silently discarded 13–17% of every dataset. 2048 brings `re_data` down
-  to 0.3%.
+  answer. At 1024 that silently discarded 13–17% of every dataset. 2048 leaves 4%, and
+  `mix_data.py` drops those rather than feeding the trainer a headless answer.
 - **`--batch-size 2`** — 15.0GB peak at seq 2048 on a 32GB machine; batch 4 needs 23GB, which
   is too close to the limit if the server is also running. Costs little, since throughput is
   ~250 tokens/sec regardless of batch size — the GPU is already saturated at batch 1.
@@ -122,8 +125,8 @@ rather than guessed:
 **Safe to interrupt anytime** — Ctrl+C, closing the laptop lid (sleep just pauses the
 process), or a hard shutdown loses at most the last 50 iterations. Data prep only needs
 network once (results are cached locally); training itself runs offline. Re-running the
-same script auto-resumes from the latest checkpoint in `./adapters/`. `chain_train.sh` also
-stops cleanly between jobs if a `STOP` file appears in this directory.
+same script auto-resumes from the latest checkpoint in `./adapters/`. A partial adapter is
+usable — there is no need to reach the final iteration before trying it.
 
 ## Files
 
@@ -132,7 +135,7 @@ stops cleanly between jobs if a `STOP` file appears in this directory.
 | `api.py` | The server (see above). |
 | `prep_data.py`, `prep_data_o2.py` | Build LoRA training data from the x86 RE datasets. |
 | `prep_data_arm_o0.py`, `prep_data_arm_o2.py` | Build LoRA training data from the arm RE datasets. |
-| `train_re.sh` | Train/resume the adapter on one dataset. |
-| `chain_train.sh` | Train across a queue of datasets back-to-back. |
+| `mix_data.py` | Shuffle the four datasets into one corpus, dropping over-length samples. |
+| `train_re.sh` | Train/resume the adapter. |
 | `adapters/` | LoRA checkpoints (gitignored — regenerate via the scripts above). |
 | `gemma-mlx-4bit/` | MLX-quantized model (gitignored — download/convert per above). |
