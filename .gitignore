@@ -14,5 +14,7 @@ adapters/*.safetensors
 # Training data caches (rebuilt by prep_data*.py) and run logs.
 re_data/
 re_data_o2/
+re_data_arm_o0/
+re_data_arm_o2/
 chain_logs/
 STOP

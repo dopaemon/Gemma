@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Build re_data_o2/{train,valid}.jsonl (function-name recovery task, O2 x86)."""
+"""Build re_data_arm_o2/{train,valid}.jsonl (function-name recovery task, O2 arm)."""
 
 import json
 from pathlib import Path
 
 from datasets import load_dataset
 
-OUT_DIR = Path(__file__).parent / "re_data_o2"
+OUT_DIR = Path(__file__).parent / "re_data_arm_o2"
 OUT_DIR.mkdir(exist_ok=True)
 
 INSTRUCTION = (
@@ -17,7 +17,7 @@ INSTRUCTION = (
 )
 
 ds = load_dataset(
-    "atul10/final_recreated_reverse_engineering_code_dataset_O2_x86_O2",
+    "atul10/reverse_engineering_code_dataset_O2_arm_O2",
     split="train",
 )
 

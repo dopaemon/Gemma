@@ -11,6 +11,8 @@ mkdir -p "$LOG_DIR"
 # Queue: "prep_script:data_dir:iters:label"
 QUEUE=(
     "./prep_data_o2.py:./re_data_o2:1800:RE O2 x86 (release-like optimization)"
+    "./prep_data_arm_o0.py:./re_data_arm_o0:1800:RE O0 arm"
+    "./prep_data_arm_o2.py:./re_data_arm_o2:1800:RE O2 arm (release-like optimization)"
 )
 
 run_job() {

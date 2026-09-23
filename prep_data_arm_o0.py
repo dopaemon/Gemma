@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Build re_data/{train,valid}.jsonl from atul10's RE dataset for mlx_lm.lora."""
+"""Build re_data_arm_o0/{train,valid}.jsonl (function-name recovery task, O0 arm)."""
 
 import json
 from pathlib import Path
 
 from datasets import load_dataset
 
-OUT_DIR = Path(__file__).parent / "re_data"
+OUT_DIR = Path(__file__).parent / "re_data_arm_o0"
 OUT_DIR.mkdir(exist_ok=True)
 
 ds = load_dataset(
-    "atul10/prompt_reverse_engineering_code_dataset_O0_x86_O0",
+    "atul10/prompt_reverse_engineering_code_dataset_O0_arm_O0",
     split="train",
 )
 

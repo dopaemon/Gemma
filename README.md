@@ -70,33 +70,45 @@ unfixable from the server side since it's baked into the adapter weights. Run a 
 
 ## Training the RE adapter
 
-Two datasets are supported, both function-name recovery from decompiled C, at different
-optimization levels:
+Four datasets are supported, all function-name recovery from decompiled C, across
+architecture and optimization level:
 
 ```bash
-uv run prep_data.py       # -O0, atul10/prompt_reverse_engineering_code_dataset_O0_x86_O0
-uv run prep_data_o2.py    # -O2, atul10/final_recreated_reverse_engineering_code_dataset_O2_x86_O2
+uv run prep_data.py          # x86 -O0, atul10/prompt_reverse_engineering_code_dataset_O0_x86_O0
+uv run prep_data_o2.py       # x86 -O2, atul10/final_recreated_reverse_engineering_code_dataset_O2_x86_O2
+uv run prep_data_arm_o0.py   # arm -O0, atul10/prompt_reverse_engineering_code_dataset_O0_arm_O0
+uv run prep_data_arm_o2.py   # arm -O2, atul10/reverse_engineering_code_dataset_O2_arm_O2
 ```
 
-Each writes `{train,valid}.jsonl` to `re_data/` / `re_data_o2/`.
+Each downloads its full dataset from HuggingFace (no row cap — tens of thousands of rows,
+several GB each, cached under `~/.cache/huggingface/datasets`) and writes `{train,valid}.jsonl`
+to `re_data/`, `re_data_o2/`, `re_data_arm_o0/`, `re_data_arm_o2/` respectively.
 
 Then train:
 
 ```bash
-./train_re.sh       # single dataset, resumes from the latest checkpoint in ./adapters if present
+./train_re.sh       # single dataset (x86 -O0), resumes from the latest checkpoint in ./adapters if present
 ./chain_train.sh     # queue of dataset/iteration jobs, run back-to-back; edit the QUEUE array to add more
 ```
 
-Both wrap `mlx_lm.lora --model ./gemma-mlx-4bit --train`, checkpointing to `./adapters/`
-every 50 iterations. Safe to interrupt (Ctrl+C) — the next run resumes from the latest
-checkpoint. `chain_train.sh` also stops cleanly if a `STOP` file appears in this directory.
+`chain_train.sh`'s queue currently runs, in order: x86 -O2 → arm -O0 → arm -O2 (each 1800
+iters), resuming the same adapter across all of them. Both scripts wrap
+`mlx_lm.lora --model ./gemma-mlx-4bit --train`, checkpointing to `./adapters/` every 50
+iterations.
+
+**Safe to interrupt anytime** — Ctrl+C, closing the laptop lid (sleep just pauses the
+process), or a hard shutdown loses at most the last 50 iterations. Data prep only needs
+network once (results are cached locally); training itself runs offline. Re-running the
+same script auto-resumes from the latest checkpoint in `./adapters/`. `chain_train.sh` also
+stops cleanly between jobs if a `STOP` file appears in this directory.
 
 ## Files
 
 | File | Purpose |
 |---|---|
 | `api.py` | The server (see above). |
-| `prep_data.py`, `prep_data_o2.py` | Build LoRA training data from the two RE datasets. |
+| `prep_data.py`, `prep_data_o2.py` | Build LoRA training data from the x86 RE datasets. |
+| `prep_data_arm_o0.py`, `prep_data_arm_o2.py` | Build LoRA training data from the arm RE datasets. |
 | `train_re.sh` | Train/resume the adapter on one dataset. |
 | `chain_train.sh` | Train across a queue of datasets back-to-back. |
 | `adapters/` | LoRA checkpoints (gitignored — regenerate via the scripts above). |
