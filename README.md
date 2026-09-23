@@ -54,6 +54,9 @@ at it as a custom provider.
 - **`--max-tokens 32768`** — mlx_lm defaults to 512 tokens per turn when a request omits
   `max_tokens`. Callers like Codex (via a translating router) often don't set it, so the
   server-side default is raised instead.
+- **Sampling defaults from the model** — `--temp 1.0 --top-p 0.95 --top-k 64`, copied from
+  the model's own `generation_config.json`. mlx_lm otherwise defaults to `temp 0.0`, i.e.
+  pure greedy decoding, which makes Gemma repeat itself on long answers.
 
 ### Optional: attach the RE LoRA adapter
 
@@ -91,10 +94,16 @@ Then train:
 ./chain_train.sh     # queue of dataset/iteration jobs, run back-to-back; edit the QUEUE array to add more
 ```
 
-`chain_train.sh`'s queue currently runs, in order: x86 -O2 → arm -O0 → arm -O2 (each 1800
-iters), resuming the same adapter across all of them. Both scripts wrap
-`mlx_lm.lora --model ./gemma-mlx-4bit --train`, checkpointing to `./adapters/` every 50
-iterations.
+`chain_train.sh`'s queue currently runs, in order: x86 -O2 → arm -O0 → arm -O2, resuming the
+same adapter across all of them. Both scripts wrap `mlx_lm.lora --model ./gemma-mlx-4bit
+--train` at batch size 4 (~10.7GB peak, measured on a 32GB machine), checkpointing to
+`./adapters/` every 50 iterations.
+
+Iteration counts are derived from the data rather than hardcoded — one pass over the
+dataset, so roughly 14k iters for the 57k-row x86 sets and 2.8k for the smaller arm -O0 one.
+Expect on the order of a day per full dataset; throughput is ~250 tokens/sec regardless of
+batch size, since the GPU is already saturated at batch 1. You are not meant to sit through
+that in one go — see below.
 
 **Safe to interrupt anytime** — Ctrl+C, closing the laptop lid (sleep just pauses the
 process), or a hard shutdown loses at most the last 50 iterations. Data prep only needs

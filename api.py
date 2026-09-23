@@ -102,6 +102,13 @@ sys.argv = [
     # (translated through 9router) never set it, so every turn was getting cut
     # off at 512 tokens regardless of the tool-calling fix above.
     "--max-tokens", "32768",
+    # mlx_lm's sampling defaults (temp 0.0 = pure greedy, top-p 1.0, top-k off)
+    # ignore what the model itself asks for. These three mirror the model's own
+    # generation_config.json, which is Gemma's tuned configuration; greedy
+    # decoding in particular makes it loop on long answers.
+    "--temp", "1.0",
+    "--top-p", "0.95",
+    "--top-k", "64",
 ]
 # The RE QLoRA adapter was trained on completions that are always a single
 # function name. Loaded for every request, it biases the model to emit EOS

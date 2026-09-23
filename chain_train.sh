@@ -8,11 +8,15 @@ ADAPTER_DIR="./adapters"
 LOG_DIR="./chain_logs"
 mkdir -p "$LOG_DIR"
 
-# Queue: "prep_script:data_dir:iters:label"
+BATCH_SIZE=4                      # measured 10.7GB peak on a 32GB machine, leaves room for the server
+
+# Queue: "prep_script:data_dir:iters:label". iters=auto means one pass over that
+# dataset — the prep scripts emit the full 50k+ rows now, so a fixed count like
+# the old 1800 would only ever touch a few percent of it.
 QUEUE=(
-    "./prep_data_o2.py:./re_data_o2:1800:RE O2 x86 (release-like optimization)"
-    "./prep_data_arm_o0.py:./re_data_arm_o0:1800:RE O0 arm"
-    "./prep_data_arm_o2.py:./re_data_arm_o2:1800:RE O2 arm (release-like optimization)"
+    "./prep_data_o2.py:./re_data_o2:auto:RE O2 x86 (release-like optimization)"
+    "./prep_data_arm_o0.py:./re_data_arm_o0:auto:RE O0 arm"
+    "./prep_data_arm_o2.py:./re_data_arm_o2:auto:RE O2 arm (release-like optimization)"
 )
 
 run_job() {
@@ -25,6 +29,11 @@ run_job() {
             echo "!!! Data prep failed for $label, skipping. See $LOG_DIR/$(basename "$data_dir")_prep.log"
             return 1
         }
+    fi
+
+    if [ "$iters" = "auto" ]; then
+        iters=$(( $(wc -l < "$data_dir/train.jsonl") / BATCH_SIZE ))
+        echo "--- auto iters for $data_dir: $iters (one epoch at batch $BATCH_SIZE) ---"
     fi
 
     local resume=()
@@ -41,7 +50,7 @@ run_job() {
         --adapter-path "$ADAPTER_DIR" \
         --iters "$iters" \
         --save-every 50 \
-        --batch-size 1 \
+        --batch-size "$BATCH_SIZE" \
         --max-seq-length 1024 \
         --grad-checkpoint \
         "${resume[@]}" \
