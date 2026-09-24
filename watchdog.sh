@@ -15,6 +15,13 @@ while true; do
     sleep 60
     pgrep -f "mlx_lm.lora" >/dev/null && continue
 
+    # A finished run also has no process. Without this the watchdog would
+    # restart training the moment it succeeds, forever.
+    if tail -c 4000 chain_logs/train_all.log | tr '\r' '\n' | grep -q "Saved final weights"; then
+        echo "$(date '+%F %T') training finished cleanly" >> "$LOG"
+        exit 0
+    fi
+
     if [ "$restarts" -ge "$MAX_RESTARTS" ]; then
         echo "$(date '+%F %T') GIVING UP after $MAX_RESTARTS restarts" >> "$LOG"
         exit 1
