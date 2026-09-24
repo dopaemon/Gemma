@@ -1,0 +1,3100 @@
+{
+  "summary": {
+    "adapter": null,
+    "rows": 200,
+    "placeholders": 788,
+    "exact": 0.0038071065989847717,
+    "partial": 0.008883248730964468,
+    "wrong": 0.08629441624365482,
+    "missing": 0.9010152284263959,
+    "unparsable_replies": 0.915
+  },
+  "details": [
+    {
+      "gold": {
+        "var_1": "base",
+        "var_4": "filename",
+        "var_6": "entire",
+        "var_2": "sys",
+        "var_3": "fh",
+        "var_5": "error",
+        "var_0": "chm",
+        "FUN_00106173": "chmd_close",
+        "FUN_00106330": "chmd_read_headers",
+        "FUN_0010601a": "chmd_real_open"
+      },
+      "pred": {
+        "var_1": "ContextObject",
+        "var_4": "DataPayload",
+        "var_6": "IgnoredParameter",
+        "var_2": "ObjectVTable",
+        "var_3": "InitialStatus",
+        "var_5": "OperationStatus",
+        "var_0": "ReturnCode",
+        "FUN_00106173": "CleanupContext",
+        "FUN_00106330": "ProcessData",
+        "FUN_0010601a": "ProcessContext"
+      },
+      "score": [
+        0,
+        0,
+        10,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "astra"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "self",
+        "var_2": "args",
+        "var_3": "kwds",
+        "FUN_00107ef6": "BoxList_init"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "m",
+        "var_5": "bus",
+        "var_7": "path",
+        "var_18": "unit",
+        "var_11": "error",
+        "var_17": "pid",
+        "var_10": "r",
+        "var_2": "u",
+        "var_14": "creds",
+        "var_15": "message",
+        "FUN_00262843": "streq_ptr",
+        "FUN_0026365a": "find_unit"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        12
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "camera",
+        "var_0": "size",
+        "FUN_001546b1": "ARV_IS_FAKE_CAMERA"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "data",
+        "FUN_00154784": "child_data_free"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "vis",
+        "var_7": "x",
+        "var_5": "w",
+        "var_3": "nx",
+        "var_12": "y",
+        "var_13": "ny",
+        "var_10": "h",
+        "FUN_0010647f": "GGI_X_copybox_slave_draw"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        8
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "self",
+        "var_5": "i",
+        "FUN_001182ac": "gst_audio_fx_base_fir_filter_calculate_frequency_response"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "gfx_surface",
+        "FUN_0013d188": "grd_rdp_gfx_surface_get_rdp_surface"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "table",
+        "var_3": "buffer",
+        "FUN_003c4c89": "_gtk_text_tag_table_remove_buffer"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "l",
+        "FUN_0018b193": "free_picture_entry",
+        "FUN_0018b359": "free_points",
+        "FUN_0018b05f": "free_linestorage"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "ast_crypto_loaded",
+        "_INIT_25": "__init__ast_crypto_loaded"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "elem_name",
+        "var_3": "attr_names",
+        "var_4": "attr_vals",
+        "var_5": "udata",
+        "var_6": "i",
+        "FUN_0010130b": "xmms_asx_handle_ref"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "result",
+        "var_2": "sstr",
+        "var_1": "len",
+        "var_3": "escape",
+        "var_5": "i"
+      },
+      "pred": {
+        "var_4": "destination_string",
+        "var_2": "source_string",
+        "var_1": "length_or_flag",
+        "var_3": "mode_flag",
+        "var_5": "i"
+      },
+      "score": [
+        1,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "config"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "klass",
+        "FUN_00106c77": "bacon_video_widget_properties_class_init"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "this",
+        "FUN_001f9e0c": "KWin::ScreenShotSink1::qt_metacast"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this_gen",
+        "FUN_0011d7dd": "demux_mpeg_block_parse_pack",
+        "FUN_0011fff9": "demux_mpeg_block_send_chunk"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "w",
+        "var_1": "lc",
+        "FUN_0016e2ff": "layout_cell_is_bottom"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "user",
+        "FUN_0010989f": "conf_update_user_mute",
+        "FUN_001133ff": "conf_add_user_active",
+        "FUN_0012295b": "join_unmarked"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "wl_surface",
+        "var_2": "transform",
+        "FUN_00111655": "wl_surface_set_buffer_transform"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "ctx",
+        "var_1": "lit_117",
+        "FUN_0026bf59": "mBVLT_TOK"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "argc",
+        "var_3": "argv",
+        "var_18": "hsr_scene",
+        "var_7": "out_file",
+        "var_1": "wrap_env",
+        "FUN_0010a0e8": "trouble_p",
+        "FUN_0010a10e": "report_errors",
+        "FUN_001126ee": "init_global_env",
+        "FUN_00114eba": "set_lexer_file",
+        "FUN_001150fd": "yywrap",
+        "FUN_0011ade3": "hsr_scene_with_bsp",
+        "FUN_0011b21f": "hsr_scene_with_depth_sort",
+        "FUN_0011b7c0": "new_scope",
+        "FUN_0011f19e": "parse",
+        "FUN_0011f214": "parsed_objects",
+        "FUN_00114eff": "main"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        16
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "cv",
+        "FUN_00163092": "XS_Math__Pari_have_graphics"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "fullprop_child",
+        "FUN_00103a47": "atexit_kill_do_standalone"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "overr_local_bots",
+        "FUN_00102dda": "uff_ask_override_bots"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "FUN_00112189": "runInheritedInitialize"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_9": "wp",
+        "var_5": "src",
+        "var_4": "limit",
+        "var_6": "used",
+        "var_12": "target",
+        "var_3": "n",
+        "var_2": "cols",
+        "var_8": "adj",
+        "var_7": "nxt",
+        "var_13": "ch2",
+        "var_10": "vl_encoding",
+        "FUN_001380c3": "column_sizes",
+        "FUN_001b7a97": "vl_conv_to_utf32",
+        "FUN_00147a27": "cols_until"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        14
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0018efdb": "__glCopyTexSubImage2DEXTAvail"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "program",
+        "var_4": "location",
+        "FUN_001a6961": "epoxy_glProgramUniform1dEXT_global_rewrite_ptr"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "x",
+        "FUN_0010ef47": "lobit"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "buf",
+        "var_1": "buf_size",
+        "var_2": "format",
+        "var_3": "args",
+        "var_4": "buf_p",
+        "FUN_0010b02d": "loc_vsnprintf"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "poly",
+        "FUN_0011ff07": "babl_polynomial_eval_1_14"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "interp",
+        "var_1": "self",
+        "FUN_00362717": "bigint_clear"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "parent",
+        "var_2": "errp",
+        "FUN_001c543d": "bdrv_release_dirty_bitmap_locked",
+        "FUN_001c5608": "bdrv_reclaim_dirty_bitmap_locked"
+      },
+      "pred": {
+        "var_1": "current_bitmap_context",
+        "var_2": "logging_context",
+        "FUN_001c543d": "reclaim_bitmap_locked",
+        "FUN_001c5608": "reclaim_dirty_bitmap_locked"
+      },
+      "score": [
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "arr",
+        "var_1": "newlen",
+        "FUN_0013d4b8": "drawin_array_grow"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "g__sleep_stats_lock",
+        "var_3": "sleep_stats",
+        "FUN_001543f0": "init_sleep_stats"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "base",
+        "FUN_0015e292": "folks_individual_real_get_urls"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "object",
+        "var_4": "gabble_jingle_share_parent_class",
+        "FUN_001424d3": "free_manifest",
+        "FUN_00142708": "gabble_jingle_share_dispose"
+      },
+      "pred": {
+        "var_1": "instance_ptr",
+        "var_4": "global_object_ptr",
+        "FUN_001424d3": "cleanup_object",
+        "FUN_00142708": "dispose_jingle_share"
+      },
+      "score": [
+        0,
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "url",
+        "FUN_0011ae49": "cri_proto_bind"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "cx",
+        "var_4": "obj",
+        "var_6": "id",
+        "var_2": "handlerp",
+        "var_3": "closurep",
+        "var_0": "wp",
+        "FUN_001381ee": "DropWatchPoint",
+        "FUN_001396c2": "JS_ClearWatchPoint"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        8
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "context"
+      },
+      "pred": {
+        "var_1": "context"
+      },
+      "score": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "arg",
+        "var_4": "mask",
+        "FUN_001192b7": "dhcp_send_packet",
+        "FUN_00117487": "dhcp_th_send_raw"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "l",
+        "var_6": "screen",
+        "FUN_00120618": "output_screenshot"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "res_ptr",
+        "var_3": "deathadder_chroma_freqs_list",
+        "FUN_001164b5": "deathadder_chroma_supported_freqs"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_10": "interp",
+        "var_7": "objc",
+        "var_6": "objv",
+        "var_8": "len",
+        "var_13": "result",
+        "var_14": "node",
+        "var_5": "var",
+        "var_3": "cursor",
+        "FUN_001a46a0": "ForeachOp"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        9
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "timeline",
+        "FUN_00131aef": "ev_timeline_get_instance_private"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "opts",
+        "var_2": "free_name",
+        "var_6": "fp",
+        "var_14": "e",
+        "var_15": "time_str",
+        "FUN_0011e1ce": "find_file_name",
+        "FUN_0011ed72": "open_sv_file"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "opcode",
+        "FUN_00294739": "hw_get_word",
+        "FUN_00294ba7": "hw_put_word",
+        "FUN_001a5725": "op_3098_0_ff"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "device",
+        "var_1": "swap"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "b",
+        "var_4": "offset",
+        "var_8": "countp",
+        "var_7": "offset1",
+        "var_2": "count"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "a",
+        "var_3": "b",
+        "FUN_0039cff4": "Univdiag_ascending_cmp"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "buf",
+        "var_1": "addr",
+        "var_3": "here",
+        "FUN_00108c31": "encode_e164"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "icon_theme",
+        "var_1": "mime_type",
+        "FUN_00143b38": "icon_theme_get_pixbuf_from_mime_type"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "context",
+        "var_0": "vtable",
+        "FUN_0010a9b8": "dc_parser_allocate"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "str",
+        "var_0": "p",
+        "var_1": "opt_descs",
+        "FUN_00107072": "lookup_opt"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "mem",
+        "FUN_0014f6ff": "gx_send_pi16f_xy"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "b",
+        "var_3": "needle",
+        "var_4": "needlesize",
+        "var_6": "bf_cur",
+        "var_0": "back",
+        "FUN_001118e7": "bf_strbsearch"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "board",
+        "var_7": "i",
+        "var_5": "list",
+        "var_10": "move_string",
+        "FUN_0010538b": "book_moves",
+        "FUN_00105568": "book_disp"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "message",
+        "var_1": "data",
+        "FUN_0012532f": "message_get_view_cb"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "free_op1",
+        "var_17": "result",
+        "var_10": "value",
+        "var_2": "ref",
+        "FUN_0087cb86": "zend_interrupt_helper_SPEC",
+        "FUN_008b6d29": "ZEND_JMP_SET_SPEC_TMP_HANDLER"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "rmtstate",
+        "FUN_0010f7ef": "rmtclose"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "w",
+        "var_0": "ps_selected",
+        "FUN_0038b5c7": "nh_XtPopdown",
+        "FUN_00399e78": "popup_delete"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0015bec4": "cxxKeywordMayAppearInVariableDeclaration"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0015a322": "seafile_clone_task_get_type_once"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "opts",
+        "var_8": "name",
+        "var_4": "opt",
+        "var_2": "before",
+        "var_3": "dummy",
+        "FUN_0010285b": "free_opts",
+        "FUN_00102f62": "unset_opt"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0019403a": "__glSampleMaskSGISAvail"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "s",
+        "var_1": "i",
+        "FUN_00106d9f": "configurationClose",
+        "FUN_0011316e": "snapshotClose"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_7": "i",
+        "var_3": "position",
+        "var_0": "set",
+        "FUN_0010a180": "setSizeOfIntset",
+        "FUN_0010a400": "insertElementAtIntset"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "c",
+        "FUN_001102ce": "is_tab_or_space"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "file",
+        "var_3": "size",
+        "var_5": "stats",
+        "FUN_003a8291": "isc_assertion_failed",
+        "FUN_003e4237": "isc_file_getsize"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0010aad0": "initInteract"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_8": "xl",
+        "var_9": "ob_inode",
+        "var_7": "fd",
+        "var_4": "op_ret",
+        "var_5": "op_errno",
+        "var_2": "list",
+        "FUN_00103942": "list_splice_init",
+        "FUN_0010476e": "ob_resume_pending",
+        "FUN_001047b3": "ob_open_completed"
+      },
+      "pred": {
+        "var_8": "unused_context",
+        "var_9": "context_state",
+        "var_7": "file_descriptor",
+        "var_4": "is_error",
+        "var_5": "error_code",
+        "var_2": "object_ptr",
+        "FUN_003942": "cleanup_context",
+        "FUN_00476e": "finalize_object"
+      },
+      "score": [
+        0,
+        0,
+        6,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "ifinfo",
+        "var_1": "link",
+        "FUN_001096c1": "set_changed",
+        "FUN_0010989d": "update_admin_state"
+      },
+      "pred": {
+        "var_3": "Context",
+        "var_1": "Link",
+        "FUN_001096c1": "UpdateContext",
+        "FUN_0010989d": "SyncLinkState"
+      },
+      "score": [
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "s",
+        "var_3": "l",
+        "var_7": "p",
+        "FUN_0010c44e": "get_Brand_Binding"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "row",
+        "var_2": "ctx",
+        "var_3": "error",
+        "var_7": "source",
+        "var_8": "app_info",
+        "FUN_001a5ffc": "glib_autoptr_cleanup_GError",
+        "FUN_001a6148": "glib_autoptr_cleanup_GdkAppLaunchContext",
+        "FUN_001a62a7": "CC_INPUT_SOURCE_IBUS",
+        "FUN_001a6a15": "row_settings_cb"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        9
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "a",
+        "var_1": "b",
+        "FUN_0012caf2": "mat_vec_mul_4x1"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "rbtdb",
+        "var_4": "node",
+        "var_0": "mctx",
+        "var_3": "current",
+        "var_2": "top_prev",
+        "FUN_0035f8e1": "free_rdataset64",
+        "FUN_0035fdbe": "clean_stale_headers64",
+        "FUN_0035fe21": "clean_cache_node64"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        8
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "cu",
+        "var_1": "new_cus",
+        "var_0": "new_cu",
+        "var_4": "id",
+        "FUN_001023a5": "tag__is_struct",
+        "FUN_00102427": "tag__class",
+        "FUN_00102435": "class__tag",
+        "FUN_001030ce": "diff_struct",
+        "FUN_001035b3": "cu_diff_iterator"
+      },
+      "pred": {
+        "FUN_001035b3": "ProcessDataOrSearch",
+        "var_2": "ContextObject",
+        "var_1": "SearchKey",
+        "var_0": "FoundPair",
+        "var_4": "LoopIndex",
+        "FUN_001023a5": "ProcessFoundData",
+        "FUN_00102427": "GetDataPointer",
+        "FUN_00102435": "ResolveData",
+        "FUN_001030ce": "HandleDataPair"
+      },
+      "score": [
+        0,
+        0,
+        9,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "if_list",
+        "var_0": "i",
+        "var_1": "if_entry",
+        "FUN_00111814": "capture_opts_print_interfaces"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "x",
+        "var_7": "y",
+        "var_8": "z",
+        "var_3": "context",
+        "var_2": "result",
+        "FUN_0011545e": "GMPy_MPFR_New",
+        "FUN_0015bf0c": "_GMPy_MPFR_Cleanup",
+        "FUN_0014cce8": "_GMPy_MPFR_FMS"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        8
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "hw_ste_p",
+        "FUN_00154241": "_devx_get",
+        "FUN_00154448": "dr_ste_v1_get_miss_addr"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_10": "results",
+        "var_6": "n",
+        "var_2": "trans",
+        "var_9": "buf",
+        "FUN_0010615e": "perlstring",
+        "FUN_00108f36": "fp_output"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "hapd",
+        "var_0": "sta",
+        "FUN_00140036": "ap_sta_hash_add"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "csound",
+        "var_0": "retval",
+        "FUN_001127e4": "het_import_init_"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "entry",
+        "FUN_0015bec3": "xorg_list_del"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "gc",
+        "var_3": "glamor_gc_funcs"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "dest",
+        "var_6": "hdr",
+        "var_8": "flags",
+        "var_5": "msg",
+        "var_2": "p",
+        "FUN_00157564": "mutt_ctime",
+        "FUN_0017a881": "mx_open_new_message"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "gold": {
+        "var_13": "cx",
+        "var_3": "rdata",
+        "var_8": "chars",
+        "var_14": "skip",
+        "var_4": "cp",
+        "var_10": "dp",
+        "var_2": "repstr",
+        "var_9": "bp",
+        "var_6": "ep",
+        "var_11": "len",
+        "var_12": "sub",
+        "FUN_001db6fc": "js_GetDependentStringChars",
+        "FUN_001dfa70": "interpret_dollar",
+        "FUN_001e0681": "do_replace"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        14
+      ]
+    },
+    {
+      "gold": {
+        "FUN_001b30f7": "warningdialog",
+        "FUN_001741b0": "clef_change_initial_cb"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "gpf",
+        "var_1": "num",
+        "FUN_0010630d": "gp_read",
+        "FUN_00106369": "gp_read_unknown"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "len",
+        "FUN_00103afc": "sym_algs",
+        "FUN_00103b85": "iv_len",
+        "FUN_00105f4c": "Public_Key_Packet",
+        "FUN_0010614e": "IV",
+        "FUN_001062db": "plain_Secret_Key",
+        "FUN_0010644e": "encrypted_Secret_Key",
+        "FUN_00106ed7": "Getc",
+        "FUN_00106f03": "Getc_getlen",
+        "FUN_00106f0f": "Getc_resetlen",
+        "FUN_00106199": "Secret_Key_Packet"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        11
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "dat",
+        "FUN_00115975": "grabber"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "obj",
+        "FUN_0010b61f": "gst_progress_report_finalize"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "r",
+        "var_3": "t",
+        "var_4": "sid",
+        "FUN_00104144": "callback"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "pass_cur",
+        "var_2": "pass_total",
+        "var_0": "val_cur",
+        "var_1": "val_total",
+        "FUN_0010683e": "compute_percents"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "c",
+        "var_3": "data",
+        "var_4": "len",
+        "var_10": "crc",
+        "var_5": "outlen",
+        "FUN_0012e74d": "decode_snappy"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "klass",
+        "var_0": "user_parent_class",
+        "FUN_0011061d": "user_class_intern_init"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0010fb3c": "_dtor_chan_45"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "this",
+        "FUN_0019f95a": "qtractorMonitor::gain",
+        "FUN_0019f9d2": "qtractorMonitor::panning",
+        "FUN_001abf52": "qtractorAudioMonitor::update"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_10": "init",
+        "FUN_0026ad8e": "e_pointer_init"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "config",
+        "var_0": "default_frequency",
+        "var_2": "swap_channels",
+        "var_3": "audio_sync",
+        "FUN_001028fa": "init_sdl_backend",
+        "FUN_00102a0d": "init_sdl_backend_from_config"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "filter",
+        "var_7": "p",
+        "var_5": "b",
+        "var_4": "line",
+        "FUN_0011153c": "show_forest"
+      },
+      "pred": {
+        "var_2": "filter_id",
+        "var_7": "match_result",
+        "var_5": "current_entry",
+        "var_4": "buffer",
+        "FUN_0011153c": "ProcessFilterMatch"
+      },
+      "score": [
+        0,
+        1,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "value",
+        "FUN_00106575": "tommy_ctz_u32"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "file_stat",
+        "FUN_0011800b": "register_header_check_dsc"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "in",
+        "var_1": "cookie",
+        "FUN_0011097c": "wireToTouchOwnershipEvent"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "t",
+        "var_5": "buf",
+        "var_4": "qtypes_buf",
+        "FUN_0010b319": "qtype_str"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "data",
+        "FUN_00102565": "options_data_free"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "g",
+        "var_0": "max2",
+        "var_1": "np",
+        "var_11": "ep"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "stcb",
+        "var_0": "dstnet",
+        "var_5": "chk",
+        "FUN_001367ff": "sctp_chunk_output",
+        "FUN_001749ce": "sctp_print_address",
+        "FUN_0017de8b": "sctp_assoc_immediate_retrans"
+      },
+      "pred": {
+        "var_1": "Context",
+        "var_0": "StateObject",
+        "var_5": "CurrentPtr",
+        "FUN_001367ff": "CleanupResources",
+        "FUN_001749ce": "LogMessage",
+        "FUN_0017de8b": "HandlePrimaryDeletion"
+      },
+      "score": [
+        0,
+        0,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "character",
+        "var_1": "career_index",
+        "FUN_00107403": "rdb_data_token",
+        "FUN_00110384": "career_set",
+        "FUN_001105b7": "name_to_career_index",
+        "FUN_00116a13": "read_career_field"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "curwp",
+        "var_1": "curbp",
+        "FUN_0013697e": "gotobob"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "stream",
+        "var_1": "context",
+        "FUN_00109eb6": "bounce_templates_load",
+        "FUN_0010504b": "load_helper"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "object",
+        "var_3": "ev_password_view_parent_class",
+        "FUN_00127d17": "ev_password_view_get_type",
+        "FUN_00127e16": "ev_password_view_finalize"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_17": "i",
+        "var_5": "s",
+        "var_3": "scores",
+        "FUN_00108e9b": "total_score",
+        "FUN_00108f17": "save_score"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "hints",
+        "var_2": "dim",
+        "var_3": "edge",
+        "var_6": "seg",
+        "var_7": "point",
+        "FUN_00192795": "af_cjk_align_edge_points"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "s",
+        "var_5": "base",
+        "var_3": "i",
+        "FUN_00104a34": "strtoul_reals"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "wc_self",
+        "FUN_0010d028": "glx_config_destroy"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "ti",
+        "FUN_0011e784": "wrapper_cb"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0022da87": "clock_boottime_supported",
+        "FUN_0022dade": "clock_boottime_or_monotonic"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this",
+        "FUN_0014b5f0": "destroy"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0011eae4": "up_device_bluez_get_type",
+        "FUN_0011f458": "up_device_bluez_new"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "data",
+        "var_8": "wx",
+        "var_9": "wy",
+        "var_2": "w_current",
+        "FUN_001403fd": "i_set_state",
+        "FUN_00148970": "o_invalidate_rubber",
+        "FUN_00148a55": "o_redraw_cleanstates",
+        "FUN_0014d22a": "o_line_start",
+        "FUN_001444d5": "i_callback_add_line"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        9
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this",
+        "FUN_00118290": "ScanDir",
+        "FUN_00121074": "cb_Rescan_i"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "parser",
+        "FUN_0030cfde": "icon_style_parse"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "link",
+        "var_7": "address",
+        "var_9": "netmask",
+        "var_8": "r",
+        "var_2": "route",
+        "FUN_00138447": "route_new",
+        "FUN_001bd16e": "dhcp4_request_route",
+        "FUN_001bd4a3": "link_prefixroute",
+        "FUN_0022fe15": "sd_dhcp_lease_get_address",
+        "FUN_002307a6": "sd_dhcp_lease_get_netmask",
+        "FUN_001bd4ff": "dhcp4_request_prefix_route"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        11
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "player"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "syntax"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "force",
+        "FUN_0010f8fe": "TerminalNewMode",
+        "FUN_00110bae": "setconnmode"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "kdt",
+        "var_0": "num_key",
+        "FUN_00146d10": "details_page_fill_num_keys"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_9": "argc",
+        "var_10": "argv",
+        "var_11": "sock",
+        "var_3": "options"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "g_iface",
+        "FUN_00145f99": "channel_manager_iface_init"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_11": "i",
+        "var_1": "arc_obj_count",
+        "var_4": "sel_ptr",
+        "var_0": "arc_obj",
+        "FUN_001d08e1": "LayoutOnArc"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "root_visual"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0010b2ee": "get_xcomposefile_path"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "entry",
+        "FUN_00138bd8": "plugin_maybe_claim"
+      },
+      "pred": {
+        "var_0": "context",
+        "FUN_00138bd8": "cleanup_context"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "event",
+        "FUN_00105a92": "cds_get_system_update_id"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "s",
+        "FUN_00168ebf": "server_free_info"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "subreq",
+        "var_4": "mem_ctx",
+        "FUN_00140ff3": "dcerpc_eventlog_ReadEventLogW_done"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "t",
+        "var_4": "htyp",
+        "var_2": "flags",
+        "FUN_00104de2": "checkline",
+        "FUN_001056c4": "issetext"
+      },
+      "pred": {
+        "var_1": "ContextObject",
+        "var_4": "ResultFlag",
+        "var_2": "unused_param",
+        "FUN_00104de2": "HandleError",
+        "FUN_001056c4": "CheckObjectStatus"
+      },
+      "score": [
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this",
+        "FUN_001c2560": "QImage::QImage"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "n"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_19": "d2",
+        "var_21": "drivers",
+        "var_28": "realtime_drivers",
+        "var_29": "repeat_driver",
+        "FUN_00156ba9": "sox_dialog_first_effect",
+        "FUN_0015dd69": "register_drivers"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "address1",
+        "var_2": "address2",
+        "FUN_0018d12b": "_in6_addr_compare"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "state",
+        "var_0": "tok",
+        "FUN_0012d69a": "common",
+        "FUN_0012d09d": "element3"
+      },
+      "pred": {
+        "FUN_0012d09d": "HandleOperation",
+        "var_1": "ContextObject",
+        "var_0": "OperationCode",
+        "FUN_0012d69a": "ExecuteOperation",
+        "FUN_0012d60c": "DefaultContext",
+        "FUN_0012d14d": "SpecificContext"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "view_klass",
+        "FUN_00112d7d": "gog_barcol_view_class_init"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "hd",
+        "var_2": "i",
+        "var_1": "active_handles",
+        "FUN_001399a3": "keyblock_cache_clear",
+        "FUN_0013b4ad": "unlock_all",
+        "FUN_0013da74": "keyring_release",
+        "FUN_0013b03b": "keydb_release"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "input",
+        "var_0": "res",
+        "FUN_002e67e8": "iflag"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "ret_len",
+        "var_14": "k",
+        "var_9": "ret_ct",
+        "var_0": "x",
+        "FUN_00223791": "ReallocOrDie",
+        "FUN_001d255a": "realloc_strings"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "retv",
+        "var_5": "inlen",
+        "var_7": "c",
+        "var_10": "len",
+        "var_2": "fulllen",
+        "var_9": "entry",
+        "var_12": "locinfo",
+        "FUN_00157b8f": "get_config_group"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        8
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "serial",
+        "var_1": "size",
+        "FUN_001263a1": "get_serial_value",
+        "FUN_0012690c": "get_crl_number"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "es",
+        "var_4": "fmt",
+        "var_5": "wl",
+        "FUN_0015753e": "format_expand1",
+        "FUN_00154c7c": "format_window_name"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "retcode",
+        "FUN_00114f35": "_iodbcdm_cfg_done",
+        "FUN_00115d4f": "_iodbcdm_cfg_write",
+        "FUN_00116793": "_iodbcdm_cfg_commit"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0010f18b": "SDL_GetCPUFeatures",
+        "FUN_0010f3b3": "SDL_HasNEON"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "f",
+        "var_3": "field",
+        "var_0": "value",
+        "var_1": "def",
+        "FUN_00139a50": "write_int"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "entry",
+        "FUN_00124d90": "gail_entry_init"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "n",
+        "FUN_00121485": "lsys_unloadlib",
+        "FUN_001217c2": "gctm"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "klass",
+        "var_0": "gl_event_toolbar_parent_class",
+        "FUN_0010bb50": "gl_event_toolbar_class_init",
+        "FUN_0010b498": "gl_event_toolbar_class_intern_init"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "map",
+        "var_4": "me",
+        "var_5": "sra",
+        "var_0": "max_degraded",
+        "FUN_0011783d": "metadata_container_matches",
+        "FUN_00183880": "sysfs_free",
+        "FUN_001438b6": "container_members_max_degradation"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "uvproc"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "pattern",
+        "FUN_001940bf": "is_recording_pattern"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "pvio",
+        "var_2": "is_read",
+        "var_3": "timeout",
+        "FUN_0012cd4d": "ma_pvio_wait_async",
+        "FUN_0012ce2c": "ma_pvio_wait_io_or_timeout"
+      },
+      "pred": {
+        "FUN_0012ce2c": "ProcessData",
+        "var_0": "this",
+        "var_2": "is_clean",
+        "var_3": "context",
+        "FUN_0012cd4d": "ExecuteOperation"
+      },
+      "score": [
+        0,
+        1,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "wlr_backend",
+        "var_2": "output",
+        "var_4": "output_tmp",
+        "FUN_00145285": "noop_backend_from_backend",
+        "FUN_0014537c": "backend_destroy"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_18": "sensitive",
+        "var_19": "rand",
+        "FUN_0017a80f": "TestBit",
+        "FUN_0017abd8": "BnTo2B",
+        "FUN_0017ac9c": "BnPointTo2B",
+        "FUN_0017bf18": "BnInit",
+        "FUN_0017c04e": "BnInitializePoint",
+        "FUN_0017ea48": "CryptTestAlgorithm",
+        "FUN_001c3211": "BnCurveFree",
+        "FUN_001b84af": "CryptEccGenerateKey"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        10
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this",
+        "FUN_0014f144": "KeyController::KeyController"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "c",
+        "var_2": "argc",
+        "var_3": "argv"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "ls",
+        "var_2": "name",
+        "var_3": "sz",
+        "FUN_0011e4ed": "luaX_newstring",
+        "FUN_00125497": "new_localvar",
+        "FUN_00125578": "new_localvarliteral_"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ]
+    },
+    {
+      "gold": {
+        "_INIT_1": "my_init"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "p",
+        "var_3": "d1",
+        "var_5": "d2",
+        "FUN_00102698": "SetInterrupt",
+        "FUN_00107bd4": "PPerformRMath"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "wc_self",
+        "FUN_0010a02f": "wegl_surface_teardown",
+        "FUN_0010cb39": "x11_window_teardown",
+        "FUN_0010c1ed": "xegl_window_destroy"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "scale_data",
+        "FUN_00143038": "scale_data_free"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "card",
+        "var_4": "data",
+        "var_8": "tries_left",
+        "var_7": "r",
+        "var_5": "rbuflen",
+        "var_6": "rbuf",
+        "var_2": "priv",
+        "FUN_001ce559": "coolkey_pin_cmd"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        8
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "name",
+        "var_5": "itype",
+        "var_6": "detail_p",
+        "var_10": "force_quark",
+        "var_4": "signal_id",
+        "var_8": "buffer",
+        "FUN_00130baf": "signal_parse_name"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "cv",
+        "FUN_001662f1": "XS_Gtk2__Gdk__Colormap_get_visual"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "fd",
+        "var_3": "buf",
+        "var_6": "error",
+        "var_0": "bytes",
+        "FUN_00133371": "read_pid"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "f",
+        "var_0": "rtn",
+        "FUN_00112143": "jfclose"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "self",
+        "FUN_001c4bdd": "_schedule_restart_on_batch_timeout"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_11": "i",
+        "var_3": "j",
+        "var_10": "niblen",
+        "var_13": "array",
+        "var_4": "temp"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "label",
+        "var_3": "mode",
+        "FUN_0011bb99": "champlain_label_queue_redraw"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "seen_fn_loc",
+        "var_1": "hash_text",
+        "var_2": "log_file",
+        "FUN_00105e56": "bst_err_print_and_look_for_blan",
+        "FUN_00111eea": "print_a_pool_str",
+        "FUN_001124aa": "print_fn_class",
+        "FUN_00102aa2": "already_seen_function_print"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        7
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "win",
+        "FUN_0010ef28": "_sample_theme_new"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "xc",
+        "var_0": "hw",
+        "var_1": "half_wide_tab"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "self",
+        "var_0": "expand",
+        "FUN_001760f2": "box_child_set_expand"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "window",
+        "FUN_0010886f": "postpone_clicked_cb"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "dest",
+        "var_0": "source",
+        "FUN_00133b11": "bolt_error_propagate"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "shell",
+        "var_1": "state",
+        "var_2": "seat",
+        "FUN_0011259a": "exposay_set_state"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "d",
+        "FUN_001491db": "ca_decoder_put_eof"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "path",
+        "var_4": "stats",
+        "FUN_00102686": "fcitx_utils_isreg"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "FUN_001138e1": "fade_screen",
+        "FUN_001032ab": "create_menu"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "FUN_00194341": "__glGetFragmentMaterialfvSGIXAvail"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "curbp",
+        "var_7": "curwp",
+        "var_9": "videoattribute",
+        "var_11": "hilite_suppressed",
+        "FUN_0019ce8d": "clear_match_attrs"
+      },
+      "pred": {
+        "var_4": "ContextData",
+        "var_7": "Buffer",
+        "var_9": "BufferSize",
+        "var_11": "OperationStatus",
+        "FUN_0019ce8d": "ProcessData"
+      },
+      "score": [
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "constraint",
+        "var_4": "full_dev"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "tty",
+        "var_0": "p",
+        "var_1": "session_list",
+        "FUN_00104fc4": "tty_is_used"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "f",
+        "FUN_00102a46": "ptb_data_rect"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "value",
+        "var_0": "c",
+        "FUN_001912d2": "mult2buf"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "var_10": "ud",
+        "var_11": "song",
+        "var_7": "iter",
+        "var_4": "selec",
+        "var_5": "selected",
+        "var_9": "titer",
+        "var_3": "browser_tree",
+        "var_6": "browser_model",
+        "FUN_00105c13": "__revert_selected"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        9
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "tfi",
+        "var_4": "c",
+        "var_2": "tgvi"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0017f1b6": "QString::~QString",
+        "FUN_002bc4ae": "ImportExport::Import::exec",
+        "FUN_002bc396": "ImportExport::Import::downloadKimJobCompleted"
+      },
+      "pred": {
+        "FUN_0017f1b6": "cleanup_job_context",
+        "FUN_002bc4ae": "finalize_job_state",
+        "FUN_002bc396": "process_job_completion"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "gobject",
+        "var_3": "gnome_rr_output_info_parent_class",
+        "FUN_0010e74c": "GNOME_RR_OUTPUT_INFO",
+        "FUN_0010e906": "gnome_rr_output_info_finalize"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "str",
+        "var_2": "prefix",
+        "FUN_00111e78": "startswith"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ]
+    }
+  ]
+}

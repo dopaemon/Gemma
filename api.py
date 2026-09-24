@@ -60,7 +60,9 @@ sys.argv = [
     "mlx_lm.server",
     "--model", "./gemma-mlx-4bit",
     "--host", "127.0.0.1",
-    "--port", "8080",
+    # PORT lets a second instance run alongside the one Codex uses, e.g. to try
+    # an adapter without taking the plain server down.
+    "--port", os.environ.get("PORT", "8080"),
     # mlx_lm defaults to 512 when a request omits max_tokens. Codex's requests
     # (translated through 9router) never set it, so every turn was getting cut
     # off at 512 tokens regardless of the tool-calling fix above.

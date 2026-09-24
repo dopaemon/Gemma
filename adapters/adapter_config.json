@@ -38,7 +38,7 @@
     },
     "project_name": null,
     "report_to": null,
-    "resume_adapter_file": "./adapters/0000500_adapters.safetensors",
+    "resume_adapter_file": "./adapters/0001000_adapters.safetensors",
     "save_every": 500,
     "seed": 0,
     "steps_per_eval": 2000,

@@ -77,14 +77,33 @@ def score(gold, pred):
 
 
 def extract_json(text):
-    """Model hay bọc JSON trong ```json hoặc kèm lời dẫn."""
-    m = re.search(r"\{.*\}", text, re.S)
-    if not m:
-        return None
-    try:
-        return json.loads(m.group(0))
-    except Exception:
-        return None
+    """Lấy JSON ra khỏi câu trả lời, kể cả khi có cả một đoạn suy luận bọc quanh.
+
+    Model gốc viết `<|channel>thought ... {` rồi mới tới JSON thật, và trong
+    đoạn suy luận nó cũng trích dẫn code có dấu ngoặc nhọn. Một regex tham lam
+    `\\{.*\\}` sẽ ôm từ ngoặc đầu tới ngoặc cuối và hỏng. Quét từng khối cân
+    bằng ngoặc, ưu tiên khối CUỐI vì đáp án thật nằm sau phần suy luận.
+    """
+    blocks, depth, start = [], 0, None
+    for i, ch in enumerate(text):
+        if ch == "{":
+            if depth == 0:
+                start = i
+            depth += 1
+        elif ch == "}" and depth:
+            depth -= 1
+            if depth == 0:
+                blocks.append(text[start : i + 1])
+    for block in reversed(blocks):
+        try:
+            parsed = json.loads(block)
+        except Exception:
+            continue
+        if isinstance(parsed, dict) and parsed and all(
+            isinstance(v, str) for v in parsed.values()
+        ):
+            return parsed
+    return None
 
 
 def main():
@@ -126,7 +145,12 @@ def main():
             pred = {}
         s = score(gold, pred)
         totals = [a + b for a, b in zip(totals, s)]
-        details.append({"gold": gold, "pred": pred, "score": s})
+        # raw chỉ giữ khi không parse được: cần nó để phân biệt "không biết đặt
+        # tên" với "biết nhưng trả lời sai định dạng"
+        entry = {"gold": gold, "pred": pred, "score": s}
+        if not pred:
+            entry["raw"] = text[:8000]
+        details.append(entry)
         if i % 20 == 0:
             n = sum(totals) or 1
             print(f"  {i}/{len(rows)}  khớp hẳn {totals[0] / n:.1%}", flush=True)
@@ -167,6 +191,10 @@ def _selftest():
     assert score(gold, pred) == (1, 1, 1, 1), score(gold, pred)
     assert extract_json('nói linh tinh {"x": "y"} rồi thôi') == {"x": "y"}
     assert extract_json("không có json") is None
+    # suy luận có trích code rồi mới tới đáp án: phải lấy khối cuối
+    assert extract_json('nghĩ: if (a) { b = 1; }\nđáp án: {"v": "hash"}') == {"v": "hash"}
+    # khối cuối không phải mapping tên thì bỏ qua, lùi lại khối trước
+    assert extract_json('{"v": "hash"} rồi {"n": 3}') == {"v": "hash"}
     print("selftest OK")
 
 

@@ -1,0 +1,1130 @@
+{
+  "summary": {
+    "adapter": null,
+    "rows": 60,
+    "placeholders": 240,
+    "exact": 0.020833333333333332,
+    "partial": 0.07083333333333333,
+    "wrong": 0.4708333333333333,
+    "missing": 0.4375,
+    "unparsable_replies": 0.25
+  },
+  "details": [
+    {
+      "gold": {
+        "var_1": "base",
+        "var_4": "filename",
+        "var_6": "entire",
+        "var_2": "sys",
+        "var_3": "fh",
+        "var_5": "error",
+        "var_0": "chm",
+        "FUN_00106173": "chmd_close",
+        "FUN_00106330": "chmd_read_headers",
+        "FUN_0010601a": "chmd_real_open"
+      },
+      "pred": {
+        "var_1": "ContextObject",
+        "var_4": "DataPayload",
+        "var_6": "IgnoredParameter",
+        "var_2": "ObjectVTable",
+        "var_3": "InitialStatus",
+        "var_5": "OperationStatus",
+        "var_0": "ReturnCode",
+        "FUN_00106173": "CleanupContext",
+        "FUN_00106330": "ProcessData",
+        "FUN_0010601a": "ProcessContext"
+      },
+      "score": [
+        0,
+        0,
+        10,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "astra"
+      },
+      "pred": {
+        "var_0": "astra_data"
+      },
+      "score": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "self",
+        "var_2": "args",
+        "var_3": "kwds",
+        "FUN_00107ef6": "BoxList_init"
+      },
+      "pred": {
+        "var_1": "Context",
+        "var_2": "Param2",
+        "var_3": "Param3",
+        "FUN_00107ef6": "ExecuteConditional"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "m",
+        "var_5": "bus",
+        "var_7": "path",
+        "var_18": "unit",
+        "var_11": "error",
+        "var_17": "pid",
+        "var_10": "r",
+        "var_2": "u",
+        "var_14": "creds",
+        "var_15": "message",
+        "FUN_00262843": "streq_ptr",
+        "FUN_0026365a": "find_unit"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "raw": "<|channel>thought\nThe user wants me to analyze a decompiled C function `FUN_0026365a` and rename the placeholder variables and functions based on context.\n\nThe function signature is:\n`int FUN_0026365a(long var_3, long var_5, long var_7, long *var_18, undefined8 var_11)`\n\nThe goal is to provide a JSON mapping of placeholders to meaningful names.\n\nLet's analyze the code flow and variable usage.\n\n**Function `FUN_0026365a`:**\n\nInputs:\n1. `var_3` (long): Used in `log_assert_failed`, `FUN_001b900c`, `FUN_0016b4f6`. Seems like a context/ID.\n2. `var_5` (long): Used in `log_assert_failed`, `sd_bus_get_current_message`. Seems like a handle or identifier.\n3. `var_7` (long): Used in `log_assert_failed`, `FUN_00262843`. Seems like a path or identifier.\n4. `var_18` (long *): Output parameter.\n5. `var_11` (undefined8): Seems unused in the body, possibly stack padding or context.\n\nLocal variables:\n* `local_20`: Stack canary check.\n* `var_2`: Used for return values/status.\n* `var_10`: Return values from helper functions (`FUN_001b900c`, `sd_bus_query_sender_creds`).\n* `var_14`, `var_15`: Used with `sd_bus_`. Likely message/context handles.\n* `bVar1`: Flag indicating success/failure path.\n* `unaff_EBX`: Used for return value/error code.\n\n**Code Analysis (Step-by-step):**\n\n1. **Stack setup/Canary check:** Standard prologue.\n2. **Input validation (Checks on `var_3`, `var_5`, `var_7`):**\n   ```c\n   if (var_3 == 0) { log_assert_failed(&DAT_002ed7b8,\"src/core/dbus.c\",0x119,\"find_unit\"); }\n   if (var_5 == 0) { log_assert_failed(&DAT_002edaed,\"src/core/dbus.c\",0x11a,\"find_unit\"); }\n   if (var_7 == 0) { log_assert_failed(&DAT_002ed7f4,\"src/core/dbus.c\",0x11b,\"find_unit\"); }\n   ```\n   These checks suggest `var_3`, `var_5`, `var_7` are required inputs, likely handles or IDs.\n\n3. **Path A (Success path via `FUN_00262843`):**\n   ```c\n   cVar2 = FUN_00262843(var_7,\"/org/freedesktop/systemd1/unit/self\");\n   if (cVar2 == '\\0') { // If FUN_00262843 returns null/empty\n     var_10 = FUN_001b900c(var_3,param_3,param_5,&var_2); // Note: param_3, param_5 are likely context/globals\n     if (var_10 < 0) {\n       unaff_EBX = 0;\n       goto LAB_00263865;\n     }\n     if (var_2 == 0) {\n       log_assert_failed(&DAT_002edb1c,\"src/core/dbus.c\",0x135,\"find_unit\");\n     }\n   }\n   ```\n   This path seems to handle a specific scenario (perhaps a successful lookup or a default case).\n\n4. **Path B (Failure/Alternative path via `sd_bus`):**\n   ```c\n   else { // cVar2 != '\\0'\n     var_14 = 0;\n     var_15 = sd_bus_get_current_message(var_5); // var_5 is used here\n     if (var_15 == 0) {\n       bVar1 = false;\n       unaff_EBX = 0;\n     }\n     else {\n       var_10 = sd_bus_query_sender_creds(var_15,1,&var_14);\n       if (var_10 < 0) {\n         bVar1 = false;\n         unaff_EBX = var_10;\n       }\n       else {\n         var_10 = sd_bus_creds_get_pid(var_14,&var_17);\n         if (var_10 < 0) {\n           bVar1 = false;\n           unaff_EBX = var_10;\n         }\n         else {\n           var_2 = FUN_0016b4f6(var_3,local_40);\n           if (var_2 == 0) {\n             unaff_EBX = 0;\n             bVar1 = false;\n           }\n           else {\n             bVar1 = true;\n           }\n         }\n       }\n     }\n     FUN_00262762(&var_14);\n     if (!bVar1) goto LAB_00263865;\n   }\n   ```\n   This path involves complex interaction with `sd_bus` (systemd bus communication). `var_5` likely identifies the bus context.\n\n5. **Conclusion and Return:**\n   ```c\n   *var_18 = var_2;\n   unaff_EBX = 1;\nLAB_00263865:\n     if (local_20 == *(in_FS_OFFSET + 0x28)) {\n       return unaff_EBX;\n     }\n   __stack_chk_fail();\n   ```\n   The function returns `unaff_EBX` (0 or 1).\n\n**Identifying Roles:**\n\n* `var_3`: Seems to be a primary identifier or context handle (used in `FUN_001b900c`, `FUN_0016b4f6`).\n* `var_5`: Seems to be a secondary identifier or bus handle (used in `sd_bus_get_current_message`).\n* `var_7`: Seems to be a path or specific identifier (used in `FUN"
+    },
+    {
+      "gold": {
+        "var_2": "camera",
+        "var_0": "size",
+        "FUN_001546b1": "ARV_IS_FAKE_CAMERA"
+      },
+      "pred": {
+        "var_2": "pCameraDevice",
+        "var_0": "pXmlData",
+        "FUN_001546b1": "CheckDeviceStatus"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "data",
+        "FUN_00154784": "child_data_free"
+      },
+      "pred": {
+        "FUN_00154784": "DestroyObject",
+        "var_0": "object"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "vis",
+        "var_7": "x",
+        "var_5": "w",
+        "var_3": "nx",
+        "var_12": "y",
+        "var_13": "ny",
+        "var_10": "h",
+        "FUN_0010647f": "GGI_X_copybox_slave_draw"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        8
+      ],
+      "raw": "<|channel>thought\nHere's a plan to recover meaningful names for the placeholders:\n\n1.  **Analyze the function signature and parameters:** Understand what each input parameter (`var_1`, `var_7`, `var_5`, `var_3`, `var_12`, etc.) represents.\n2.  **Analyze variable usage and flow:** Trace how the input parameters are used, modified, and passed through the local variables (`local_34`, `local_2c`, `local_24`, `local_30`, `var_10`, `local_30`, `local_24`).\n3.  **Identify data structures:** Determine what `var_1` and `lVar5` point to, and what kind of data they hold (e.g., objects, structures, buffers).\n4.  **Infer purpose:** Based on the complex arithmetic and conditional logic, deduce the overall purpose of the function (e.g., initialization, calculation, comparison, update).\n5.  **Rename placeholders:** Apply the findings to rename the parameters and local variables.\n\n---\n*Self-Correction/Refinement during analysis:* The function involves heavy pointer arithmetic and structure manipulation, suggesting it's likely managing state or performing a complex calculation/update operation. The use of `lVar5` (which seems to be a persistent object/context) and `var_1` (another object/context) suggests an interaction between two entities.\n\n---\n*Execution of the plan (detailed trace):*\n\n**Inputs:**\n`FUN_0010647f(long var_1, int var_7, int var_5, int var_3, int var_12, int var_13, int var_10, int var_12)`\nWait, the signature provided in the prompt is:\n`FUN_0010647f(long var_1, int var_7, int var_5, int var_3, int var_12, int var_13, int var_10, int var_12)`\nBut the body uses `param_7` and `param_3` which suggests the signature might be slightly off or the parameters are being reused/misaligned in the decompilation. Let's stick to the usage in the body:\n\n`FUN_0010647f(long var_1, int var_7, int var_5, int var_3, int var_12, int var_13, int var_10, int var_12)`\nThe body uses `param_3`, `param_5`, `param_7`, and `var_12` (the last parameter) is also used. This is confusing. I will assume the parameters are passed correctly and focus on the *roles* they play.\n\nLet's rename the parameters based on their initial roles:\nP1: `var_1` (long) - Object/Context 1\nP2: `var_7` (int) - Input/State variable\nP3: `var_5` (int) - Input/State variable\nP4: `var_3` (int) - Input/State variable\nP5: `var_12` (int) - Input/State variable\nP6: `var_13` (int) - Input/State variable\nP7: `var_10` (int) - Input/State variable\nP8: `var_12` (int) - Input/State variable (This is likely the actual 8th parameter, but let's call it `param_8` to avoid confusion with P5).\n\n**Local Variable Initialization (Initial values from parameters):**\n`local_34 = var_3` (P4)\n`local_2c = var_5` (P3)\n`local_24 = var_7` (P2)\n\n**Phase 1: Calculation Block (Lines 1-10)**\nThis block calculates `local_2c`, `local_34`, `local_24` based on `var_3`, `var_5`, `var_7` and memory locations pointed to by `var_1`.\n\n*   `lVar5 = *(var_1 + 0x100);` (A persistent context object)\n*   `if (var_3 < *(*(var_1 + 0xd8) + 0xc))`\n    *   `local_2c = *(*(var_1 + 0xd8) + 0xc) - var_3;` (Difference calculation)\n    *   `local_34 = var_3 + local_2c;` (New value based on `var_3`)\n    *   `local_24 = var_7 + local_2c;` (New value based on `var_7`)\n    *   `local_2c = var_5 - local_2c;` (Recalculation/adjustment)\n*   `if (*(*(var_1 + 0xd8) + 0x10) <= local_34 + local_2c)`\n    *   `local_2c = *(*(var_1 + 0xd8) + 0x10) - local_34;` (More calculation/clamping)\n\n*Inference:* This section seems to be calculating differences, bounds checks, and potentially adjusting input values (`var_3`, `var_5`, `var_7`) based on constraints found in `var_1`.\n\n**Phase 2: Second Calculation Block (Lines 11-35)**\nThis block uses `param_5` (P3) and `param_3` (P7) and calculates `local_30`.\n\n*   `if (0 < local_2c)` (If the previous calculation resulted in a positive value)\n    *   `local_30 = param_5;`\n    *   `var_10 = param_3;`\n    *   `if (var_12 < *(*(var_1 + 0xd8) + 0xe))`\n        *   `local_30 = *(*(var_1 + 0xd8) + 0xe) - var_12;`\n        *   `var_12 = var_12 + local_30;`\n        *   `var_10 = param_3 + local_30;`\n        *   `local_30 = param_5 - local_30;`\n    *   `if (*(*(var_1 + 0xd8) + 0x12) < var_12 + local_30)`\n        *   `local_30 = *(*(var_1 + 0xd8) + 0x12) - var_12;`\n\n*Inference:* This is another complex calculation, likely involving bounds checking or scaling, using `param_5"
+    },
+    {
+      "gold": {
+        "var_0": "self",
+        "var_5": "i",
+        "FUN_001182ac": "gst_audio_fx_base_fir_filter_calculate_frequency_response"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "raw": "<|channel>thought\nHere's a plan to recover meaningful names for the placeholders:\n\n1.  **Analyze the function signature and context:** The function `FUN_001182ac` takes one argument `long var_0`. This `var_0` is clearly a structure pointer (a `this` pointer or a context object) because it is accessed with offsets (e.g., `*(var_0 + 0x3d8)`).\n2.  **Analyze the operations:** The function performs initialization/cleanup, checks conditions, and then executes a sequence involving `gst_fft_f64_*` functions, `g_free`, `g_malloc`, `memcpy`, and division loops. This strongly suggests a Fast Fourier Transform (FFT) calculation, likely involving scaling/normalization.\n3.  **Identify the structure members (offsets):** I need to determine what data types and roles the variables at specific offsets play.\n4.  **Trace the execution flow (Cleanup phase):**\n    *   `gst_fft_f64_free(*(var_0 + 0x3d8));` -> `*(var_0 + 0x3d8)` holds a pointer to an FFT object (likely the destination/inverse FFT object).\n    *   `*(var_0 + 0x3d8)) = 0;` -> Nullifying the pointer.\n    *   `gst_fft_f64_free(*(var_0 + 0x3e0));` -> `*(var_0 + 0x3e0)` holds a pointer to another FFT object.\n    *   `*(var_0 + 0x3e0)) = 0;` -> Nullifying the pointer.\n    *   `g_free(*(var_0 + 1000));` -> `*(var_0 + 1000)` holds a memory block being freed.\n    *   `*(var_0 + 0x3f0) = 0;` -> Nullifying a pointer/handle.\n    *   `g_free(*(var_0 + 0x3f8));` -> Another memory block being freed.\n    *   `*(var_0 + 0x3f8) = 0;` -> Nullifying the pointer.\n    *   *Conclusion:* The function is likely a destructor or a cleanup method, but it also contains the main logic if the condition is met.\n\n5.  **Trace the execution flow (Main logic/FFT calculation):**\n    *   **Condition Check:** `if (((*(var_0 + 0x3a0) != 0) && (0x1f < *(var_0 + 0x3a8))) && (*(var_0 + 0x3b8) == 0))`\n        *   `*(var_0 + 0x3a0)`: Must be a valid pointer (`__src`).\n        *   `*(var_0 + 0x3a8)`: Must be a size/length parameter. `0x1f` (31) is compared against it.\n        *   `*(var_0 + 0x3b8)`: Must be zero for the operation to proceed.\n    *   **Setup:**\n        *   `__src = *(var_0 + 0x3a0);` (Input data buffer)\n        *   `uVar1 = gst_fft_next_fast_length(*(var_0 + 0x3a8) << 2);` (Determining FFT size based on input length).\n        *   `*(var_0 + 0x400) = uVar1;` (Storing the calculated FFT size).\n        *   `__dest = g_malloc0_n(uVar1,8);` (Allocating output buffer).\n        *   `memcpy(__dest,__src,*(var_0 + 0x3a8) * 8);` (Copying input data).\n        *   `uVar2 = gst_fft_f64_new(uVar1,0);` / `*(var_0 + 0x3d8) = uVar2;` (Creating the forward FFT object).\n        *   `uVar2 = gst_fft_f64_new(uVar1,1);` / `*(var_0 + 0x3e0) = uVar2;` (Creating the inverse FFT object).\n        *   `*(var_0 + 0x3f0) = (uVar1 >> 1) + 1;` (Calculating the number of blocks/iterations needed).\n        *   `uVar2 = g_malloc_n(*(var_0 + 0x3f0),0x10);` (Allocating the output buffer for the FFT process).\n        *   `*(var_0 + 1000) = uVar2;` (Storing the output buffer pointer).\n        *   `gst_fft_f64_fft(*(var_0 + 0x3d8),__dest,*(var_0 + 1000));` (Performing the FFT).\n        *   `g_free(__dest);` (Freeing the temporary input buffer).\n        *   **Normalization Loop:** The loop divides the contents of `*(var_0 + 1000)` by `uVar1` (the FFT size). This is standard normalization after an FFT calculation.\n\n6.  **Refining Names:**\n\n    *   `var_0`: The context object/structure. Let's call it `Context`.\n    *   `*(var_0 + 0x3a0)`: Input data buffer (`__src`).\n    *   `*(var_0 + 0x3a8)`: Input length/size parameter.\n    *   `*(var_0 + 0x3b8)`: Status/flag indicating if the operation has run or if the buffers are clean.\n    *   `*(var_0 + 0x400)`: Stores the calculated FFT size (`uVar1`).\n    *   `*(var_0 + 0x3d8)`: Forward FFT object handle.\n    *   `*(var_0 + 0x3e0)`: Inverse FFT object handle.\n    *   `*(var_0 + 1000)`: Output buffer pointer.\n    *   `uVar1`: FFT size (`uVar1`).\n    *   `var_5`: Loop counter.\n\n7.  **Finalizing the mapping (Focusing on the placeholders):**\n\n    *   `var_0`: The main context object.\n    *   `var_5`: Loop counter.\n    *   `FUN_001182ac`: The function itself.\n\nSince the prompt asks for a JSON mapping of *placeholders* to recovered names, and the only placeholders are `var_"
+    },
+    {
+      "gold": {
+        "var_0": "gfx_surface",
+        "FUN_0013d188": "grd_rdp_gfx_surface_get_rdp_surface"
+      },
+      "pred": {
+        "var_0": "object",
+        "FUN_0013d188": "get_field"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "table",
+        "var_3": "buffer",
+        "FUN_003c4c89": "_gtk_text_tag_table_remove_buffer"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "raw": "<|channel>thought\nHere's a thinking process to recover the meaningful names:\n\n1.  **Analyze the Goal:** The task is to act as an expert reverse engineer and rename placeholders (`var_1`, `var_3`, `lVar1`, `uVar2`, `param_2`, `FUN_003c4c48`) in the provided C code snippet, which was decompiled from a binary. The output must be a JSON mapping.\n\n2.  **Analyze the Code Structure and Context:**\n    *   The function signature is `void FUN_003c4c89(long var_1, undefined8 var_3)`.\n    *   The code involves pointers (`var_1`, `lVar1`) and memory manipulation, suggesting object structures or linked lists.\n    *   The presence of `gtk_text_tag_table_foreach` and `g_slist_remove` strongly suggests this code is dealing with GTK/GObject structures, specifically a list or collection of tags/items.\n\n3.  **Step-by-Step Execution Trace (Focusing on `var_1`):**\n\n    *   `void FUN_003c4c89(long var_1, undefined8 var_3)`: `var_1` is the primary object/structure pointer.\n    *   `lVar1 = *(var_1 + 0x18);`: `lVar1` is derived from `var_1`. Since `var_1` is a pointer (`long`), `*(var_1 + 0x18)` dereferences `var_1` and adds an offset. This suggests `var_1` is a structure containing a pointer to `lVar1`.\n    *   `gtk_text_tag_table_foreach(var_1, FUN_003c4c48, param_2);`: This function iterates over a table/list associated with `var_1`.\n    *   `uVar2 = g_slist_remove(*(lVar1 + 0x10), param_2);`: This is the critical operation. It removes an element from a linked list (`g_slist_remove`).\n        *   The list being modified is pointed to by `*(lVar1 + 0x10)`.\n        *   The removal uses `param_2` (the element to remove).\n        *   `uVar2` holds the result of the removal (likely the removed element or a status code).\n    *   `*(lVar1 + 0x10) = uVar2;`: The list head is updated with the result of the removal.\n    *   `return;`: The function finishes.\n\n4.  **Hypothesizing the Roles (Naming):**\n\n    *   **`var_1` (The main object):** It holds the context for the operation. Given the GTK context and the offsets, `var_1` likely points to a container object (e.g., a `GtkTextBuffer` or a custom object managing tags).\n    *   **`lVar1` (The intermediate pointer):** It seems to be a pointer *within* the object pointed to by `var_1`. It likely points to the specific part of the object that manages the list being cleared/modified.\n    *   **`*(lVar1 + 0x10)`:** This is the head of the linked list (`GList` or similar) that is being manipulated.\n    *   **`param_2`:** This is the element being passed to the iteration/removal functions. Since `g_slist_remove` is used, `param_2` is likely the specific item (the tag/node) being targeted for removal.\n    *   **`gtk_text_tag_table_foreach`:** This function is used to traverse the table/list.\n    *   **The overall action:** The function appears to be clearing or processing a list of tags/items associated with the object pointed to by `var_1`.\n\n5.  **Refining the Names (Focusing on Clarity and Role):**\n\n    *   `var_1`: The main object context. Let's call it `text_buffer` or `object`.\n    *   `var_3`: Unused in the body, but it's a parameter. It might be context or a flag.\n    *   `lVar1`: A pointer within the object structure. Let's call it `tag_info` or `context`.\n    *   `param_2`: The item being processed/removed. Let's call it `tag_node` or `item`.\n    *   `uVar2`: The result of the removal.\n    *   `FUN_003c4c48`: A helper function used during iteration.\n\n6.  **Final Mapping Check (Applying the names to the structure):**\n\n    *   `var_1` (Object/Buffer)\n    *   `var_3` (Ignored parameter)\n    *   `lVar1` (Internal structure pointer)\n    *   `param_2` (The specific tag/node)\n\n    *Self-Correction/Refinement:* Since the code is dealing with `gtk_text_tag_table`, the objects are likely related to text buffers and tags.\n\n    *   `var_1`: `GtkTextBuffer` (or similar container)\n    *   `var_3`: (Context/unused)\n    *   `lVar1`: Pointer to the tag management structure within the buffer.\n    *   `param_2`: The tag/node being removed.\n\n7.  **Constructing the JSON Output:** (Mapping the placeholders used in the provided snippet).\n\n    *   `var_1` -> `text_buffer` (or `buffer`)\n    *   `var_3` -> `unused` (or `context`)\n    *   `lVar1` -> `tag_context`\n    *   `uVar2` -> `removal_result`\n    *   `param_2` -> `tag_node`\n    *   `FUN_003c4c48` -> `tag_table_callback` (or `foreach_callback`)\n\n    *Constraint Check:* The request asks for a JSON object mapping *each placeholder* to a proposed name. I must include all placeholders, even those used in the body of the function (`lVar1`, `uVar2`, `param_2`, `FUN_003c4c48`).\n\n    *Mapping:*\n    *   `var_1`\n    *   `var_3`\n    *   `lVar1`\n    *   `uVar2`\n    *   `param_2`\n    *   `FUN_003c4c89` (The function itself, but the prompt implies renaming internal variables/parameters) -> I will focus on the variables/parameters.\n\n    Let's stick to the variables"
+    },
+    {
+      "gold": {
+        "var_0": "l",
+        "FUN_0018b193": "free_picture_entry",
+        "FUN_0018b359": "free_points",
+        "FUN_0018b05f": "free_linestorage"
+      },
+      "pred": {
+        "var_0": "Object",
+        "FUN_0018b193": "CleanupGraphics",
+        "FUN_0018b359": "CloseHandle",
+        "FUN_0018b05f": "DestroyObject"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "ast_crypto_loaded",
+        "_INIT_25": "__init__ast_crypto_loaded"
+      },
+      "pred": {
+        "_INIT_25": "InitializeCryptoApi",
+        "var_0": "apiContext",
+        "FUN_0011c6a9": "cryptoLoadHandler"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "elem_name",
+        "var_3": "attr_names",
+        "var_4": "attr_vals",
+        "var_5": "udata",
+        "var_6": "i",
+        "FUN_0010130b": "xmms_asx_handle_ref"
+      },
+      "pred": {
+        "param_1": "unused_context",
+        "var_1": "prefix_id",
+        "var_3": "source_array",
+        "var_4": "target_array",
+        "var_5": "collection_handle"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        2
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "result",
+        "var_2": "sstr",
+        "var_1": "len",
+        "var_3": "escape",
+        "var_5": "i"
+      },
+      "pred": {
+        "var_4": "destination_string",
+        "var_2": "source_string",
+        "var_1": "length_or_flag",
+        "var_3": "mode_flag",
+        "var_5": "i"
+      },
+      "score": [
+        1,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "config"
+      },
+      "pred": {
+        "ast_get_ccbs_available_timer": "get_ccbs_available_timer",
+        "undefined4": "int",
+        "long": "ObjectHandle",
+        "var_0": "this"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "klass",
+        "FUN_00106c77": "bacon_video_widget_properties_class_init"
+      },
+      "pred": {
+        "FUN_00106c77": "InitializeObject",
+        "var_1": "obj"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "this",
+        "FUN_001f9e0c": "KWin::ScreenShotSink1::qt_metacast"
+      },
+      "pred": {
+        "FUN_001f9e0c": "checkAndCast",
+        "var_1": "object",
+        "param_2": "targetClassName"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this_gen",
+        "FUN_0011d7dd": "demux_mpeg_block_parse_pack",
+        "FUN_0011fff9": "demux_mpeg_block_send_chunk"
+      },
+      "pred": {
+        "var_0": "ObjectHandle",
+        "FUN_0011d7dd": "PerformAction",
+        "FUN_0011fff9": "RunOperation"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "w",
+        "var_1": "lc",
+        "FUN_0016e2ff": "layout_cell_is_bottom"
+      },
+      "pred": {
+        "var_3": "TargetContext",
+        "var_1": "SearchList",
+        "FUN_0016e2ff": "SearchForMatch"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "user",
+        "FUN_0010989f": "conf_update_user_mute",
+        "FUN_001133ff": "conf_add_user_active",
+        "FUN_0012295b": "join_unmarked"
+      },
+      "pred": {
+        "var_0": "Context",
+        "FUN_0010989f": "ReleaseContext",
+        "FUN_001133ff": "ProcessContext",
+        "FUN_0012295b": "DestroyContext"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "wl_surface",
+        "var_2": "transform",
+        "FUN_00111655": "wl_surface_set_buffer_transform"
+      },
+      "pred": {
+        "var_1": "proxy",
+        "var_2": "unused_context",
+        "uVar1": "version",
+        "param_2": "marshal_context"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "ctx",
+        "var_1": "lit_117",
+        "FUN_0026bf59": "mBVLT_TOK"
+      },
+      "pred": {
+        "var_0": "Object",
+        "var_1": "Data",
+        "FUN_0026bf59": "ProcessObjectState"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "argc",
+        "var_3": "argv",
+        "var_18": "hsr_scene",
+        "var_7": "out_file",
+        "var_1": "wrap_env",
+        "FUN_0010a0e8": "trouble_p",
+        "FUN_0010a10e": "report_errors",
+        "FUN_001126ee": "init_global_env",
+        "FUN_00114eba": "set_lexer_file",
+        "FUN_001150fd": "yywrap",
+        "FUN_0011ade3": "hsr_scene_with_bsp",
+        "FUN_0011b21f": "hsr_scene_with_depth_sort",
+        "FUN_0011b7c0": "new_scope",
+        "FUN_0011f19e": "parse",
+        "FUN_0011f214": "parsed_objects",
+        "FUN_00114eff": "main"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        16
+      ],
+      "raw": "<|channel>thought\nThe user wants me to act as an expert reverse engineer and recover meaningful names for placeholders (variables, functions, and possibly global data structures/constants) based on a decompiled C-like function body.\n\nThe function signature is:\n`undefined8 FUN_00114eff(undefined4 var_2, undefined8 var_3)`\n\nThe goal is to map all placeholders (including the function name itself, if necessary, but primarily the variables and function calls) to meaningful names.\n\nLet's analyze the code flow and the roles of the variables and functions.\n\n**Function `FUN_00114eff`:**\nInput parameters: `var_2`, `var_3`.\nReturn type: `undefined8`.\n\n**Local variables/stack usage:**\n`iVar1`, `uVar2`, `var_18`, `var_7`, `var_1` (used in `FUN_0011b7c0`), `local_28`.\n\n**Global/External dependencies (placeholders):**\n`FUN_0011b7c0`, `FUN_00106a2f`, `FUN_0010a0e8`, `FUN_0010a10e`, `DAT_0012fc90`, `DAT_0012fc88`, `err`, `DAT_0012f940`, `DAT_0012f948`, `fopen`, `DAT_0012fc98`, `DAT_0012fcb6`, `FUN_001126ee`, `DAT_0012f9a0`, `FUN_001150fd`, `FUN_00114eba`, `STDIN`, `FUN_0011f19e`, `DAT_0012fb00`, `DAT_0012fb08`, `FUN_0011f214`, `FUN_0011a1a9`, `DAT_0012fc78`, `FUN_0011b21f`, `FUN_0011ade3`, `FUN_001096c9`.\n\nThe provided list of placeholders to be recovered includes:\n`[var_2, var_3, var_18, var_7, var_1, FUN_0010a0e8, FUN_0010a10e, FUN_001126ee, FUN_00114eba, FUN_001150fd, FUN_0011ade3, FUN_0011b21f, FUN_0011b7c0, FUN_0011f19e, FUN_0011f214, FUN_00114eff]`\n\nI need to focus on the variables and the function names that are *not* already in the list, but are used in the body, and also try to rename the functions in the list if possible, or at least rename the variables they interact with.\n\nLet's analyze the usage of `var_2` and `var_3` (the inputs to `FUN_00114eff`).\n\n---\n**Detailed Analysis of `FUN_00114eff`**\n\n1. **Initialization/Setup:**\n   ```c\n   uVar2 = FUN_0011b7c0(0); // uVar2 = FUN_0011b7c0(0)\n   FUN_00106a2f(&var_1, param_1, param_2, uVar2); // var_1 is local stack variable\n   iVar1 = FUN_0010a0e8(); // Check status/resource availability\n   if (iVar1 != 0) {\n     FUN_0010a10e(); // Cleanup/Error handling\n   }\n   ```\n   This looks like setup for a main operation, possibly involving file handles or resources.\n\n2. **Main Logic Block (The `if (DAT_0012fc90 == 0)` block):**\n   This block executes if `DAT_0012fc90` is zero. This seems to be the success path or the primary execution path.\n\n   *File Handling Setup:*\n   ```c\n   if (DAT_0012fc90 == 0) {\n     if (DAT_0012fc88 == 0x0) {\n       var_7 = stdout; // var_7 is a FILE*\n     }\n     else {\n       var_7 = fopen(DAT_0012fc88,\"w\");\n       if (var_7 == 0x0) {\n         err(DAT_0012f940,DAT_0012f948,\"can't open '%s' for output\",DAT_0012fc88);\n       }\n     }\n     // ... execution continues using var_7\n   ```\n   `var_7` is the output stream handle. `DAT_0012fc88` is a filename.\n\n   *Execution Phase 1 (Input/Processing):*\n   ```c\n   iVar1 = FUN_0010a0e8();\n   if (iVar1 != 0) {\n     FUN_0010a10e();\n   }\n   FUN_001126ee(&DAT_0012f9a0,&DAT_0012fc98,&DAT_0012fcb6); // Data initialization/read?\n   iVar1 = FUN_001150fd(); // Check input status\n   if (iVar1 == 0) {\n     iVar1 = FUN_0010a0e8();\n     if (iVar1 != 0) {\n       FUN_0010a10e();\n     }\n   }\n   else {\n     FUN_00114eba(\"<stdin>\",stdin); // Handle input source\n   }\n   // ...\n   ```\n   This sequence suggests reading input data (`FUN_001126ee`, `FUN_001150fd`, `FUN_00114eba`).\n\n   *Execution Phase 2 (Parsing/Output):*\n   ```c\n   iVar1 = FUN_0011f19e(uVar2); // uVar2 seems related to the input source/context\n   if ((iVar1 != 0) && (iVar1 = FUN_0010a0e8(), iVar1 == 0)) {\n     err(DAT_0012fb00"
+    },
+    {
+      "gold": {
+        "var_4": "cv",
+        "FUN_00163092": "XS_Math__Pari_have_graphics"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "raw": "<|channel>thought\nHere's a plan to recover meaningful names for the placeholders:\n\n1.  **Analyze the context:** The function `FUN_00163092` appears to be part of a system dealing with Perl objects/structures, given the presence of `Perl_croak_xs_usage`, `Perl_sv_newmortal`, `Perl_sv_setiv_mg`, and stack management macros (`_PL_stack_sp`, `_PL_stack_base`, `_PL_op`, `_PL_curpad`).\n2.  **Analyze inputs/outputs:**\n    *   `var_4`: An `undefined8` input parameter.\n    *   The function manages stack variables (`lVar2`, `plVar3`) and seems to be initializing or manipulating a Perl scalar value (`lVar2`).\n3.  **Step-by-step execution trace:**\n\n    *   `lVar2 = _PL_stack_sp;` // `lVar2` gets the current stack pointer.\n    *   `iVar1 = FUN_0014ced8();` // `iVar1` gets a return value from another function. This value seems crucial for stack allocation/sizing.\n    *   **Stack Check/Error Handling:**\n        ```c\n        if (lVar2 - (iVar1 * 8 + _PL_stack_base) >> 3 != 0) {\n          Perl_croak_xs_usage(var_4,&DAT_003b13d6);\n        }\n        ```\n        This checks if the current stack pointer (`lVar2`) is correctly positioned relative to the required stack frame size (`iVar1 * 8 + _PL_stack_base`). If not, it triggers a usage error, passing `var_4`. This suggests `var_4` might be related to the context or the error itself.\n    *   **Object Initialization Path:**\n        ```c\n        if ((*(_PL_op + 0x23) & 4) == 0) {\n          lVar2 = Perl_sv_newmortal();\n        }\n        else {\n          lVar2 = *(*(_PL_op + 0x18) * 8 + _PL_curpad);\n        }\n        ```\n        This block determines the value of `lVar2`. If a condition based on `_PL_op` is met, a new mortal Perl scalar (`Perl_sv_newmortal`) is created. Otherwise, `lVar2` is loaded from a specific memory location, likely an existing Perl scalar.\n    *   **Stack Allocation/Target Address:**\n        ```c\n        plVar3 = (iVar1 + 1) * 8 + _PL_stack_base;\n        ```\n        `plVar3` is calculated as the target address where the result of the function will be stored.\n    *   **Value Manipulation (The core logic):**\n        ```c\n        if (PL_tainted == '\\0' && (*(lVar2 + 0xc) & 0x998108ff) == 1) {\n          *(lVar2 + 0xc) = *(lVar2 + 0xc) | 0x1100;\n          *(lVar2 + 0x10) = 0;\n        }\n        else {\n          Perl_sv_setiv_mg(lVar2,0);\n        }\n        ```\n        This block modifies the Perl scalar pointed to by `lVar2`.\n        *   The `if` condition checks if the scalar is not tainted (`PL_tainted == '\\0'`) AND if a specific bit pattern (`0x998108ff`) is set in the scalar's internal state (`*(lVar2 + 0xc)`).\n        *   If true, it modifies the scalar's internal state (`| 0x1100`) and clears another field (`*(lVar2 + 0x10) = 0`).\n        *   If false, it calls `Perl_sv_setiv_mg(lVar2, 0)`, likely setting the scalar to an initial or default state.\n    *   **Storing the Result:**\n        ```c\n        *plVar3 = lVar2;\n        ```\n        The resulting Perl scalar (`lVar2`) is stored at the target location (`plVar3`).\n    *   **Stack Cleanup:**\n        ```c\n        _PL_stack_sp = _PL_stack_base + (iVar1 + 1 + 1) * 8 + -8;\n        return;\n        ```\n        The stack pointer is adjusted to clean up the stack frame.\n\n4.  **Naming conventions:**\n\n    *   `FUN_00163092`: The function itself.\n    *   `var_4`: The input parameter (`undefined8`). Since it is passed to `Perl_croak_xs_usage`, it likely provides context or data for the error.\n    *   `iVar1`: Used to calculate stack frame size (`iVar1 * 8`). This is likely the size or count of items being handled.\n    *   `lVar2`: Holds the address of the Perl scalar (`PLVal`).\n    *   `plVar3`: The target address where the result is stored.\n\n5.  **Refining names:**\n\n    *   `var_4`: Given its role in `Perl_croak_xs_usage`, it is probably an error context or a specific data payload. Let's call it `ErrorContext` or `ErrorData`.\n    *   `iVar1`: Since it dictates the stack frame size (`iVar1 + 1` items are written), it represents the number of items/slots being used. Let's call it `StackSlotCount`.\n    *   `lVar2`: This variable holds the address of the Perl scalar being manipulated. It is the value being returned/stored. Let's call it `PerlScalarPtr`.\n    *   `plVar3`: This is the destination address for the return value. It is derived from `iVar1` and `_PL_stack_base`. It represents the location where the result is placed.\n\n6.  **Final mapping check:**\n\n    *   `var_4` -> `ErrorContext` (or similar, related to the error handling).\n    *   `FUN_00163092` -> (Function name, not requested in the JSON).\n    *   `iVar1` -> `StackSlotCount` (or `Size`).\n    *   `lVar2` -> `PerlScalarPtr` (or `ResultScalar`).\n    *   `plVar3` -> `TargetAddress` (or `ResultLocation`).\n\nI will use the most descriptive names based on the Perl context.\n\n*   "
+    },
+    {
+      "gold": {
+        "var_0": "fullprop_child",
+        "FUN_00103a47": "atexit_kill_do_standalone"
+      },
+      "pred": {
+        "var_0": "pid",
+        "FUN_00103a47": "kill_process"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "overr_local_bots",
+        "FUN_00102dda": "uff_ask_override_bots"
+      },
+      "pred": {
+        "var_0": "status_flag",
+        "FUN_00102dda": "IsStatusValid"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_00112189": "runInheritedInitialize"
+      },
+      "pred": {
+        "FUN_00112189": "VisitObject"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_9": "wp",
+        "var_5": "src",
+        "var_4": "limit",
+        "var_6": "used",
+        "var_12": "target",
+        "var_3": "n",
+        "var_2": "cols",
+        "var_8": "adj",
+        "var_7": "nxt",
+        "var_13": "ch2",
+        "var_10": "vl_encoding",
+        "FUN_001380c3": "column_sizes",
+        "FUN_001b7a97": "vl_conv_to_utf32",
+        "FUN_00147a27": "cols_until"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        14
+      ],
+      "raw": "<|channel>thought\nHere's a plan to recover meaningful names for the placeholders:\n\n1.  **Analyze the function signature and context:**\n    *   `int FUN_00147a27(long var_9, long var_5, uint var_4)`: This is the main function.\n    *   The body uses `var_9`, `var_5`, and `var_4` as inputs.\n    *   The function appears to be processing data based on `var_5` (likely a buffer/string) and iterating up to `var_4`.\n\n2.  **Analyze variable usage and flow (The Loop):**\n    *   `local_10 = *(in_FS_OFFSET + 0x28);` (Stack canary setup)\n    *   `var_2 = 0;` (Accumulator/counter)\n    *   **Loop initialization:** `for (var_3 = 0; ...)`\n        *   Condition 1: `(var_3 < var_4 && (*(var_5 + var_3) != '\\t')) && (*(var_5 + var_3) != ' ');`\n            *   The loop continues as long as `var_3` is less than `var_4` AND the character at `var_5 + var_3` is neither tab (`\\t`) nor space (` `). This suggests `var_5` points to a string/buffer, and `var_4` is the maximum length/limit. The loop condition checks for delimiters.\n        *   Increment: `var_3 = var_3 + var_6`\n            *   Wait, `var_6` is initialized to `1` *inside* the loop body (`var_6 = 1;`). This is highly suspicious. If `var_6` is reset to 1 *before* the increment, the increment step size is always 1.\n            *   *Correction:* The decompilation might be slightly misleading about where `var_6` is used. Let's assume the loop structure is: `while (condition) { body; var_3 = var_3 + step; }`. If `var_6` is used for the step, it must be initialized correctly.\n            *   Let's re-examine the loop structure:\n                ```c\n                for (var_3 = 0;\n                    ((var_3 < var_4 && (*(var_5 + var_3) != '\\t')) && (*(var_5 + var_3) != ' '));\n                    var_3 = var_3 + var_6) { // <-- This increment is executed AFTER the body\n                    var_6 = 1; // <-- This assignment is inside the body\n                    // ... body uses var_6 ...\n                }\n                ```\n                If `var_6` is used in the increment step (`var_3 = var_3 + var_6`), and `var_6` is reset to 1 inside the loop, this is a potential bug in the decompilation or the original code.\n                *Assumption:* Given the condition checks (`\\t` or ` `), the loop is likely iterating character by character, meaning the step size should be 1. If `var_6` is used for the step, it must be 1. Let's assume `var_6` is meant to be the step size, and the assignment `var_6 = 1;` is misplaced or irrelevant to the step size calculation, or perhaps `var_6` is used elsewhere.\n\n    *   **Inside the loop body:**\n        *   `var_6 = 1;` (Sets `var_6` to 1)\n        *   `var_7 = var_4 - var_3;` (Remaining count/length)\n        *   `var_8 = FUN_001380c3(var_9, local_24 + var_5, local_18, &var_6);`\n            *   `FUN_001380c3` is called. It takes `var_9`, a pointer derived from `var_5`, `local_18`, and a pointer to `var_6`. It returns `var_8`.\n        *   **Conditional Block (Success/Match):**\n            *   `if ((var_8 == 6) && (... conditions involving var_9 and var_10 ...))`\n                *   If `FUN_001380c3` returns 6, AND complex checks pass (involving `var_9` structure and `var_10`), then:\n                    *   `iVar1 = FUN_001b7a97(&var_12, local_24 + var_5, param_3 - var_3);`\n                        *   `FUN_001b7a97` is called. It takes `var_9`, a pointer derived from `var_5`, and a length (`param_3 - var_3`). It returns `iVar1`.\n                    *   If `iVar1 < 1`: `var_13 = *(var_5 + var_3);` (Use current character)\n                    *   Else: `var_13 = var_12;` (Use result from `FUN_001b7a97`)\n                    *   `var_8 = FUN_00135f4d(var_9, local_24 + var_5, local_18);` (Another function call, overwriting `var_8`)\n        *   `var_2 = var_2 + var_8;` (Accumulation)\n\n3.  **Identify the roles of the variables:**\n\n    *   `var_9`: Seems to be a complex object pointer (likely a structure or object instance) passed to the functions.\n    *   `var_5`: Base address of the input data (the string/buffer).\n    *   `var_4`: Length/limit for the loop.\n    *   `var_3`: Loop index/offset.\n    *   `var_6`: Used as a flag/step counter, initialized to 1.\n    *   `var_8`: Return value of `FUN_001380c3` (and later `FUN_00135f4d`). This seems to be a status code or a count.\n    *   `var_7`: Remaining length (`var_4 - var_3`).\n    *   `var_13`: Temporary variable holding the character/data being processed.\n    *   `var_10`: Used in the success condition check.\n    *   `local_24 + var_5` and `local_24 + var_5` (in `FUN_001380c3` and `FUN_001b7a97`): These are pointers derived"
+    },
+    {
+      "gold": {
+        "FUN_0018efdb": "__glCopyTexSubImage2DEXTAvail"
+      },
+      "pred": {
+        "FUN_0018efdb": "IsGLEWCopyTexSubImageSuccessful"
+      },
+      "score": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "program",
+        "var_4": "location",
+        "FUN_001a6961": "epoxy_glProgramUniform1dEXT_global_rewrite_ptr"
+      },
+      "pred": {
+        "var_3": "uniform_value_1",
+        "var_4": "uniform_value_2",
+        "FUN_001a6961": "epoxy_glProgramUniform1dEXT"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "x",
+        "FUN_0010ef47": "lobit"
+      },
+      "pred": {
+        "var_1": "Value",
+        "FUN_0010ef47": "CountTrailingZeros"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "buf",
+        "var_1": "buf_size",
+        "var_2": "format",
+        "var_3": "args",
+        "var_4": "buf_p",
+        "FUN_0010b02d": "loc_vsnprintf"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ],
+      "raw": "<|channel>thought\nHere's a thinking process to recover the meaningful names:\n\n1.  **Analyze the function signature and body:**\n    *   `long FUN_0010b02d(char *var_0, int var_1, char *var_2, __gnuc_va_list var_3)`\n    *   The function takes four arguments: `var_0`, `var_1`, `var_2`, `var_3`.\n    *   The body uses `vsnprintf(var_0, param_2, param_3, param_4);`. This is the core operation.\n    *   The function then enters a loop: `for (var_4 = var_0; *var_4 != '\\0'; var_4 = var_4 + 1) {}`. This loop iterates through the string written by `vsnprintf`.\n    *   The function returns `var_4 - var_0`. This calculates the length of the string written.\n\n2.  **Analyze `vsnprintf` usage:**\n    *   `vsnprintf(buffer, size_limit, format_string, args)`\n    *   Mapping the arguments:\n        *   `var_0` (the first argument to `FUN_0010b02d`) is used as the `buffer` (`var_0` in `vsnprintf`).\n        *   `param_2` is the `size_limit`.\n        *   `param_3` is the `format_string`.\n        *   `param_4` is the variable argument list (the actual data being formatted).\n\n3.  **Relate `vsnprintf` arguments back to `FUN_0010b02d` arguments:**\n    *   `FUN_0010b02d` arguments: `var_0`, `var_1`, `var_2`, `var_3`.\n    *   `vsnprintf` arguments:\n        *   `buffer`: `var_0` (The output buffer address).\n        *   `size_limit`: `param_2`.\n        *   `format_string`: `param_3`.\n        *   `args`: `param_4`.\n\n    *   *Crucial observation:* The function signature of `FUN_0010b02d` is `(char *var_0, int var_1, char *var_2, __gnuc_va_list var_3)`.\n    *   The `vsnprintf` call uses `var_0` (the buffer), `param_2` (size), `param_3` (format), and `param_4` (args).\n\n    *   If this function is a wrapper around `vsnprintf`, the arguments passed to `FUN_0010b02d` must correspond to the inputs needed for `vsnprintf`.\n\n    *   Let's assume the standard pattern for a variadic function:\n        *   `var_0`: Output buffer address (where the result goes).\n        *   `var_1`: Likely the size limit (`param_2`).\n        *   `var_2`: Likely the format string (`param_3`).\n        *   `var_3`: The variable arguments (`param_4`).\n\n    *   *Self-Correction/Refinement:* The code uses `var_0` as the buffer, but the `vsnprintf` call uses `var_0` as the buffer *and* the function signature suggests `var_0` is the first argument. If `var_0` is the buffer, then the size limit (`param_2`) must be passed separately.\n\n    *   Let's re-examine the `vsnprintf` call: `vsnprintf(var_0, param_2, param_3, param_4);`\n        *   `var_0` is the destination buffer.\n        *   `param_2` is the maximum size.\n        *   `param_3` is the format string.\n        *   `param_4` is the variable arguments.\n\n    *   If the function `FUN_0010b02d` is the entry point, then:\n        *   `var_0` (Input): Destination buffer address.\n        *   `var_1` (Input): This argument is unused in the `vsnprintf` call shown (`param_2` is used instead). This suggests `var_1` might be redundant or perhaps `param_2` is actually derived from `var_1` in a real scenario, but based *only* on the provided decompilation, `var_1` is unused in the `vsnprintf` call shown.\n        *   `var_2` (Input): Format string (`param_3`).\n        *   `var_3` (Input): Variable arguments (`param_4`).\n\n    *   *Wait, the decompilation shows `vsnprintf(var_0, param_2, param_3, param_4);` but the function signature is `FUN_0010b02d(char *var_0, int var_1, char *var_2, __gnuc_va_list var_3)`. This is a mismatch unless `param_2` is actually `var_1` and the decompilation is slightly flawed, or `var_1` is ignored.*\n\n    *   Let's assume the standard pattern for this type of function (a safe logging/formatting function):\n        *   `var_0`: Output buffer.\n        *   `var_1`: Max size/buffer capacity.\n        *   `var_2`: Format string.\n        *   `var_3`: Args.\n\n    *   If we assume the standard pattern, the `vsnprintf` call *should* be: `vsnprintf(var_0, var_1, var_2, var_3);`.\n    *   The decompiled code shows: `vsnprintf(var_0, param_2, param_3, param_4);`.\n\n    *   *Conclusion on variable mapping:* The function is clearly performing a safe string formatting operation (`vsnprintf`) and returning the length of the resulting string.\n\n    *   Let's map the roles based on usage, ignoring the potential mismatch between `var_1` and `param_2` for now, as the *role* is clear:\n        *   `var_0`: Output buffer (`buffer`).\n        *   `var_1`: Size limit (`size_limit`).\n        *   `var_2`: Format string (`format_string`).\n        *   `var_3`: Variable arguments (`args`).\n\n4.  **Determine the function's purpose:**\n    *   It formats a string using variable arguments (`vsnprintf`).\n    *   It writes the result into `var_0`.\n    *   It returns the length of the resulting string.\n    *"
+    },
+    {
+      "gold": {
+        "var_2": "poly",
+        "FUN_0011ff07": "babl_polynomial_eval_1_14"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "raw": "<|channel>thought\nHere's a thinking process to recover the meaningful names:\n\n1.  **Analyze the Function Signature and Context:**\n    *   `double FUN_0011ff07(double param_1, long var_2)`\n    *   The function takes a `double` (`param_1`) and a `long` (`var_2`).\n    *   The return type is `double`.\n    *   The body heavily uses `var_2` as a base address/pointer into memory, accessing data via offsets (`+ 0x78`, `+ 0x68`, etc.). This suggests `var_2` is likely a pointer or a structure base address.\n\n2.  **Analyze the Calculation (The Core Logic):**\n    *   `dVar1 = param_1 * param_1;` (This is $P^2$)\n    *   The calculation is extremely long and involves nested multiplications and additions. Let's try to simplify the structure.\n\n    *   **Structure of the calculation:**\n        The calculation has two main parts added together, plus a final constant offset (`*(var_2 + 0x80)`).\n        `Result = Part A + Part B + C`\n\n    *   **Part A (The first large block):**\n        It involves `param_1` multiplied by a massive expression, which itself is a product of many terms involving `dVar1` ($P^2$).\n        Let $E_1$ be the expression involving `param_1` and the memory accesses.\n        $E_1 = (\\text{Memory Access Chain}) \\times P^2$\n        The entire first term is: `(Memory Access Chain) * param_1`\n\n    *   **Part B (The second large block):**\n        This is also a memory access chain, but it doesn't seem to be multiplied by `param_1` in the same way.\n        $E_2 = (\\text{Memory Access Chain})$\n\n    *   **Let's look closely at the memory access pattern:**\n        The memory accesses are highly structured, suggesting they are accessing fields of a class or struct pointed to by `var_2`.\n\n    *   **Focus on the multiplication by `dVar1` ($P^2$):**\n        The structure is:\n        `Term = (Term_N * P^2) * P^2`\n        If we trace the multiplications:\n        The innermost term is multiplied by $P^2$.\n        Then the result is multiplied by $P^2$.\n        ... and this happens many times.\n\n    *   **Let's count the multiplications by $P^2$ (or $dVar1$):**\n        *   Innermost: `... * dVar1` (1st $P^2$)\n        *   Next level: `... * dVar1` (2nd $P^2$)\n        *   ...\n        *   This pattern repeats many times.\n\n    *   **Re-examining the structure (assuming standard mathematical forms):**\n        The pattern `(A * P^2) * P^2` suggests that the memory accesses are being used to build up a polynomial or a series expansion.\n\n    *   **The most common mathematical function involving $x$ and $x^2$ (or $x$ and $y$) that looks like this is often related to:**\n        1.  Quadratic equations (if $P$ is involved in the coefficients).\n        2.  Geometric series or polynomial evaluation.\n        3.  Physics simulations (e.g., Verlet integration, where $P$ might be velocity or time step).\n\n    *   **Let's assume $P$ (`param_1`) is a variable, and the memory accesses are coefficients.**\n\n    *   **The structure strongly resembles the calculation of a vector dot product or, more likely, the evaluation of a polynomial where the coefficients are stored in memory.**\n\n    *   **Let's try to simplify the memory access chain (assuming $P$ is the variable $x$):**\n        The calculation looks like it is evaluating a function $f(x)$ where $x = \\text{param\\_1}$.\n\n        If we assume the memory accesses are coefficients $C_i$, and the calculation is:\n        $R = \\sum_{i=0}^N C_i x^i$\n\n        The structure is too complex for a simple polynomial evaluation unless the memory accesses are being used to build up the powers of $x$.\n\n    *   **Crucial Insight: The use of $dVar1 = P^2$ and the repeated multiplications suggests that the calculation is likely related to $P^4, P^8, P^{16}, \\dots$ or perhaps $P$ is a small number and the calculation is stable.**\n\n    *   **Let's look at the offsets (relative to `var_2`):**\n        The offsets are fixed and sequential (0x10, 0x18, 0x20, ..., 0x70, 0x80). This reinforces the idea of a structured object/class.\n\n    *   **Hypothesis: This is a physics simulation step (e.g., integration) or a complex mathematical model.**\n\n3.  **Naming the Variables:**\n\n    *   **`param_1` (double):** This is the primary input variable. If the function calculates a state update, this is likely a variable like `dt` (time step), `velocity`, or `scale`. Given the complexity, let's call it `scale` or `input_value`.\n    *   **`var_2` (long):** This is the base address/pointer to the object containing all the coefficients and state variables. It represents the object instance. Let's call it `StateObject` or `Context`.\n\n    *   **Refining the names based on the calculation:**\n        The calculation is highly recursive/iterative in its structure due to the repeated multiplications by $P^2$. This is characteristic of numerical methods.\n\n        If we assume this is a standard numerical integration step (e.g., Runge-Kutta or Verlet), then:\n        *   `param_1` is often the time step ($\\Delta t$) or the current state variable.\n        *   `var_2` points to the state vector/object.\n\n    *   **Let's try to name the object pointed to by `var_2`:**\n        Since it holds many coefficients and state variables, it is likely a `SimulationState` or `PhysicsBody`.\n\n    *   **Finalizing the names:**\n        *   `var_2`: The base address of the object being manipulated. Let's call it `Body` or `State`.\n        *   `param_1`: The input value driving the calculation. If the calculation is a step, this is often the `dt` or the current `velocity`. Given the complexity, `dt` (time step) is a strong candidate if the calculation is an integration step.\n\n4"
+    },
+    {
+      "gold": {
+        "var_0": "interp",
+        "var_1": "self",
+        "FUN_00362717": "bigint_clear"
+      },
+      "pred": {
+        "var_0": "pmc_context",
+        "var_1": "bigint_object",
+        "uVar1": "gmpz_handle"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "parent",
+        "var_2": "errp",
+        "FUN_001c543d": "bdrv_release_dirty_bitmap_locked",
+        "FUN_001c5608": "bdrv_reclaim_dirty_bitmap_locked"
+      },
+      "pred": {
+        "var_1": "current_bitmap_context",
+        "var_2": "logging_context",
+        "FUN_001c543d": "reclaim_bitmap_locked",
+        "FUN_001c5608": "reclaim_dirty_bitmap_locked"
+      },
+      "score": [
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "arr",
+        "var_1": "newlen",
+        "FUN_0013d4b8": "drawin_array_grow"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "raw": "<|channel>thought\nHere's a thinking process to recover the meaningful names:\n\n1.  **Analyze the function signature and structure:**\n    *   `void FUN_0013d4b8(long var_0, int var_1)`: The function takes two arguments, `var_0` and `var_1`.\n    *   The function operates on memory pointed to by `var_0` (since it uses offsets like `*(var_0 + 0xc)`).\n    *   The goal is to understand what `var_0`, `var_1`, and the internal logic represent.\n\n2.  **Analyze the code body step-by-step:**\n\n    *   `if (*(var_0 + 0xc) < var_1)`:\n        *   Condition check. Let's call `A = *(var_0 + 0xc)`. The condition is `A < var_1`.\n        *   If this condition is true, the function proceeds to modify `A` and then calls another function.\n\n    *   *Inside the `if` block (Condition `A < var_1` is true):*\n        *   `if (((*(var_0 + 0xc) + 0x10) * 3) / 2 < var_1)`:\n            *   The current value of `A` is used. `A + 0x10` (which is `A + 16`).\n            *   The expression is `(A + 16) * 3 / 2`.\n            *   The condition is `(A + 16) * 3 / 2 < var_1`.\n            *   *Self-correction/Refinement:* This calculation `(A + 16) * 3 / 2` looks like a potential calculation involving growth or scaling.\n\n        *   `*(var_0 + 0xc) = var_1;`:\n            *   If the inner `if` condition is true, `A` is set equal to `var_1`.\n\n        *   `else { *(var_0 + 0xc) = ((*(var_0 + 0xc) + 0x10) * 3) / 2; }`:\n            *   If the inner `if` condition is false, `A` is updated using the calculation: `A = (A + 16) * 3 / 2`.\n\n    *   *After the inner `if/else` block:*\n        *   `FUN_0013cabe(var_0, *(var_0 + 0xc) << 3);`:\n            *   The function `FUN_0013cabe` is called.\n            *   The first argument is `var_0`.\n            *   The second argument is `*(var_0 + 0xc)` shifted left by 3 bits (`* 8`).\n\n3.  **Identify the purpose and data types:**\n\n    *   `var_0`: This is a pointer/object base address. It holds data structures.\n    *   `*(var_0 + 0xc)`: This is a field within the object pointed to by `var_0`. Let's call this field `CurrentValue`.\n    *   `var_1`: This is an input value.\n\n    *   **Scenario Analysis (What is this function doing?):**\n        *   The function checks if `CurrentValue < var_1`.\n        *   If true, it updates `CurrentValue`.\n        *   The update logic is:\n            *   If a specific condition involving `var_1` is met, `CurrentValue` becomes `var_1`.\n            *   Otherwise, `CurrentValue` grows/scales: `NewValue = (OldValue + 16) * 1.5`.\n        *   This pattern (checking a condition, then either accepting a new value or applying a growth formula) is highly characteristic of:\n            *   *Pagination/Buffering:* Trying to reach a target size (`var_1`).\n            *   *Resource Management:* Limiting or growing a counter/size.\n\n    *   **Refining the variables:**\n        *   `var_0`: Likely a pointer to a class instance or object (`Object`).\n        *   `*(var_0 + 0xc)`: A field representing a current count, size, or limit (`CurrentCount` or `CurrentSize`).\n        *   `var_1`: The target or maximum value (`TargetCount` or `NewLimit`).\n\n    *   **The logic flow suggests a \"Try to reach target, but apply growth if target is too high\" pattern.**\n\n    *   Let's assume `*(var_0 + 0xc)` is `CurrentCount` and `var_1` is `TargetCount`.\n\n    *   *If `CurrentCount < TargetCount` (i.e., we are not yet at the target):*\n        *   We check if `(CurrentCount + 16) * 3 / 2 < TargetCount`.\n        *   If this is true, it means the growth step (`(CurrentCount + 16) * 1.5`) is still less than the target. This suggests the growth step is insufficient or acceptable.\n        *   If the growth step is insufficient, we *don't* update `CurrentCount` using the growth formula. Instead, we set `CurrentCount = TargetCount` (`var_1`). This implies that if the growth step is too small compared to the target, we jump directly to the target.\n        *   If the growth step *is* sufficient or reaches the target, we apply the growth step: `CurrentCount = (CurrentCount + 16) * 1.5`.\n\n    *   *Wait, let's re-read the assignment carefully:*\n\n        ```c\n        // CurrentCount < TargetCount (var_1)\n        if (((CurrentCount + 16) * 3) / 2 < TargetCount) {\n          // Condition is TRUE: Growth step is less than TargetCount\n          CurrentCount = TargetCount; // Jump to target\n        } else {\n          // Condition is FALSE: Growth step >= TargetCount\n          CurrentCount = (CurrentCount + 16) * 3 / 2; // Apply growth step\n        }\n        ```\n        This is a very specific pattern. It seems to be trying to determine if the next growth step would overshoot the target. If it overshoots, it applies the growth step. If it undershoots, it accepts the target value immediately.\n\n    *   **Conclusion on variable roles:**\n        *   `var_0`: Object/Context pointer.\n        *   `*(var_0 + 0xc)`: Current count/size/limit.\n        *   `var_1`: Target count/size/limit.\n\n4.  **Final Naming:**\n\n    *   `var_0`: `Object` (or `"
+    },
+    {
+      "gold": {
+        "var_0": "g__sleep_stats_lock",
+        "var_3": "sleep_stats",
+        "FUN_001543f0": "init_sleep_stats"
+      },
+      "pred": {
+        "var_0": "Mutex",
+        "var_3": "StateVariable",
+        "FUN_001543f0": "ResetState"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "base",
+        "FUN_0015e292": "folks_individual_real_get_urls"
+      },
+      "pred": {
+        "var_0": "Object",
+        "FUN_0015e292": "DoOperation",
+        "FUN_001579ae": "PerformAction"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "object",
+        "var_4": "gabble_jingle_share_parent_class",
+        "FUN_001424d3": "free_manifest",
+        "FUN_00142708": "gabble_jingle_share_dispose"
+      },
+      "pred": {
+        "var_1": "instance_ptr",
+        "var_4": "global_object_ptr",
+        "FUN_001424d3": "cleanup_object",
+        "FUN_00142708": "dispose_jingle_share"
+      },
+      "score": [
+        0,
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "url",
+        "FUN_0011ae49": "cri_proto_bind"
+      },
+      "pred": {
+        "var_2": "unused_param",
+        "FUN_0011ae49": "initialize_and_bind_socket",
+        "iVar1": "socket_fd",
+        "iVar2": "bind_result",
+        "piVar3": "errno_ptr",
+        "param_1": "server_address"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "cx",
+        "var_4": "obj",
+        "var_6": "id",
+        "var_2": "handlerp",
+        "var_3": "closurep",
+        "var_0": "wp",
+        "FUN_001381ee": "DropWatchPoint",
+        "FUN_001396c2": "JS_ClearWatchPoint"
+      },
+      "pred": {
+        "var_1": "ContextObject",
+        "var_4": "TargetValue",
+        "var_6": "TargetHash",
+        "var_2": "OutputPtr1",
+        "var_3": "OutputPtr2",
+        "var_0": "CurrentNode",
+        "FUN_001381ee": "CheckMatch",
+        "FUN_001396c2": "FindMatch"
+      },
+      "score": [
+        0,
+        0,
+        8,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "context"
+      },
+      "pred": {
+        "var_1": "context"
+      },
+      "score": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "arg",
+        "var_4": "mask",
+        "FUN_001192b7": "dhcp_send_packet",
+        "FUN_00117487": "dhcp_th_send_raw"
+      },
+      "pred": {
+        "var_2": "ConnectionContext",
+        "var_4": "SignalSet",
+        "FUN_001192b7": "ExecuteProtocolStep",
+        "FUN_00117487": "HandleConnection"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "l",
+        "var_6": "screen",
+        "FUN_00120618": "output_screenshot"
+      },
+      "pred": {
+        "var_3": "filepath",
+        "var_6": "imageBuffer",
+        "FUN_00120618": "SaveScreenshot"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "res_ptr",
+        "var_3": "deathadder_chroma_freqs_list",
+        "FUN_001164b5": "deathadder_chroma_supported_freqs"
+      },
+      "pred": {
+        "FUN_001164b5": "AllocateAndCopy",
+        "var_1": "destinationPtr",
+        "var_3": "sourceData"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_10": "interp",
+        "var_7": "objc",
+        "var_6": "objv",
+        "var_8": "len",
+        "var_13": "result",
+        "var_14": "node",
+        "var_5": "var",
+        "var_3": "cursor",
+        "FUN_001a46a0": "ForeachOp"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        9
+      ],
+      "raw": "<|channel>thought\nThe user wants me to recover meaningful names for the placeholders in the provided decompiled function `FUN_001a46a0`.\nThe function appears to be part of a system using Tcl (indicated by `Tcl_GetString`, `Tcl_NewIntObj`, `Tcl_SetObjResult`, `Tcl_EvalObjEx`, `Tcl_GetErrorLine`, `Tcl_AppendResult`, etc.).\n\nLet's analyze the function signature and usage:\n`int FUN_001a46a0(long param_1, undefined8 var_10, int var_7, long var_6)`\n\nParameters:\n1. `param_1` (long): Likely a context or object handle.\n2. `var_10` (undefined8): Seems to be a Tcl object handle (`Tcl_Object`).\n3. `var_7` (int): Controls flow, specifically checking if it equals 5.\n4. `var_6` (long): Seems to be a structure or object containing Tcl references (`*(var_6 + 0x10)`, `*(var_6 + 0x18)`, `*(var_6 + 0x20)`).\n\nLocal variables:\n`var_3 [13]`: Used as a buffer/array, initialized to zero.\n`local_10`: Stack canary.\n\n### Step-by-step analysis of `FUN_001a46a0`:\n\n1. **Initialization (Stack Canary & `var_3`)**:\n   - `local_10 = *(in_FS_OFFSET + 0x28);` (Stack canary setup)\n   - `puVar5 = var_3;`\n   - Loop initializes `var_3` (13 bytes) to zero. This buffer (`var_3`) is likely used for internal state or temporary data structures.\n\n2. **Input Processing**:\n   - `var_5 = Tcl_GetString(*(var_6 + 0x10));`: Reads a string from `var_6 + 0x10`. This string is likely input data.\n   - `if (var_7 == 5)`: Main execution path depends on `var_7` being 5.\n\n3. **Execution Path (`var_7 == 5`)**:\n   - `Tcl_GetStringFromObj(*(var_6 + 0x18),&var_8);`: Reads an object from `var_6 + 0x18` into `var_8`.\n   - `if (var_8 == 0)`: If the object read was null/empty.\n     - `uVar3 = Tcl_NewIntObj(0);`\n     - `Tcl_SetObjResult(var_10,uVar3);`\n     - `iVar1 = 0;` (Success/default return)\n   - `else`: If the object was non-null.\n     - `iVar1 = FUN_00191a01(var_10, param_1, *(var_6 + 0x18), local_78);`: Calls another function, likely performing some setup or validation.\n     - `if (iVar1 == 0)`: If `FUN_00191a01` succeeded (or indicated a specific state).\n       - **Main processing loop starts here.**\n       - `for (var_14 = FUN_001919ef(var_3); var_14 != 0; var_14 = FUN_00191f1e(var_14, local_78))`: A loop driven by `FUN_001919ef` and `FUN_00191f1e`. This suggests iterating over a collection or sequence.\n         - `uVar3 = Tcl_NewIntObj(*(var_14 + 0x48));`: Creates a Tcl object based on `var_14`.\n         - `lVar4 = Tcl_SetVar2Ex(var_10, local_80, 0, uVar3, 0);`: Sets a variable in `var_10`.\n         - **Error/Termination checks:**\n           - If `lVar4 == 0` (Tcl operation failed) OR (`var_13 = Tcl_EvalObjEx(var_10, *(var_6 + 0x20), 0)` AND `*(param_1 + 0x128) != 0`):\n             - `FUN_00192130(var_3);` (Cleanup)\n             - `iVar1 = 1;`\n             - `goto LAB_001a492a;` (Exit)\n           - If `var_13 == 3`: Break (specific condition met).\n           - If `var_13 != 4`: Handle specific error codes (1, 0, etc.).\n             - If `var_13 == 1`: Error occurred. `uVar2 = Tcl_GetErrorLine(var_10); uVar3 = Blt_Itoa(uVar2); Tcl_AppendResult(var_10, \"\\n    (\\\"tree foreach\\\" body line \", uVar3, &DAT_00277310, 0); break;` (Detailed error logging).\n             - If `var_13 != 0`: Break.\n           - `var_13 = 0;` (Continue loop)\n       - **Loop termination:** `FUN_00192130(var_3); iVar1 = var_13;` (Cleanup and return status).\n     - `else`: If `FUN_00191a01` failed, `iVar1 = 1;`.\n\n4. **Non-Execution Path (`var_7 != 5`)**:\n   - `Tcl_AppendResult(var_10, \"wrong number of args \", 0); iVar1 = 1;` (Error message).\n\n### Naming Candidates:\n\n**Parameters:**\n* `param_1`: Context/handle for the operation. Let's call it `context`.\n* `var_10`: The primary Tcl object being manipulated/returned. Let's call it `tcl_object`.\n* `var_7`: Argument count/mode indicator. Since it checks for 5, it's likely `argc` or `mode`. Let's call it `argc`.\n* `var_6`: Structure holding input data/references. Let's call it `input_data`.\n\n**Local Variables:**\n* `var_3`: Temporary buffer/state used in the loop.\n* `local_78`: Used in function calls (`FUN_00191a0"
+    },
+    {
+      "gold": {
+        "var_1": "timeline",
+        "FUN_00131aef": "ev_timeline_get_instance_private"
+      },
+      "pred": {
+        "var_1": "timeline_object",
+        "FUN_00131aef": "timeline_get_duration_data"
+      },
+      "score": [
+        0,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "opts",
+        "var_2": "free_name",
+        "var_6": "fp",
+        "var_14": "e",
+        "var_15": "time_str",
+        "FUN_0011e1ce": "find_file_name",
+        "FUN_0011ed72": "open_sv_file"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        7
+      ],
+      "raw": "<|channel>thought\nThe user wants me to analyze a decompiled function `FUN_0011ed72` and rename the placeholder variables and functions based on context.\n\nThe function signature is `FILE * FUN_0011ed72(long var_4)`.\n\nLet's analyze the code flow step by step.\n\n**Function `FUN_0011ed72`:**\n\n1.  **Stack setup/security check:**\n    ```c\n    long in_FS_OFFSET;\n    // ...\n    long local_20;\n    \n    local_20 = *(in_FS_OFFSET + 0x28); // Save stack cookie\n    var_2 = var_2 & 0xffffffff00000000; // Initialize var_2 (likely stack canary/padding)\n    ```\n    This is standard stack canary usage.\n\n2.  **Input processing:**\n    ```c\n    local_40 = FUN_0011e1ce(var_4,&var_2);\n    ```\n    `FUN_0011e1ce` takes `var_4` (the input `long`) and `&var_2`. It returns `local_40`.\n    If `local_40` is `0x0`, it means failure/no data.\n\n3.  **Error handling / File opening attempt:**\n    ```c\n    if (local_40 == 0x0) {\n      pFVar4 = 0x0;\n    }\n    else {\n      // Attempt to open a file\n      var_6 = fopen(local_40,\"wb\"); \n      if (var_6 == 0x0) {\n        // Handle fopen failure\n        fprintf(stderr,PTR_s__s_warning__cannot_save_options___00132400,*(var_4 + 0x28));\n        piVar1 = __errno_location();\n        pcVar2 = strerror(*piVar1);\n        puVar3 = __errno_location();\n        fprintf(stderr,PTR_s_error__d___s__creating__s_00132368,*puVar3,pcVar2,local_40);\n        pFVar4 = var_6; // pFVar4 is NULL here, but assigned var_6 (which is NULL)\n        if (var_2 != 0) {\n          free(local_40);\n          pFVar4 = var_6;\n        }\n      }\n      else {\n        // Success opening file\n        if (var_2 != 0) {\n          free(local_40);\n        }\n        // Write data to the file\n        fwrite(&DAT_0012ad93,1,3,local_38);\n        pcVar2 = strchr(*(var_4 + 0x60),10);\n        var_14 = pcVar2 + 1;\n        if (pcVar2 != 0x0) {\n          fwrite(*(var_4 + 0x60),1,local_30 - *(var_4 + 0x60),local_38);\n        }\n        // Add timestamp and header\n        var_2 = time(0x0);\n        var_15 = ctime(&var_2);\n        fprintf(var_6,\"#  preset/initialization file\\n#  %s#\\n\",local_28);\n        pFVar4 = var_6;\n      }\n    }\n    ```\n\n4.  **Return:**\n    ```c\n    if (local_20 == *(in_FS_OFFSET + 0x28)) {\n      return pFVar4;\n    }\n    __stack_chk_fail();\n    ```\n\n**Goal:** Determine the roles of the variables and functions.\n\n*   `var_4`: Input structure/object pointer (since offsets like `+ 0x28`, `+ 0x60` are used).\n*   `var_2`: Used in `FUN_0011e1ce` and stack canary initialization.\n*   `local_40`: Result of `FUN_0011e1ce`. If non-zero, it's a filename.\n*   `var_6`: File pointer (`FILE *`).\n*   `var_14`, `var_15`: Temporary variables used during file writing.\n*   `FUN_0011e1ce`: Prepares the filename/path based on `var_4`.\n\n**Renaming Strategy:**\n\n1.  **`var_4`**: This is the primary input object. Let's call it `Context` or `InputData`.\n2.  **`FUN_0011e1ce`**: It takes `var_4` and produces `local_40` (the filename). It likely resolves the output path. Let's call it `ResolveOutputPath`.\n3.  **`local_40`**: The filename string.\n4.  **`var_2`**: Used for stack canary/padding. Since it's passed to `FUN_0011e1ce`, it might be a flag or context data. Given the stack canary usage, it's probably just stack padding/initialization, but I should keep the variable name if possible. Let's rename it to `StackPadding` or `ContextFlag`.\n5.  **`var_6`**: `FILE *`.\n6.  **`var_14`, `var_15`**: Temporary buffers/pointers during file writing.\n\nLet's refine the names based on usage:\n\n*   `var_4`: `Context` (The object containing necessary data for the operation).\n*   `FUN_0011e1ce`: `GenerateFilePath` (It generates the path/filename).\n*   `local_40`: `FilePath` (The resulting filename).\n*   `var_2`: `StackCanary` (or just keep it as `ContextFlag` if its value is used by `FUN_0011e1ce`). Since it's initialized to 0 and then used in `FUN_0011e1ce`, let's assume it's a context flag passed to the dependency.\n*   `var_6`: `OutputHandle` (The `FILE *`).\n*   `var_14`, `var_15`: `BufferPtr`, `TimeBuffer`.\n\nLet's stick to the most descriptive names for the placeholders provided in the Q list.\n\n**Q list:** `[var_4, var_2, var_6, var_14, var_15, FUN_0011e1ce, FUN_0011ed72]`\n\n*   `var"
+    },
+    {
+      "gold": {
+        "var_1": "opcode",
+        "FUN_00294739": "hw_get_word",
+        "FUN_00294ba7": "hw_put_word",
+        "FUN_001a5725": "op_3098_0_ff"
+      },
+      "pred": {
+        "var_1": "ContextHandle",
+        "FUN_00294739": "ReadSlotData",
+        "FUN_00294ba7": "CommitUpdate",
+        "FUN_001a5725": "ProcessContext"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "device",
+        "var_1": "swap"
+      },
+      "pred": {
+        "var_0": "device",
+        "var_1": "unused_context",
+        "param_2": "target_config"
+      },
+      "score": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "b",
+        "var_4": "offset",
+        "var_8": "countp",
+        "var_7": "offset1",
+        "var_2": "count"
+      },
+      "pred": {
+        "var_6": "Collection",
+        "var_4": "StartElement",
+        "var_8": "CountPtr",
+        "var_7": "PrevElement",
+        "var_2": "Count"
+      },
+      "score": [
+        1,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "a",
+        "var_3": "b",
+        "FUN_0039cff4": "Univdiag_ascending_cmp"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "raw": "<|channel>thought\nHere's a thinking process to recover the meaningful names:\n\n1.  **Analyze the Function Signature and Goal:**\n    *   The function is `FUN_0039cff4(ulong **var_1, ulong **var_3)`.\n    *   It takes two pointers to `ulong*` (`var_1` and `var_3`). These pointers likely point to the start of data structures.\n    *   The function returns an `undefined8` (which seems to be used as a boolean/integer result, 0 or 1).\n    *   The body involves comparisons between values pointed to by `var_1` and `var_3`.\n\n2.  **Analyze the Input Data Structure (The comparison targets):**\n    *   The variables `puVar1` and `puVar2` are initialized:\n        *   `puVar1 = *var_1;` (So `puVar1` is `ulong*`)\n        *   `puVar2 = *var_3;` (So `puVar2` is `ulong*`)\n    *   The comparisons use offsets: `*(puVar1 + N)` and `*(puVar2 + N)`.\n    *   Since `puVar1` and `puVar2` are `ulong*`, `*(puVar1 + N)` accesses the value at `puVar1 + N * sizeof(ulong)`. Since `sizeof(ulong)` is 8 bytes, `N` is the number of `ulong` elements away.\n\n    *   Let's trace the offsets used:\n        *   `*(puVar1 + 1)`: Accesses the second `ulong` element pointed to by `puVar1`.\n        *   `*(puVar2 + 1)`: Accesses the second `ulong` element pointed to by `puVar2`.\n        *   `*(puVar1 + 0xc)`: Accesses the 13th `ulong` element (`0xc / 8 = 1.5`, so it's the 13th element if we count from 0, but since `puVar1` is `ulong*`, `+ 0xc` means `puVar1 + 0xc` bytes, which is `puVar1 + 1.5` ulongs. Wait, this is tricky. If `puVar1` is `ulong*`, then `puVar1 + 1` is the next `ulong`. If the compiler used `+ 0xc`, it likely means the offset is 12 bytes, which is the 13th byte address, but since the comparison is against a `ulong` value, it must be aligned. Let's assume the compiler used `+ 0xc` to mean \"the value located 12 bytes after the base address of `puVar1`.\" This corresponds to the *second* `ulong` element if the base address was already aligned to the first element.\n\n    *   **Revisiting the Offsets (Crucial Step):**\n        *   `puVar1` points to the start of the structure/array.\n        *   `*(puVar1 + 1)`: Accesses the value at `puVar1 + 8` bytes. This is the second field.\n        *   `*(puVar1 + 0xc)`: Accesses the value at `puVar1 + 12` bytes. This is the third field.\n        *   `*puVar1`: Accesses the value at `puVar1 + 0` bytes. This is the first field.\n\n    *   The comparison structure suggests that `puVar1` and `puVar2` are pointers to structures or objects, and the comparisons are done field by field.\n\n    *   Let's define the fields being compared:\n        *   Field 1 (Index 0): `*puVar1`\n        *   Field 2 (Index 1): `*(puVar1 + 1)`\n        *   Field 3 (Index 2): `*(puVar1 + 0xc)`\n\n    *   The comparison logic is sequential (if/else if chain). The first comparison that evaluates to true determines the result (`uVar3`).\n\n3.  **Analyze the Comparison Logic (The Decision Tree):**\n\n    *   **Comparison 1:** `if (*(puVar1 + 1) < *(puVar2 + 1))`\n        *   If Field 2 of A < Field 2 of B, then `uVar3 = 0xffffffff` (Non-zero/True).\n    *   **Comparison 2:** `else if (*(puVar2 + 1) < *(puVar1 + 1))`\n        *   If Field 2 of B < Field 2 of A, then `uVar3 = 1` (Non-zero/True).\n    *   **Comparison 3:** `else if (*(puVar1 + 0xc) < *(puVar2 + 0xc))`\n        *   If Field 3 of A < Field 3 of B, then `uVar3 = 0xffffffff`.\n    *   **Comparison 4:** `else if (*(puVar2 + 0xc) < *(puVar1 + 0xc))`\n        *   If Field 3 of B < Field 3 of A, then `uVar3 = 1`.\n    *   **Comparison 5:** `else if (*puVar1 < *puVar2)`\n        *   If Field 1 of A < Field 1 of B, then `uVar3 = 0xffffffff`.\n    *   **Comparison 6:** `else if (*puVar2 < *puVar1)`\n        *   If Field 1 of B < Field 1 of A, then `uVar3 = 1`.\n    *   **Comparison 7 (Tie/Equality):** `else`\n        *   If all previous comparisons failed (i.e., they are equal in the fields checked), then `uVar3 = 0`.\n\n4.  **Determine the Purpose:**\n    *   The function compares two structures (pointed to by `var_1` and `var_3`) field by field, using a specific order of precedence (Field 2, then Field 3, then Field 1).\n    *   It returns a non-zero value if the structures are *not* equal, and zero if they are equal.\n    *   This is the classic implementation of a **less-than comparison** (`A < B`) or a **check for inequality**.\n\n    *   *Refining the return value:*\n        *   If `A < B` (lexicographically/structurally), it returns `0xffffffff` (or 1, depending on how the caller interprets the non-zero value).\n        *   If `B < A`, it returns `1`.\n        *   If `A == B`, it returns `0`.\n\n    *   Since the function returns"
+    },
+    {
+      "gold": {
+        "var_5": "buf",
+        "var_1": "addr",
+        "var_3": "here",
+        "FUN_00108c31": "encode_e164"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        4
+      ],
+      "raw": "<|channel>thought\nHere's a plan to recover meaningful names for the placeholders:\n\n1.  **Analyze the function signature and body:** Understand what `FUN_00108c31` does.\n2.  **Analyze variable usage:** Determine the role of `var_5`, `var_1`, `local_28`, `local_20`, `var_3`, and the constants used.\n3.  **Identify the operation:** The code appears to be copying and transforming data from `var_1` into a buffer pointed to by `var_5`.\n4.  **Refine names:** Propose clearer, high-level names for the placeholders.\n\n---\n*Self-Correction/Detailed Analysis:*\n\n**Function Signature:**\n`undefined8 FUN_00108c31(undefined8 *var_5, char *var_1)`\n*   `var_5`: Destination buffer (likely `undefined8 *`).\n*   `var_1`: Source string (likely `char *`).\n\n**Code Flow Analysis:**\n\n1.  `iVar2 = FUN_00108a19(*var_1 + -0x30, param_2[1] + -0x30);`\n    *   This calculates a length or a control value (`iVar2`). It uses `FUN_00108a19` and offsets into `var_1` and `param_2`. This value seems related to the length of the data being processed.\n\n2.  `sVar3 = strlen(var_1);`\n    *   `sVar3` is the length of the string pointed to by `var_1`.\n\n3.  `var_3 = var_1 + sVar3;`\n    *   `var_3` points immediately after the string in `var_1`.\n\n4.  **First `while` loop (The main copy/transformation loop):**\n    *   `local_28 = var_1` (Source pointer, starts at beginning of string).\n    *   `var_1 + iVar2 < var_3` (Loop condition based on `iVar2` and `sVar3`).\n    *   `var_3 = var_3 + -1;` (Decrementing `var_3`, which is used as a temporary write pointer/boundary check).\n    *   `puVar1 = local_20 + 1;` (`local_20` is the destination buffer pointer, initialized to `var_5`).\n    *   `*local_20 = *var_3;` (Wait, this is strange. `local_20` is the destination, `var_3` is the boundary/end marker. If `var_3` is decremented, it points to the last character of the source string. This looks like a reverse copy or a specific transformation.)\n    *   `local_20 = local_20 + 2;` (Advance destination pointer by 2 bytes).\n    *   `*puVar1 = 0x2e;` (Writes `.` (dot) to the destination).\n\n    *Self-Correction on the first loop:* The loop structure is highly unusual. It seems to be copying characters from the *end* of the string (`var_3` decrements) into the destination buffer (`local_20`), and then appending a dot (`0x2e`). This suggests a structure like `[char][dot][char][dot]...`.\n\n5.  **Second `while` loop (The remaining copy):**\n    *   `local_28 < var_3` (Copying remaining characters).\n    *   `*local_20 = *local_28;` (Copying character from source).\n    *   `local_28 = local_28 + 1;` (Advancing source pointer).\n    *   `local_20 = local_20 + 1;` (Advancing destination pointer).\n\n6.  **Finalization:**\n    *   `*local_20 = 0x54412e343631452e;` (Writes a specific sequence, likely `T` followed by the rest of the string/padding).\n    *   `local_20[1] = 0x2e544e492e414d;` (Writes more data).\n\n**Conclusion on Functionality:**\nThe function takes a source string (`var_1`) and copies/transforms it into a destination buffer (`var_5`), likely formatting it into a specific structure (e.g., a list of items separated by dots, followed by a fixed suffix).\n\n**Mapping Placeholders:**\n\n*   `var_5`: Destination buffer where the result is written. -> `DestBuffer`\n*   `var_1`: Source string containing the data to be copied. -> `SourceString`\n*   `var_3`: Used internally as a boundary/end pointer during the first loop. It is initialized to `var_1 + strlen(var_1)`. -> `SourceEndPtr` (or just `SourceStringEnd`)\n*   `FUN_00108c31`: The function itself. -> `FormatAndCopyString` (or similar, depending on the exact context, but since the body is the function, we name the variables used *by* it).\n\nLet's stick to the variable names used in the function body:\n\n*   `var_5` (Destination buffer)\n*   `var_1` (Source string)\n*   `var_3` (Pointer to the end of the source string, used in the first loop)\n*   `FUN_00108c31` (The function itself, but since the prompt asks to recover names for the *placeholders* in the function signature/body, I should focus on the parameters and local variables).\n\nThe prompt asks to recover names for: `[var_5, var_1, var_3, FUN_00108c31]`\n\nWait, `FUN_00108c31` is the function name, not a variable *within* the function body that needs renaming, unless the prompt implies renaming the function itself based on its behavior. Given the context of recovering placeholders, I will assume the prompt meant the parameters and the critical local variables.\n\nLet's assume the prompt meant:\n`var_5` (Parameter)\n`var_1` (Parameter)\n`var_3` (Local variable initialized from `var_1`)\n`FUN_00108c31` (The function name, which I will rename to reflect its action).\n\nIf I must rename `FUN_00108c31`, it should be based on its action: `FormatString` or `CopyAndFormat`.\n\nLet's use the most descriptive names for the parameters and the critical local variable `var_3`.\n\n*   `"
+    },
+    {
+      "gold": {
+        "var_4": "icon_theme",
+        "var_1": "mime_type",
+        "FUN_00143b38": "icon_theme_get_pixbuf_from_mime_type"
+      },
+      "pred": {
+        "var_4": "icon_theme",
+        "var_1": "path_component",
+        "FUN_00143b38": "load_icon_from_path"
+      },
+      "score": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "context",
+        "var_0": "vtable",
+        "FUN_0010a9b8": "dc_parser_allocate"
+      },
+      "pred": {
+        "var_2": "dependency_ptr",
+        "var_0": "parser_template",
+        "ppuVar1": "parser_instance"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "str",
+        "var_0": "p",
+        "var_1": "opt_descs",
+        "FUN_00107072": "lookup_opt"
+      },
+      "pred": {
+        "var_3": "ListHead",
+        "var_0": "CurrentNode",
+        "var_1": "ListHead",
+        "FUN_00107072": "SearchList",
+        "param_1": "SearchTarget"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "mem",
+        "FUN_0014f6ff": "gx_send_pi16f_xy"
+      },
+      "pred": {
+        "var_3": "seed",
+        "uVar1": "state_value_A",
+        "uVar2": "state_value_B"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "b",
+        "var_3": "needle",
+        "var_4": "needlesize",
+        "var_6": "bf_cur",
+        "var_0": "back",
+        "FUN_001118e7": "bf_strbsearch"
+      },
+      "pred": {},
+      "score": [
+        0,
+        0,
+        0,
+        6
+      ],
+      "raw": "<|channel>thought\nThe user wants me to analyze a decompiled function `FUN_001118e7` and rename the placeholders (`var_2`, `var_3`, `var_4`, `var_6`, `var_0`, `FUN_001118e7`) based on their usage and context.\n\nThe function signature is:\n`undefined8 FUN_001118e7(long var_2, void *var_3, size_t var_4)`\n\nLet's analyze the variables and their usage.\n\n**Function parameters:**\n1. `var_2` (long): Likely a structure or object pointer, as it is heavily accessed using offsets (e.g., `*(var_2 + 0x18)`, `*(var_2 + 0x10)`).\n2. `var_3` (void *): Used in `memcmp`.\n3. `var_4` (size_t): Used in `memcmp`.\n\n**Local variables:**\n* `cVar1`: Used for character comparison.\n* `pcVar2`: Pointer manipulation.\n* `puVar3`: Pointer manipulation.\n* `iVar4`: Result of `memcmp`.\n* `var_6`: Character variable.\n* `var_0`: Integer counter/state variable.\n\n---\n### Detailed Analysis of `FUN_001118e7`\n\nThe function seems to be performing some kind of comparison or transformation between two data streams/buffers, likely involving in-place modification or comparison of strings/buffers pointed to by `var_2`.\n\n**Structure of `var_2` (The object being manipulated):**\n`var_2` is accessed at various offsets:\n* `*(var_2 + 0x18)`: A pointer (`char *` or similar) being read/written.\n* `*(var_2 + 0x10)`: A pointer (`char *` or similar) being read/written.\n* `*(var_2 + 0x8)`: A comparison value/state.\n* `*(var_2 + 0x20)`: A counter/state variable.\n* `*(var_2 + 0x40)`: A counter/state variable.\n\n**The main loop (First `while(true)` loop):**\n\n1. **Comparison Check:**\n   ```c\n   iVar4 = memcmp(*(var_2 + 0x18) + 1, param_2, param_3);\n   if (iVar4 == 0) {\n     return 1;\n   }\n   ```\n   This compares a buffer pointed to by `*(var_2 + 0x18)` (starting from the second byte) against `param_2` for `param_3` bytes. If they match, the function returns 1.\n\n2. **Loop Condition/Termination:**\n   ```c\n   if (*(var_2 + 0x10) <= *(var_2 + 8)) break;\n   ```\n   The loop continues as long as `*(var_2 + 0x10)` is strictly greater than `*(var_2 + 0x8)`. This suggests `*(var_2 + 0x10)` is a length/count and `*(var_2 + 0x8)` is a threshold or initial length.\n\n3. **Loop Body (Character processing):**\n   The loop processes characters, decrementing counters (`var_0`, `*(var_2 + 0x10)`, `*(var_2 + 0x18)`, `*(var_2 + 0x40)`).\n\n   * `var_0` increments.\n   * `*(var_2 + 0x10)` decrements.\n   * `pcVar2 = *(var_2 + 0x18)` (Source pointer).\n   * `*(var_2 + 0x18)` decrements.\n   * `*pcVar2 = **(var_2 + 0x10)` (Character copy/modification).\n   * `var_6 = *pcVar2` (The character being processed).\n\n   The subsequent `if/else if` blocks handle boundary conditions and character types:\n   * **Boundary checks:** Checks if the current character is `\\0` or if specific sequences (`\\x02`) are encountered, suggesting padding or specific delimiters.\n   * **Character processing:** If `var_6` is `\\n`, `*(var_2 + 0x20)` decrements.\n   * **Special handling (DAT_001210bc != 0):** If `var_6` is non-zero and less than `\\0`, a bitwise check (`while ((var_6 & 0xc0U) != 0xc0)`) suggests a specific encoding or filtering mechanism, involving character shifting/copying.\n\n4. **Loop Termination:**\n   `*(var_2 + 0x40) = *(var_2 + 0x40) + -1;` (Decrementing a counter).\n\n**The second loop (Post-processing):**\n\nThis loop runs `while (0 < var_0)`, meaning it executes `var_0` times. This suggests a cleanup or finalization phase.\n\n1. **Post-processing body:**\n   * `var_0` decrements.\n   * `*(var_2 + 0x40)` increments.\n   * `*(var_2 + 0x18)` increments.\n   * `pcVar2 = *(var_2 + 0x10)` (Source pointer).\n   * `*(var_2 + 0x10)` increments.\n   * `*pcVar2 = **(var_2 + 0x18)` (Character copy/modification).\n   * `cVar1 = *pcVar2` (The character being processed).\n\n   This section also involves complex boundary checks and character processing, similar to the first loop, but in reverse (incrementing pointers).\n\n---\n### Naming the Placeholders\n\n**1. `var_2` (The object/structure):**\nSince `var_2` holds multiple pointers and counters (`0x8`, `0x10`, `0x18`, `0x20`, `0x40`) and is being heavily manipulated during a comparison/transformation process, it represents the context or the object being compared against. Let's call it `Context` or `BufferObject`.\n\n**2. `var_3` (void *):**\nUsed as the source buffer for `memcmp`. This is the data being compared against the content of `var_2`. Let's call it `SourceBuffer`.\n\n**3. `var_4` (size_t):**\nUsed as the size parameter for `memcmp`. This is the length of the comparison. Let's call it `"
+    },
+    {
+      "gold": {
+        "var_6": "board",
+        "var_7": "i",
+        "var_5": "list",
+        "var_10": "move_string",
+        "FUN_0010538b": "book_moves",
+        "FUN_00105568": "book_disp"
+      },
+      "pred": {
+        "var_6": "session_handle",
+        "var_7": "iteration_count",
+        "var_5": "data_state",
+        "var_10": "temp_buffer",
+        "FUN_0010538b": "InitializeData",
+        "FUN_00105568": "ProcessDataAndReport"
+      },
+      "score": [
+        0,
+        0,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "message",
+        "var_1": "data",
+        "FUN_0012532f": "message_get_view_cb"
+      },
+      "pred": {
+        "param_1": "unused_param",
+        "var_2": "message_context",
+        "var_1": "file_browser_widget",
+        "uVar1": "browser_view"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

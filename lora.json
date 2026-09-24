@@ -1,0 +1,3996 @@
+{
+  "summary": {
+    "adapter": "./adapters",
+    "rows": 200,
+    "placeholders": 788,
+    "exact": 0.1446700507614213,
+    "partial": 0.14720812182741116,
+    "wrong": 0.7081218274111675,
+    "missing": 0.0,
+    "unparsable_replies": 0.0
+  },
+  "details": [
+    {
+      "gold": {
+        "var_1": "base",
+        "var_4": "filename",
+        "var_6": "entire",
+        "var_2": "sys",
+        "var_3": "fh",
+        "var_5": "error",
+        "var_0": "chm",
+        "FUN_00106173": "chmd_close",
+        "FUN_00106330": "chmd_read_headers",
+        "FUN_0010601a": "chmd_real_open"
+      },
+      "pred": {
+        "var_1": "p",
+        "var_4": "pos",
+        "var_6": "len",
+        "var_2": "s",
+        "var_3": "rc",
+        "var_5": "rc2",
+        "var_0": "rc3",
+        "FUN_00106173": "s_set_pos",
+        "FUN_00106330": "s_get_pos",
+        "FUN_0010601a": "s_get_pos_in_string"
+      },
+      "score": [
+        0,
+        0,
+        10,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "astra"
+      },
+      "pred": {
+        "var_0": "sanei_umax_pp_getastra_once"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "self",
+        "var_2": "args",
+        "var_3": "kwds",
+        "FUN_00107ef6": "BoxList_init"
+      },
+      "pred": {
+        "var_1": "this",
+        "var_2": "arg",
+        "var_3": "arg2",
+        "FUN_00107ef6": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "m",
+        "var_5": "bus",
+        "var_7": "path",
+        "var_18": "unit",
+        "var_11": "error",
+        "var_17": "pid",
+        "var_10": "r",
+        "var_2": "u",
+        "var_14": "creds",
+        "var_15": "message",
+        "FUN_00262843": "streq_ptr",
+        "FUN_0026365a": "find_unit"
+      },
+      "pred": {
+        "var_3": "dbus",
+        "var_5": "bus",
+        "var_7": "object_path",
+        "var_18": "unit",
+        "var_11": "error",
+        "var_17": "pid",
+        "var_10": "ret",
+        "var_2": "unit",
+        "var_14": "creds",
+        "var_15": "msg",
+        "FUN_00262843": "is_unit_self",
+        "FUN_0026365a": "find_unit"
+      },
+      "score": [
+        6,
+        1,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "camera",
+        "var_0": "size",
+        "FUN_001546b1": "ARV_IS_FAKE_CAMERA"
+      },
+      "pred": {
+        "var_2": "camera",
+        "var_0": "filename",
+        "FUN_001546b1": "ARV_IS_FAKE_CAMERA"
+      },
+      "score": [
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "data",
+        "FUN_00154784": "child_data_free"
+      },
+      "pred": {
+        "var_0": "data",
+        "FUN_00154784": "gtk_print_backend_data_finalize"
+      },
+      "score": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "vis",
+        "var_7": "x",
+        "var_5": "w",
+        "var_3": "nx",
+        "var_12": "y",
+        "var_13": "ny",
+        "var_10": "h",
+        "FUN_0010647f": "GGI_X_copybox_slave_draw"
+      },
+      "pred": {
+        "var_1": "display",
+        "var_7": "x",
+        "var_5": "y",
+        "var_3": "x1",
+        "var_12": "y1",
+        "var_13": "x_stride",
+        "var_10": "y_stride",
+        "FUN_0010647f": "XDrawArea"
+      },
+      "score": [
+        1,
+        0,
+        7,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "self",
+        "var_5": "i",
+        "FUN_001182ac": "gst_audio_fx_base_fir_filter_calculate_frequency_response"
+      },
+      "pred": {
+        "var_0": "base",
+        "var_5": "i",
+        "FUN_001182ac": "gst_fft_f64_process"
+      },
+      "score": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "gfx_surface",
+        "FUN_0013d188": "grd_rdp_gfx_surface_get_rdp_surface"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_0013d188": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "table",
+        "var_3": "buffer",
+        "FUN_003c4c89": "_gtk_text_tag_table_remove_buffer"
+      },
+      "pred": {
+        "var_1": "table",
+        "var_3": "tag",
+        "FUN_003c4c89": "gtk_text_tag_table_remove_tag"
+      },
+      "score": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "l",
+        "FUN_0018b193": "free_picture_entry",
+        "FUN_0018b359": "free_points",
+        "FUN_0018b05f": "free_linestorage"
+      },
+      "pred": {
+        "var_0": "data",
+        "FUN_0018b193": "XDestroyWindow",
+        "FUN_0018b359": "XDestroyConnection",
+        "FUN_0018b05f": "XFreeData"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "ast_crypto_loaded",
+        "_INIT_25": "__init__ast_crypto_loaded"
+      },
+      "pred": {
+        "var_0": "ast_crypto_loaded",
+        "_INIT_25": "pbx_dundi_init"
+      },
+      "score": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "elem_name",
+        "var_3": "attr_names",
+        "var_4": "attr_vals",
+        "var_5": "udata",
+        "var_6": "i",
+        "FUN_0010130b": "xmms_asx_handle_ref"
+      },
+      "pred": {
+        "var_1": "path",
+        "var_3": "from",
+        "var_4": "to",
+        "var_5": "target",
+        "var_6": "i",
+        "FUN_0010130b": "xmms_xform_browse_add_symlink"
+      },
+      "score": [
+        1,
+        1,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "result",
+        "var_2": "sstr",
+        "var_1": "len",
+        "var_3": "escape",
+        "var_5": "i"
+      },
+      "pred": {
+        "var_4": "result",
+        "var_2": "str",
+        "var_1": "len",
+        "var_3": "escape",
+        "var_5": "i"
+      },
+      "score": [
+        4,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "config"
+      },
+      "pred": {
+        "var_0": "ast"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "klass",
+        "FUN_00106c77": "bacon_video_widget_properties_class_init"
+      },
+      "pred": {
+        "var_1": "klass",
+        "FUN_00106c77": "gtk_color_chooser_class_intern_init"
+      },
+      "score": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "this",
+        "FUN_001f9e0c": "KWin::ScreenShotSink1::qt_metacast"
+      },
+      "pred": {
+        "var_1": "this",
+        "FUN_001f9e0c": "KWin::ScreenShotSink1::qt_metacast"
+      },
+      "score": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this_gen",
+        "FUN_0011d7dd": "demux_mpeg_block_parse_pack",
+        "FUN_0011fff9": "demux_mpeg_block_send_chunk"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_0011d7dd": "llvm::DIBuilder::~DIBuilder",
+        "FUN_0011fff9": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "w",
+        "var_1": "lc",
+        "FUN_0016e2ff": "layout_cell_is_bottom"
+      },
+      "pred": {
+        "var_3": "graph",
+        "var_1": "node",
+        "FUN_0016e2ff": "is_in_subgraph"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "user",
+        "FUN_0010989f": "conf_update_user_mute",
+        "FUN_001133ff": "conf_add_user_active",
+        "FUN_0012295b": "join_unmarked"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_0010989f": "llvm::DIBuilder::~DIBuilder",
+        "FUN_001133ff": "llvm::DIBuilder::~DIBuilder",
+        "FUN_0012295b": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "wl_surface",
+        "var_2": "transform",
+        "FUN_00111655": "wl_surface_set_buffer_transform"
+      },
+      "pred": {
+        "var_1": "zwlr_output_configuration_v1",
+        "var_2": "fd",
+        "FUN_00111655": "zwlr_output_configuration_v1_destroy"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "ctx",
+        "var_1": "lit_117",
+        "FUN_0026bf59": "mBVLT_TOK"
+      },
+      "pred": {
+        "var_0": "this",
+        "var_1": "this->m_is_dirty",
+        "FUN_0026bf59": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "argc",
+        "var_3": "argv",
+        "var_18": "hsr_scene",
+        "var_7": "out_file",
+        "var_1": "wrap_env",
+        "FUN_0010a0e8": "trouble_p",
+        "FUN_0010a10e": "report_errors",
+        "FUN_001126ee": "init_global_env",
+        "FUN_00114eba": "set_lexer_file",
+        "FUN_001150fd": "yywrap",
+        "FUN_0011ade3": "hsr_scene_with_bsp",
+        "FUN_0011b21f": "hsr_scene_with_depth_sort",
+        "FUN_0011b7c0": "new_scope",
+        "FUN_0011f19e": "parse",
+        "FUN_0011f214": "parsed_objects",
+        "FUN_00114eff": "main"
+      },
+      "pred": {
+        "var_2": "filename",
+        "var_3": "argv",
+        "var_18": "token",
+        "var_7": "output",
+        "var_1": "arg",
+        "FUN_0010a0e8": "check_arg",
+        "FUN_0010a10e": "check_arg_end",
+        "FUN_001126ee": "init_parser",
+        "FUN_00114eba": "set_input",
+        "FUN_001150fd": "get_token",
+        "FUN_0011ade3": "parse_token",
+        "FUN_0011b21f": "parse_token_simple",
+        "FUN_0011b7c0": "init_parser",
+        "FUN_0011f19e": "parse_token",
+        "FUN_0011f214": "get_token",
+        "FUN_0011a1a9": "parse_token_line",
+        "FUN_00114eff": "parse_file"
+      },
+      "score": [
+        1,
+        3,
+        12,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "cv",
+        "FUN_00163092": "XS_Math__Pari_have_graphics"
+      },
+      "pred": {
+        "var_4": "cv",
+        "FUN_00163092": "XS_Math__UInt64__len"
+      },
+      "score": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "fullprop_child",
+        "FUN_00103a47": "atexit_kill_do_standalone"
+      },
+      "pred": {
+        "var_0": "pid",
+        "FUN_00103a47": "kill_pid"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "overr_local_bots",
+        "FUN_00102dda": "uff_ask_override_bots"
+      },
+      "pred": {
+        "var_0": "is_running",
+        "FUN_00102dda": "is_program_running"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_00112189": "runInheritedInitialize"
+      },
+      "pred": {
+        "FUN_00112189": "glib_autoptr_cleanup_GFile"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_9": "wp",
+        "var_5": "src",
+        "var_4": "limit",
+        "var_6": "used",
+        "var_12": "target",
+        "var_3": "n",
+        "var_2": "cols",
+        "var_8": "adj",
+        "var_7": "nxt",
+        "var_13": "ch2",
+        "var_10": "vl_encoding",
+        "FUN_001380c3": "column_sizes",
+        "FUN_001b7a97": "vl_conv_to_utf32",
+        "FUN_00147a27": "cols_until"
+      },
+      "pred": {
+        "var_9": "this",
+        "var_5": "str",
+        "var_4": "len",
+        "var_6": "pos",
+        "var_12": "pos",
+        "var_3": "i",
+        "var_2": "n",
+        "var_8": "pos",
+        "var_7": "l",
+        "var_13": "c",
+        "var_10": "pos",
+        "FUN_001380c3": "find_next_pos",
+        "FUN_001b7a97": "find_char",
+        "FUN_00147a27": "find_first_non_whitespace"
+      },
+      "score": [
+        0,
+        0,
+        14,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0018efdb": "__glCopyTexSubImage2DEXTAvail"
+      },
+      "pred": {
+        "FUN_0018efdb": "__glGetProcAddress_CopyTexSubImage2DEXTAvail"
+      },
+      "score": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "program",
+        "var_4": "location",
+        "FUN_001a6961": "epoxy_glProgramUniform1dEXT_global_rewrite_ptr"
+      },
+      "pred": {
+        "var_3": "location",
+        "var_4": "v0",
+        "FUN_001a6961": "epoxy_glProgramUniform1dEXT_global_rewrite_ptr"
+      },
+      "score": [
+        1,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "x",
+        "FUN_0010ef47": "lobit"
+      },
+      "pred": {
+        "var_1": "n",
+        "FUN_0010ef47": "find_first_set_bit"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "buf",
+        "var_1": "buf_size",
+        "var_2": "format",
+        "var_3": "args",
+        "var_4": "buf_p",
+        "FUN_0010b02d": "loc_vsnprintf"
+      },
+      "pred": {
+        "var_0": "buf",
+        "var_1": "size",
+        "var_2": "fmt",
+        "var_3": "args",
+        "var_4": "end",
+        "FUN_0010b02d": "snprint"
+      },
+      "score": [
+        2,
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "poly",
+        "FUN_0011ff07": "babl_polynomial_eval_1_14"
+      },
+      "pred": {
+        "var_2": "p",
+        "FUN_0011ff07": "poly_eval"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "interp",
+        "var_1": "self",
+        "FUN_00362717": "bigint_clear"
+      },
+      "pred": {
+        "var_0": "interp",
+        "var_1": "obj",
+        "FUN_00362717": "Parrot_bigint_subclass_check"
+      },
+      "score": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "parent",
+        "var_2": "errp",
+        "FUN_001c543d": "bdrv_release_dirty_bitmap_locked",
+        "FUN_001c5608": "bdrv_reclaim_dirty_bitmap_locked"
+      },
+      "pred": {
+        "var_1": "parent",
+        "var_2": "err",
+        "FUN_001c543d": "bdrv_reclaim_dirty_bitmap_unlocked",
+        "FUN_001c5608": "bdrv_reclaim_dirty_bitmap_locked"
+      },
+      "score": [
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "arr",
+        "var_1": "newlen",
+        "FUN_0013d4b8": "drawin_array_grow"
+      },
+      "pred": {
+        "var_0": "this",
+        "var_1": "new_size",
+        "FUN_0013d4b8": "set_size"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "g__sleep_stats_lock",
+        "var_3": "sleep_stats",
+        "FUN_001543f0": "init_sleep_stats"
+      },
+      "pred": {
+        "var_0": "lock",
+        "var_3": "data",
+        "FUN_001543f0": "reset_data"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "base",
+        "FUN_0015e292": "folks_individual_real_get_urls"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_0015e292": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "object",
+        "var_4": "gabble_jingle_share_parent_class",
+        "FUN_001424d3": "free_manifest",
+        "FUN_00142708": "gabble_jingle_share_dispose"
+      },
+      "pred": {
+        "var_1": "object",
+        "var_4": "gabble_jingle_share_parent_class",
+        "FUN_001424d3": "gabble_jingle_share_finalize",
+        "FUN_00142708": "gabble_jingle_share_dispose"
+      },
+      "score": [
+        3,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "url",
+        "FUN_0011ae49": "cri_proto_bind"
+      },
+      "pred": {
+        "var_2": "addr",
+        "FUN_0011ae49": "server_init"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "cx",
+        "var_4": "obj",
+        "var_6": "id",
+        "var_2": "handlerp",
+        "var_3": "closurep",
+        "var_0": "wp",
+        "FUN_001381ee": "DropWatchPoint",
+        "FUN_001396c2": "JS_ClearWatchPoint"
+      },
+      "pred": {
+        "var_1": "self",
+        "var_4": "key",
+        "var_6": "value",
+        "var_2": "key_out",
+        "var_3": "value_out",
+        "var_0": "node",
+        "FUN_001381ee": "find_by_value",
+        "FUN_001396c2": "find_by_key"
+      },
+      "score": [
+        0,
+        0,
+        8,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "context"
+      },
+      "pred": {
+        "var_1": "ctx"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "arg",
+        "var_4": "mask",
+        "FUN_001192b7": "dhcp_send_packet",
+        "FUN_00117487": "dhcp_th_send_raw"
+      },
+      "pred": {
+        "var_2": "dhcp",
+        "var_4": "old_signals",
+        "FUN_001192b7": "dhcp_send_request",
+        "FUN_00117487": "dhcp_send_discover"
+      },
+      "score": [
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "l",
+        "var_6": "screen",
+        "FUN_00120618": "output_screenshot"
+      },
+      "pred": {
+        "var_3": "path",
+        "var_6": "screenshot",
+        "FUN_00120618": "save_screenshot"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "res_ptr",
+        "var_3": "deathadder_chroma_freqs_list",
+        "FUN_001164b5": "deathadder_chroma_supported_freqs"
+      },
+      "pred": {
+        "var_1": "p",
+        "var_3": "ret",
+        "FUN_001164b5": "get_ret_code"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_10": "interp",
+        "var_7": "objc",
+        "var_6": "objv",
+        "var_8": "len",
+        "var_13": "result",
+        "var_14": "node",
+        "var_5": "var",
+        "var_3": "cursor",
+        "FUN_001a46a0": "ForeachOp"
+      },
+      "pred": {
+        "var_10": "interp",
+        "var_7": "argc",
+        "var_6": "argv",
+        "var_8": "n",
+        "var_13": "status",
+        "var_14": "node",
+        "var_5": "value",
+        "var_3": "args",
+        "FUN_001a46a0": "tk_bds_foreach"
+      },
+      "score": [
+        2,
+        1,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "timeline",
+        "FUN_00131aef": "ev_timeline_get_instance_private"
+      },
+      "pred": {
+        "var_1": "timeline",
+        "FUN_00131aef": "ev_timeline_get_instance_private"
+      },
+      "score": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "opts",
+        "var_2": "free_name",
+        "var_6": "fp",
+        "var_14": "e",
+        "var_15": "time_str",
+        "FUN_0011e1ce": "find_file_name",
+        "FUN_0011ed72": "open_sv_file"
+      },
+      "pred": {
+        "var_4": "options",
+        "var_2": "options_file",
+        "var_6": "out",
+        "var_14": "options_content",
+        "var_15": "options_date",
+        "FUN_0011e1ce": "options_file_path",
+        "FUN_0011ed72": "options_save"
+      },
+      "score": [
+        0,
+        1,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "opcode",
+        "FUN_00294739": "hw_get_word",
+        "FUN_00294ba7": "hw_put_word",
+        "FUN_001a5725": "op_3098_0_ff"
+      },
+      "pred": {
+        "var_1": "opcode",
+        "FUN_00294739": "get_operand",
+        "FUN_00294ba7": "set_operand",
+        "FUN_001a5725": "op_b1d8_0_ff"
+      },
+      "score": [
+        1,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "device",
+        "var_1": "swap"
+      },
+      "pred": {
+        "var_0": "device",
+        "var_1": "swapchain"
+      },
+      "score": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "b",
+        "var_4": "offset",
+        "var_8": "countp",
+        "var_7": "offset1",
+        "var_2": "count"
+      },
+      "pred": {
+        "var_6": "data",
+        "var_4": "pos",
+        "var_8": "len",
+        "var_7": "next",
+        "var_2": "i",
+        "eb_prevc": "eb_get_prev_char"
+      },
+      "score": [
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "a",
+        "var_3": "b",
+        "FUN_0039cff4": "Univdiag_ascending_cmp"
+      },
+      "pred": {
+        "var_1": "a",
+        "var_3": "b",
+        "FUN_0039cff4": "compare_list"
+      },
+      "score": [
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "buf",
+        "var_1": "addr",
+        "var_3": "here",
+        "FUN_00108c31": "encode_e164"
+      },
+      "pred": {
+        "var_5": "dst",
+        "var_1": "src",
+        "var_3": "s",
+        "FUN_00108c31": "base32_encode"
+      },
+      "score": [
+        0,
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "icon_theme",
+        "var_1": "mime_type",
+        "FUN_00143b38": "icon_theme_get_pixbuf_from_mime_type"
+      },
+      "pred": {
+        "var_4": "icon_theme",
+        "var_1": "mime_type",
+        "FUN_00143b38": "get_mime_icon"
+      },
+      "score": [
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "context",
+        "var_0": "vtable",
+        "FUN_0010a9b8": "dc_parser_allocate"
+      },
+      "pred": {
+        "var_2": "parser",
+        "var_0": "vtable",
+        "FUN_0010a9b8": "dc_parser_allocate"
+      },
+      "score": [
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "str",
+        "var_0": "p",
+        "var_1": "opt_descs",
+        "FUN_00107072": "lookup_opt"
+      },
+      "pred": {
+        "var_3": "name",
+        "var_0": "node",
+        "var_1": "name_to_node_map",
+        "FUN_00107072": "find_node_by_name"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "mem",
+        "FUN_0014f6ff": "gx_send_pi16f_xy"
+      },
+      "pred": {
+        "var_3": "i",
+        "FUN_0014f6ff": "transform_pixel"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "b",
+        "var_3": "needle",
+        "var_4": "needlesize",
+        "var_6": "bf_cur",
+        "var_0": "back",
+        "FUN_001118e7": "bf_strbsearch"
+      },
+      "pred": {
+        "var_2": "ctx",
+        "var_3": "data",
+        "var_4": "len",
+        "var_6": "c",
+        "var_0": "pos",
+        "FUN_001118e7": "parse_utf8"
+      },
+      "score": [
+        0,
+        0,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "board",
+        "var_7": "i",
+        "var_5": "list",
+        "var_10": "move_string",
+        "FUN_0010538b": "book_moves",
+        "FUN_00105568": "book_disp"
+      },
+      "pred": {
+        "var_6": "data",
+        "var_7": "i",
+        "var_5": "data_copy",
+        "var_10": "treshold",
+        "FUN_0010538b": "data_copy_from_data",
+        "FUN_00105568": "book_treshold"
+      },
+      "score": [
+        1,
+        1,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "message",
+        "var_1": "data",
+        "FUN_0012532f": "message_get_view_cb"
+      },
+      "pred": {
+        "var_2": "message",
+        "var_1": "view",
+        "FUN_0012532f": "on_view_changed"
+      },
+      "score": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "free_op1",
+        "var_17": "result",
+        "var_10": "value",
+        "var_2": "ref",
+        "FUN_0087cb86": "zend_interrupt_helper_SPEC",
+        "FUN_008b6d29": "ZEND_JMP_SET_SPEC_TMP_HANDLER"
+      },
+      "pred": {
+        "var_6": "obj",
+        "var_17": "obj_ref",
+        "var_10": "obj_ref_copy",
+        "var_2": "obj_is_true",
+        "FUN_0087cb86": "zend_is_object_of_array",
+        "FUN_008b6d29": "zend_is_object_of_array_var"
+      },
+      "score": [
+        0,
+        2,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "rmtstate",
+        "FUN_0010f7ef": "rmtclose"
+      },
+      "pred": {
+        "var_0": "is_open",
+        "FUN_0010f7ef": "close_file"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "w",
+        "var_0": "ps_selected",
+        "FUN_0038b5c7": "nh_XtPopdown",
+        "FUN_00399e78": "popup_delete"
+      },
+      "pred": {
+        "var_1": "this",
+        "var_0": "current",
+        "FUN_0038b5c7": "set_current",
+        "FUN_00399e78": "set_current_from_this"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0015bec4": "cxxKeywordMayAppearInVariableDeclaration"
+      },
+      "pred": {
+        "FUN_0015bec4": "is_set_dirty"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0015a322": "seafile_clone_task_get_type_once"
+      },
+      "pred": {
+        "FUN_0015a322": "seafile_clone_task_get_type_once"
+      },
+      "score": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "opts",
+        "var_8": "name",
+        "var_4": "opt",
+        "var_2": "before",
+        "var_3": "dummy",
+        "FUN_0010285b": "free_opts",
+        "FUN_00102f62": "unset_opt"
+      },
+      "pred": {
+        "var_5": "list",
+        "var_8": "key",
+        "var_4": "node",
+        "var_2": "prev",
+        "var_3": "new_node",
+        "FUN_0010285b": "list_free_node",
+        "FUN_00102f62": "list_insert_by_key"
+      },
+      "score": [
+        0,
+        1,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0019403a": "__glSampleMaskSGISAvail"
+      },
+      "pred": {
+        "FUN_0019403a": "__glGetSampleMaskSGIvAvail"
+      },
+      "score": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "s",
+        "var_1": "i",
+        "FUN_00106d9f": "configurationClose",
+        "FUN_0011316e": "snapshotClose"
+      },
+      "pred": {
+        "var_0": "s",
+        "var_1": "i",
+        "FUN_00106d9f": "raft_log_free",
+        "FUN_0011316e": "raft_state_free"
+      },
+      "score": [
+        2,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_7": "i",
+        "var_3": "position",
+        "var_0": "set",
+        "FUN_0010a180": "setSizeOfIntset",
+        "FUN_0010a400": "insertElementAtIntset"
+      },
+      "pred": {
+        "var_7": "element",
+        "var_3": "position",
+        "var_0": "set",
+        "FUN_0010a180": "resizeIntSet",
+        "FUN_0010a400": "putElementAtIntset"
+      },
+      "score": [
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "c",
+        "FUN_001102ce": "is_tab_or_space"
+      },
+      "pred": {
+        "var_0": "c",
+        "FUN_001102ce": "is_space_or_tab"
+      },
+      "score": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "file",
+        "var_3": "size",
+        "var_5": "stats",
+        "FUN_003a8291": "isc_assertion_failed",
+        "FUN_003e4237": "isc_file_getsize"
+      },
+      "pred": {
+        "var_2": "file",
+        "var_3": "size",
+        "var_5": "size",
+        "FUN_003a8291": "assertion_failed",
+        "FUN_003e4237": "file_get_size"
+      },
+      "score": [
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0010aad0": "initInteract"
+      },
+      "pred": {
+        "FUN_0010aad0": "g_is_main_window"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_8": "xl",
+        "var_9": "ob_inode",
+        "var_7": "fd",
+        "var_4": "op_ret",
+        "var_5": "op_errno",
+        "var_2": "list",
+        "FUN_00103942": "list_splice_init",
+        "FUN_0010476e": "ob_resume_pending",
+        "FUN_001047b3": "ob_open_completed"
+      },
+      "pred": {
+        "var_8": "fd",
+        "var_9": "ctx",
+        "var_7": "fd_ref",
+        "var_4": "flags",
+        "var_5": "flags_mask",
+        "var_2": "fd_ctx_copy",
+        "FUN_00103942": "fd_ctx_close",
+        "FUN_0010476e": "fd_ctx_destroy",
+        "FUN_001047b3": "fd_ctx_unref"
+      },
+      "score": [
+        0,
+        1,
+        8,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "ifinfo",
+        "var_1": "link",
+        "FUN_001096c1": "set_changed",
+        "FUN_0010989d": "update_admin_state"
+      },
+      "pred": {
+        "var_3": "link",
+        "var_1": "flags",
+        "FUN_001096c1": "rtnl_link_set_flags",
+        "FUN_0010989d": "rtnl_link_set_up"
+      },
+      "score": [
+        0,
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "s",
+        "var_3": "l",
+        "var_7": "p",
+        "FUN_0010c44e": "get_Brand_Binding"
+      },
+      "pred": {
+        "var_5": "arg",
+        "var_3": "arg_len",
+        "var_7": "p",
+        "FUN_0010c44e": "capn_getp"
+      },
+      "score": [
+        1,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "row",
+        "var_2": "ctx",
+        "var_3": "error",
+        "var_7": "source",
+        "var_8": "app_info",
+        "FUN_001a5ffc": "glib_autoptr_cleanup_GError",
+        "FUN_001a6148": "glib_autoptr_cleanup_GdkAppLaunchContext",
+        "FUN_001a62a7": "CC_INPUT_SOURCE_IBUS",
+        "FUN_001a6a15": "row_settings_cb"
+      },
+      "pred": {
+        "var_5": "row",
+        "var_2": "launch_context",
+        "var_3": "error",
+        "var_7": "source",
+        "var_8": "app_info",
+        "FUN_001a5ffc": "cc_app_info_launch_free",
+        "FUN_001a6148": "cc_app_launch_context_set_env_free",
+        "FUN_001a62a7": "cc_input_source_ibus_get_app_info",
+        "FUN_001a6a15": "row_settings_cb"
+      },
+      "score": [
+        5,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "a",
+        "var_1": "b",
+        "FUN_0012caf2": "mat_vec_mul_4x1"
+      },
+      "pred": {
+        "var_5": "m",
+        "var_1": "x",
+        "FUN_0012caf2": "transform_matrix_vector"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "rbtdb",
+        "var_4": "node",
+        "var_0": "mctx",
+        "var_3": "current",
+        "var_2": "top_prev",
+        "FUN_0035f8e1": "free_rdataset64",
+        "FUN_0035fdbe": "clean_stale_headers64",
+        "FUN_0035fe21": "clean_cache_node64"
+      },
+      "pred": {
+        "var_1": "self",
+        "var_4": "dest",
+        "var_0": "self->next",
+        "var_3": "src",
+        "var_2": "dest_prev",
+        "FUN_0035f8e1": "insert_node",
+        "FUN_0035fdbe": "remove_node",
+        "FUN_0035fe21": "move_subtree"
+      },
+      "score": [
+        0,
+        1,
+        7,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "cu",
+        "var_1": "new_cus",
+        "var_0": "new_cu",
+        "var_4": "id",
+        "FUN_001023a5": "tag__is_struct",
+        "FUN_00102427": "tag__class",
+        "FUN_00102435": "class__tag",
+        "FUN_001030ce": "diff_struct",
+        "FUN_001035b3": "cu_diff_iterator"
+      },
+      "pred": {
+        "var_2": "p",
+        "var_1": "q",
+        "var_0": "r",
+        "var_4": "i",
+        "FUN_001023a5": "is_pair",
+        "FUN_00102427": "get_pair",
+        "FUN_00102435": "get_pair_id",
+        "FUN_001030ce": "add_pair",
+        "FUN_001035b3": "add_all_pairs"
+      },
+      "score": [
+        0,
+        1,
+        8,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "if_list",
+        "var_0": "i",
+        "var_1": "if_entry",
+        "FUN_00111814": "capture_opts_print_interfaces"
+      },
+      "pred": {
+        "var_2": "l",
+        "var_0": "i",
+        "var_1": "n",
+        "FUN_00111814": "list_print"
+      },
+      "score": [
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "x",
+        "var_7": "y",
+        "var_8": "z",
+        "var_3": "context",
+        "var_2": "result",
+        "FUN_0011545e": "GMPy_MPFR_New",
+        "FUN_0015bf0c": "_GMPy_MPFR_Cleanup",
+        "FUN_0014cce8": "_GMPy_MPFR_FMS"
+      },
+      "pred": {
+        "var_6": "a",
+        "var_7": "b",
+        "var_8": "c",
+        "var_3": "d",
+        "var_2": "r",
+        "FUN_0011545e": "mpfr_new",
+        "FUN_0015bf0c": "mpfr_clear",
+        "FUN_0014cce8": "mpfr_fma"
+      },
+      "score": [
+        0,
+        3,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "hw_ste_p",
+        "FUN_00154241": "_devx_get",
+        "FUN_00154448": "dr_ste_v1_get_miss_addr"
+      },
+      "pred": {
+        "var_1": "this",
+        "FUN_00154241": "llvm::DIBuilder::~DIBuilder",
+        "FUN_00154448": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_10": "results",
+        "var_6": "n",
+        "var_2": "trans",
+        "var_9": "buf",
+        "FUN_0010615e": "perlstring",
+        "FUN_00108f36": "fp_output"
+      },
+      "pred": {
+        "var_10": "data",
+        "var_6": "i",
+        "var_2": "header",
+        "var_9": "buf",
+        "FUN_0010615e": "base32_encode",
+        "FUN_00108f36": "thc_print_fingerprint"
+      },
+      "score": [
+        1,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "hapd",
+        "var_0": "sta",
+        "FUN_00140036": "ap_sta_hash_add"
+      },
+      "pred": {
+        "var_1": "table",
+        "var_0": "key",
+        "FUN_00140036": "hash_table_insert"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "csound",
+        "var_0": "retval",
+        "FUN_001127e4": "het_import_init_"
+      },
+      "pred": {
+        "var_1": "this",
+        "var_0": "result",
+        "FUN_001127e4": "translate_text_to_hetro_file"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "entry",
+        "FUN_0015bec3": "xorg_list_del"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_0015bec3": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "gc",
+        "var_3": "glamor_gc_funcs"
+      },
+      "pred": {
+        "var_1": "context",
+        "var_3": "gc_data_type_id"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "dest",
+        "var_6": "hdr",
+        "var_8": "flags",
+        "var_5": "msg",
+        "var_2": "p",
+        "FUN_00157564": "mutt_ctime",
+        "FUN_0017a881": "mx_open_new_message"
+      },
+      "pred": {
+        "var_3": "file",
+        "var_6": "from",
+        "var_8": "is_from",
+        "var_5": "out",
+        "var_2": "from_name",
+        "FUN_00157564": "get_time_string",
+        "FUN_0017a881": "get_from_line"
+      },
+      "score": [
+        0,
+        0,
+        7,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_13": "cx",
+        "var_3": "rdata",
+        "var_8": "chars",
+        "var_14": "skip",
+        "var_4": "cp",
+        "var_10": "dp",
+        "var_2": "repstr",
+        "var_9": "bp",
+        "var_6": "ep",
+        "var_11": "len",
+        "var_12": "sub",
+        "FUN_001db6fc": "js_GetDependentStringChars",
+        "FUN_001dfa70": "interpret_dollar",
+        "FUN_001e0681": "do_replace"
+      },
+      "pred": {
+        "var_13": "dst",
+        "var_3": "src",
+        "var_8": "dst_pos",
+        "var_14": "src_pos",
+        "var_4": "src_end",
+        "var_10": "src_ptr",
+        "var_2": "src_info",
+        "var_9": "src_start",
+        "var_6": "dst_ptr",
+        "var_11": "len",
+        "var_12": "src_len",
+        "FUN_001db6fc": "get_src_end",
+        "FUN_001dfa70": "get_src_pos",
+        "FUN_001e0681": "copy_data"
+      },
+      "score": [
+        1,
+        1,
+        12,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_001b30f7": "warningdialog",
+        "FUN_001741b0": "clef_change_initial_cb"
+      },
+      "pred": {
+        "FUN_001b30f7": "warning_popup",
+        "FUN_001741b0": "check_clef"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "gpf",
+        "var_1": "num",
+        "FUN_0010630d": "gp_read",
+        "FUN_00106369": "gp_read_unknown"
+      },
+      "pred": {
+        "var_2": "p",
+        "var_1": "n",
+        "FUN_0010630d": "p_realloc",
+        "FUN_00106369": "p_realloc_n"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "len",
+        "FUN_00103afc": "sym_algs",
+        "FUN_00103b85": "iv_len",
+        "FUN_00105f4c": "Public_Key_Packet",
+        "FUN_0010614e": "IV",
+        "FUN_001062db": "plain_Secret_Key",
+        "FUN_0010644e": "encrypted_Secret_Key",
+        "FUN_00106ed7": "Getc",
+        "FUN_00106f03": "Getc_getlen",
+        "FUN_00106f0f": "Getc_resetlen",
+        "FUN_00106199": "Secret_Key_Packet"
+      },
+      "pred": {
+        "var_0": "key_len",
+        "FUN_00103afc": "key_free",
+        "FUN_00103b85": "key_copy",
+        "FUN_00105f4c": "key_set",
+        "FUN_0010614e": "key_set_len",
+        "FUN_001062db": "key_set_len_0",
+        "FUN_0010644e": "key_set_len_1",
+        "FUN_00106ed7": "key_get",
+        "FUN_00106f03": "key_get_len",
+        "FUN_00106f0f": "key_set_len_0_set",
+        "FUN_00106199": "key_set_len_1_set"
+      },
+      "score": [
+        0,
+        5,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "dat",
+        "FUN_00115975": "grabber"
+      },
+      "pred": {
+        "var_0": "selection",
+        "FUN_00115975": "check_selection"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "obj",
+        "FUN_0010b61f": "gst_progress_report_finalize"
+      },
+      "pred": {
+        "var_0": "object",
+        "FUN_0010b61f": "gtk_print_backend_module_finalize"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "r",
+        "var_3": "t",
+        "var_4": "sid",
+        "FUN_00104144": "callback"
+      },
+      "pred": {
+        "var_0": "request",
+        "var_3": "i",
+        "var_4": "num_entries",
+        "FUN_00104144": "mod_bw_status"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "pass_cur",
+        "var_2": "pass_total",
+        "var_0": "val_cur",
+        "var_1": "val_total",
+        "FUN_0010683e": "compute_percents"
+      },
+      "pred": {
+        "var_3": "i",
+        "var_2": "n",
+        "var_0": "a",
+        "var_1": "b",
+        "FUN_0010683e": "get_pos"
+      },
+      "score": [
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_6": "c",
+        "var_3": "data",
+        "var_4": "len",
+        "var_10": "crc",
+        "var_5": "outlen",
+        "FUN_0012e74d": "decode_snappy"
+      },
+      "pred": {
+        "var_6": "ctx",
+        "var_3": "data",
+        "var_4": "len",
+        "var_10": "crc",
+        "var_5": "uncompressed_len",
+        "FUN_0012e74d": "avro_snappy_uncompress"
+      },
+      "score": [
+        3,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "klass",
+        "var_0": "user_parent_class",
+        "FUN_0011061d": "user_class_intern_init"
+      },
+      "pred": {
+        "var_1": "klass",
+        "var_0": "gtk_color_chooser_parent_class",
+        "FUN_0011061d": "gtk_color_chooser_class_intern_init"
+      },
+      "score": [
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0010fb3c": "_dtor_chan_45"
+      },
+      "pred": {
+        "FUN_0010fb3c": "_dtor_chan"
+      },
+      "score": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "this",
+        "FUN_0019f95a": "qtractorMonitor::gain",
+        "FUN_0019f9d2": "qtractorMonitor::panning",
+        "FUN_001abf52": "qtractorAudioMonitor::update"
+      },
+      "pred": {
+        "var_3": "ctx",
+        "FUN_0019f95a": "get_x",
+        "FUN_0019f9d2": "get_y",
+        "FUN_001abf52": "rotate_points"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_10": "init",
+        "FUN_0026ad8e": "e_pointer_init"
+      },
+      "pred": {
+        "var_10": "e_mouse_x",
+        "FUN_0026ad8e": "e_pointer_init"
+      },
+      "score": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "config",
+        "var_0": "default_frequency",
+        "var_2": "swap_channels",
+        "var_3": "audio_sync",
+        "FUN_001028fa": "init_sdl_backend",
+        "FUN_00102a0d": "init_sdl_backend_from_config"
+      },
+      "pred": {
+        "var_1": "p",
+        "var_0": "freq",
+        "var_2": "swap",
+        "var_3": "sync",
+        "FUN_001028fa": "set_audio_params",
+        "FUN_00102a0d": "set_audio_params_from_config"
+      },
+      "score": [
+        0,
+        3,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "filter",
+        "var_7": "p",
+        "var_5": "b",
+        "var_4": "line",
+        "FUN_0011153c": "show_forest"
+      },
+      "pred": {
+        "var_2": "pci",
+        "var_7": "addr",
+        "var_5": "entry",
+        "var_4": "str",
+        "FUN_0011111": "pci_addr_to_str",
+        "FUN_00111044": "pci_addr_add_to_list",
+        "FUN_0011153c": "pci_addr_add_to_list_by_pci"
+      },
+      "score": [
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "value",
+        "FUN_00106575": "tommy_ctz_u32"
+      },
+      "pred": {
+        "var_1": "n",
+        "FUN_00106575": "find_most_significant_bit"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "file_stat",
+        "FUN_0011800b": "register_header_check_dsc"
+      },
+      "pred": {
+        "var_2": "this",
+        "FUN_0011800b": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "in",
+        "var_1": "cookie",
+        "FUN_0011097c": "wireToTouchOwnershipEvent"
+      },
+      "pred": {
+        "var_2": "src",
+        "var_1": "dst",
+        "FUN_0011097c": "convert_16_to_32_le"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "t",
+        "var_5": "buf",
+        "var_4": "qtypes_buf",
+        "FUN_0010b319": "qtype_str"
+      },
+      "pred": {
+        "var_2": "type",
+        "var_5": "name",
+        "var_4": "types",
+        "FUN_0010b319": "dns_get_type_name"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "data",
+        "FUN_00102565": "options_data_free"
+      },
+      "pred": {
+        "var_0": "argv",
+        "FUN_00102565": "free_argv"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "g",
+        "var_0": "max2",
+        "var_1": "np",
+        "var_11": "ep"
+      },
+      "pred": {
+        "var_2": "graph",
+        "var_0": "max_delta",
+        "var_1": "n1",
+        "var_11": "n2"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "stcb",
+        "var_0": "dstnet",
+        "var_5": "chk",
+        "FUN_001367ff": "sctp_chunk_output",
+        "FUN_001749ce": "sctp_print_address",
+        "FUN_0017de8b": "sctp_assoc_immediate_retrans"
+      },
+      "pred": {
+        "var_1": "p",
+        "var_0": "q",
+        "var_5": "n",
+        "FUN_001367ff": "assoc_immediate_retrans_set_state",
+        "FUN_001749ce": "assoc_immediate_retrans_set_primary",
+        "FUN_0017de8b": "assoc_immediate_retrans_delete"
+      },
+      "score": [
+        0,
+        1,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "character",
+        "var_1": "career_index",
+        "FUN_00107403": "rdb_data_token",
+        "FUN_00110384": "career_set",
+        "FUN_001105b7": "name_to_career_index",
+        "FUN_00116a13": "read_career_field"
+      },
+      "pred": {
+        "var_2": "this",
+        "var_1": "this_class",
+        "FUN_00107403": "get_class_id",
+        "FUN_00110384": "set_class",
+        "FUN_001105b7": "get_class",
+        "FUN_00116a13": "set_class_internal"
+      },
+      "score": [
+        0,
+        1,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "curwp",
+        "var_1": "curbp",
+        "FUN_0013697e": "gotobob"
+      },
+      "pred": {
+        "var_0": "this",
+        "var_1": "this->parent",
+        "FUN_0013697e": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "stream",
+        "var_1": "context",
+        "FUN_00109eb6": "bounce_templates_load",
+        "FUN_0010504b": "load_helper"
+      },
+      "pred": {
+        "var_0": "this",
+        "var_1": "arg",
+        "FUN_00109eb6": "llvm::DIBuilder::~DIBuilder",
+        "FUN_0010504b": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "object",
+        "var_3": "ev_password_view_parent_class",
+        "FUN_00127d17": "ev_password_view_get_type",
+        "FUN_00127e16": "ev_password_view_finalize"
+      },
+      "pred": {
+        "var_2": "object",
+        "var_3": "gtk_print_backend_parent_class",
+        "FUN_00127d17": "gtk_print_backend_get_type",
+        "FUN_00127e16": "gtk_print_backend_parent_finalize"
+      },
+      "score": [
+        1,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_17": "i",
+        "var_5": "s",
+        "var_3": "scores",
+        "FUN_00108e9b": "total_score",
+        "FUN_00108f17": "save_score"
+      },
+      "pred": {
+        "var_17": "i",
+        "var_5": "j",
+        "var_3": "scores",
+        "FUN_00108e9b": "strv_alloc",
+        "FUN_00108f17": "print_scores"
+      },
+      "score": [
+        2,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "hints",
+        "var_2": "dim",
+        "var_3": "edge",
+        "var_6": "seg",
+        "var_7": "point",
+        "FUN_00192795": "af_cjk_align_edge_points"
+      },
+      "pred": {
+        "var_1": "p",
+        "var_2": "i",
+        "var_3": "j",
+        "var_6": "k",
+        "var_7": "l",
+        "FUN_00192795": "copy_tree"
+      },
+      "score": [
+        0,
+        0,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "s",
+        "var_5": "base",
+        "var_3": "i",
+        "FUN_00104a34": "strtoul_reals"
+      },
+      "pred": {
+        "var_0": "str",
+        "var_5": "base",
+        "var_3": "i",
+        "FUN_00104a34": "strtoul_custom"
+      },
+      "score": [
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "wc_self",
+        "FUN_0010d028": "glx_config_destroy"
+      },
+      "pred": {
+        "var_0": "data",
+        "FUN_0010d028": "free_data"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "ti",
+        "FUN_0011e784": "wrapper_cb"
+      },
+      "pred": {
+        "var_0": "arg",
+        "FUN_0011e784": "glib_autoptr_cleanup_GFile"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0022da87": "clock_boottime_supported",
+        "FUN_0022dade": "clock_boottime_or_monotonic"
+      },
+      "pred": {
+        "FUN_0022da87": "is_last_char",
+        "FUN_0022dade": "get_last_char_type"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this",
+        "FUN_0014b5f0": "destroy"
+      },
+      "pred": {
+        "var_0": "data",
+        "FUN_0014b5f0": "data_free"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0011eae4": "up_device_bluez_get_type",
+        "FUN_0011f458": "up_device_bluez_new"
+      },
+      "pred": {
+        "FUN_0011eae4": "thunar_thumbnail_cache_get_type",
+        "FUN_0011f458": "thunar_thumbnail_cache_get_instance_private"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "data",
+        "var_8": "wx",
+        "var_9": "wy",
+        "var_2": "w_current",
+        "FUN_001403fd": "i_set_state",
+        "FUN_00148970": "o_invalidate_rubber",
+        "FUN_00148a55": "o_redraw_cleanstates",
+        "FUN_0014d22a": "o_line_start",
+        "FUN_001444d5": "i_callback_add_line"
+      },
+      "pred": {
+        "var_3": "w_current",
+        "var_8": "line",
+        "var_9": "column",
+        "var_2": "w_current",
+        "FUN_001403fd": "i_callback_add_line",
+        "FUN_00148970": "i_callback_add_column",
+        "FUN_00148a55": "i_callback_add_line_end",
+        "FUN_0014d22a": "i_callback_add_line_break",
+        "FUN_001444d5": "i_callback_add_line_break"
+      },
+      "score": [
+        1,
+        2,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this",
+        "FUN_00118290": "ScanDir",
+        "FUN_00121074": "cb_Rescan_i"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_00118290": "llvm::DIBuilder::~DIBuilder",
+        "FUN_00121074": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        1,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "parser",
+        "FUN_0030cfde": "icon_style_parse"
+      },
+      "pred": {
+        "var_1": "this",
+        "FUN_0030cfde": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "link",
+        "var_7": "address",
+        "var_9": "netmask",
+        "var_8": "r",
+        "var_2": "route",
+        "FUN_00138447": "route_new",
+        "FUN_001bd16e": "dhcp4_request_route",
+        "FUN_001bd4a3": "link_prefixroute",
+        "FUN_0022fe15": "sd_dhcp_lease_get_address",
+        "FUN_002307a6": "sd_dhcp_lease_get_netmask",
+        "FUN_001bd4ff": "dhcp4_request_prefix_route"
+      },
+      "pred": {
+        "var_3": "link",
+        "var_7": "addr",
+        "var_9": "prefix",
+        "var_8": "ret",
+        "var_2": "route",
+        "FUN_00138447": "route_new",
+        "FUN_001bd16e": "route_add",
+        "FUN_001bd4a3": "link_has_lease",
+        "FUN_0022fe15": "dhcp4_get_addr",
+        "FUN_002307a6": "dhcp4_get_prefix",
+        "FUN_001bd4ff": "dhcp4_request_prefix_route"
+      },
+      "score": [
+        4,
+        4,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "player"
+      },
+      "pred": {
+        "var_0": "pctl"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "syntax"
+      },
+      "pred": {
+        "var_2": "options"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "force",
+        "FUN_0010f8fe": "TerminalNewMode",
+        "FUN_00110bae": "setconnmode"
+      },
+      "pred": {
+        "var_1": "flag",
+        "FUN_0010f8fe": "set_flag",
+        "FUN_00110bae": "set_debug_flag"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "kdt",
+        "var_0": "num_key",
+        "FUN_00146d10": "details_page_fill_num_keys"
+      },
+      "pred": {
+        "var_3": "view",
+        "var_0": "n",
+        "FUN_00146d10": "on_key_selected"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_9": "argc",
+        "var_10": "argv",
+        "var_11": "sock",
+        "var_3": "options"
+      },
+      "pred": {
+        "var_9": "argc",
+        "var_10": "argv",
+        "var_11": "sock",
+        "var_3": "options"
+      },
+      "score": [
+        4,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "g_iface",
+        "FUN_00145f99": "channel_manager_iface_init"
+      },
+      "pred": {
+        "var_0": "iface",
+        "FUN_00145f99": "g_charset_converter_iface_init"
+      },
+      "score": [
+        0,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_11": "i",
+        "var_1": "arc_obj_count",
+        "var_4": "sel_ptr",
+        "var_0": "arc_obj",
+        "FUN_001d08e1": "LayoutOnArc"
+      },
+      "pred": {
+        "var_11": "new",
+        "var_1": "i",
+        "var_4": "p",
+        "var_0": "root",
+        "FUN_001d08e1": "rebuild_tree"
+      },
+      "score": [
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "root_visual"
+      },
+      "pred": {
+        "var_1": "ctx"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0010b2ee": "get_xcomposefile_path"
+      },
+      "pred": {
+        "FUN_0010b2ee": "load_xcomposefile"
+      },
+      "score": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "entry",
+        "FUN_00138bd8": "plugin_maybe_claim"
+      },
+      "pred": {
+        "var_0": "plugin",
+        "FUN_00138bd8": "plugin_end"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "event",
+        "FUN_00105a92": "cds_get_system_update_id"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_00105a92": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "s",
+        "FUN_00168ebf": "server_free_info"
+      },
+      "pred": {
+        "var_0": "data",
+        "FUN_00168ebf": "gtk_print_backend_module_finalize"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "subreq",
+        "var_4": "mem_ctx",
+        "FUN_00140ff3": "dcerpc_eventlog_ReadEventLogW_done"
+      },
+      "pred": {
+        "var_1": "subreq",
+        "var_4": "mem_ctx",
+        "FUN_00140ff3": "dcerpc_eventlog_ReadEventLogW_done"
+      },
+      "score": [
+        3,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "t",
+        "var_4": "htyp",
+        "var_2": "flags",
+        "FUN_00104de2": "checkline",
+        "FUN_001056c4": "issetext"
+      },
+      "pred": {
+        "var_1": "this",
+        "var_4": "is_valid",
+        "var_2": "arg",
+        "FUN_00104de2": "validate_arg",
+        "FUN_001056c4": "validate_arg_from_this"
+      },
+      "score": [
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this",
+        "FUN_001c2560": "QImage::QImage"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_001c2560": "Qt::ToolBar::ToolBar"
+      },
+      "score": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "n"
+      },
+      "pred": {
+        "var_1": "p_object"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_19": "d2",
+        "var_21": "drivers",
+        "var_28": "realtime_drivers",
+        "var_29": "repeat_driver",
+        "FUN_00156ba9": "sox_dialog_first_effect",
+        "FUN_0015dd69": "register_drivers"
+      },
+      "pred": {
+        "var_19": "data",
+        "var_21": "sox_resample_list",
+        "var_28": "sox_polyphase_list",
+        "var_29": "sox_repeat_list",
+        "FUN_00156ba9": "sox_is_resample_supported",
+        "FUN_0015dd69": "sox_init"
+      },
+      "score": [
+        0,
+        2,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "address1",
+        "var_2": "address2",
+        "FUN_0018d12b": "_in6_addr_compare"
+      },
+      "pred": {
+        "var_1": "a",
+        "var_2": "b",
+        "FUN_0018d12b": "str_starts_with"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "state",
+        "var_0": "tok",
+        "FUN_0012d69a": "common",
+        "FUN_0012d09d": "element3"
+      },
+      "pred": {
+        "var_1": "p",
+        "var_0": "c",
+        "FUN_0012d69a": "translate_from_utf8",
+        "FUN_0012d09d": "translate_from_utf16"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "view_klass",
+        "FUN_00112d7d": "gog_barcol_view_class_init"
+      },
+      "pred": {
+        "var_0": "iface",
+        "FUN_00112d7d": "g_charset_converter_iface_init"
+      },
+      "score": [
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "hd",
+        "var_2": "i",
+        "var_1": "active_handles",
+        "FUN_001399a3": "keyblock_cache_clear",
+        "FUN_0013b4ad": "unlock_all",
+        "FUN_0013da74": "keyring_release",
+        "FUN_0013b03b": "keydb_release"
+      },
+      "pred": {
+        "var_0": "key",
+        "var_2": "i",
+        "var_1": "active_handles",
+        "FUN_001399a3": "keydb_destroy",
+        "FUN_0013b4ad": "keydb_destroy_internal",
+        "FUN_0013da74": "keydb_destroy_key",
+        "FUN_0013b03b": "keydb_release"
+      },
+      "score": [
+        3,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "input",
+        "var_0": "res",
+        "FUN_002e67e8": "iflag"
+      },
+      "pred": {
+        "var_1": "str",
+        "var_0": "res",
+        "FUN_002e67e8": "parse_prefix"
+      },
+      "score": [
+        1,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "ret_len",
+        "var_14": "k",
+        "var_9": "ret_ct",
+        "var_0": "x",
+        "FUN_00223791": "ReallocOrDie",
+        "FUN_001d255a": "realloc_strings"
+      },
+      "pred": {
+        "var_1": "n",
+        "var_14": "m",
+        "var_9": "p",
+        "var_0": "i",
+        "FUN_00223791": "realloc",
+        "FUN_001d255a": "move_array"
+      },
+      "score": [
+        0,
+        1,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "retv",
+        "var_5": "inlen",
+        "var_7": "c",
+        "var_10": "len",
+        "var_2": "fulllen",
+        "var_9": "entry",
+        "var_12": "locinfo",
+        "FUN_00157b8f": "get_config_group"
+      },
+      "pred": {
+        "var_3": "buf",
+        "var_5": "size",
+        "var_7": "config",
+        "var_10": "n",
+        "var_2": "len",
+        "var_9": "key",
+        "var_12": "file",
+        "FUN_0014a72a": "fatal_error",
+        "FUN_00157b8f": "get_config_group"
+      },
+      "score": [
+        1,
+        0,
+        7,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "serial",
+        "var_1": "size",
+        "FUN_001263a1": "get_serial_value",
+        "FUN_0012690c": "get_crl_number"
+      },
+      "pred": {
+        "var_0": "crl",
+        "var_1": "serial",
+        "FUN_001263a1": "x509_crl_check_serial",
+        "FUN_0012690c": "x509_crl_check_serial_523"
+      },
+      "score": [
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "es",
+        "var_4": "fmt",
+        "var_5": "wl",
+        "FUN_0015753e": "format_expand1",
+        "FUN_00154c7c": "format_window_name"
+      },
+      "pred": {
+        "var_1": "session",
+        "var_4": "window_name",
+        "var_5": "window",
+        "FUN_0015753e": "find_window",
+        "FUN_00154c7c": "format_window_name"
+      },
+      "score": [
+        1,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "retcode",
+        "FUN_00114f35": "_iodbcdm_cfg_done",
+        "FUN_00115d4f": "_iodbcdm_cfg_write",
+        "FUN_00116793": "_iodbcdm_cfg_commit"
+      },
+      "pred": {
+        "var_2": "rc",
+        "FUN_00114f35": "ODBC_Translate_Destroy",
+        "FUN_00115d4f": "ODBC_Translate_Remove",
+        "FUN_00116793": "ODBC_Translate_Check",
+        "FUN_0011685b": "ODBC_Translate_Find"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0010f18b": "SDL_GetCPUFeatures",
+        "FUN_0010f3b3": "SDL_HasNEON"
+      },
+      "pred": {
+        "FUN_0010f18b": "is_window_focused",
+        "FUN_0010f3b3": "is_window_active"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "f",
+        "var_3": "field",
+        "var_0": "value",
+        "var_1": "def",
+        "FUN_00139a50": "write_int"
+      },
+      "pred": {
+        "var_2": "out",
+        "var_3": "name",
+        "var_0": "val1",
+        "var_1": "val2",
+        "FUN_00139a50": "print_if_different"
+      },
+      "score": [
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "entry",
+        "FUN_00124d90": "gail_entry_init"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_00124d90": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "n",
+        "FUN_00121485": "lsys_unloadlib",
+        "FUN_001217c2": "gctm"
+      },
+      "pred": {
+        "var_0": "i",
+        "FUN_00121485": "l_push_object",
+        "FUN_001217c2": "l_push_objects"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "klass",
+        "var_0": "gl_event_toolbar_parent_class",
+        "FUN_0010bb50": "gl_event_toolbar_class_init",
+        "FUN_0010b498": "gl_event_toolbar_class_intern_init"
+      },
+      "pred": {
+        "var_1": "klass",
+        "var_0": "gtk_color_chooser_parent_class",
+        "FUN_0010bb50": "gtk_color_chooser_class_intern_init",
+        "FUN_0010b498": "gtk_color_chooser_class_intern_init_once"
+      },
+      "score": [
+        1,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "map",
+        "var_4": "me",
+        "var_5": "sra",
+        "var_0": "max_degraded",
+        "FUN_0011783d": "metadata_container_matches",
+        "FUN_00183880": "sysfs_free",
+        "FUN_001438b6": "container_members_max_degradation"
+      },
+      "pred": {
+        "var_2": "root",
+        "var_4": "root_name",
+        "var_5": "n",
+        "var_0": "max",
+        "FUN_0011783d": "is_name_in_ns",
+        "FUN_00183880": "dns_name_free",
+        "FUN_001438b6": "dns_name_get_max_len"
+      },
+      "score": [
+        0,
+        3,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "uvproc"
+      },
+      "pred": {
+        "var_0": "handle"
+      },
+      "score": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "pattern",
+        "FUN_001940bf": "is_recording_pattern"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_001940bf": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "pvio",
+        "var_2": "is_read",
+        "var_3": "timeout",
+        "FUN_0012cd4d": "ma_pvio_wait_async",
+        "FUN_0012ce2c": "ma_pvio_wait_io_or_timeout"
+      },
+      "pred": {
+        "var_0": "this",
+        "var_2": "is_last",
+        "var_3": "is_eof",
+        "FUN_0012cd4d": "is_last_char",
+        "FUN_0012ce2c": "is_last"
+      },
+      "score": [
+        0,
+        1,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "wlr_backend",
+        "var_2": "output",
+        "var_4": "output_tmp",
+        "FUN_00145285": "noop_backend_from_backend",
+        "FUN_0014537c": "backend_destroy"
+      },
+      "pred": {
+        "var_1": "object",
+        "var_2": "output",
+        "var_4": "next_output",
+        "FUN_00145285": "wl_output_backend_get_instance_private",
+        "FUN_0014537c": "wl_output_backend_destroy"
+      },
+      "score": [
+        1,
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_18": "sensitive",
+        "var_19": "rand",
+        "FUN_0017a80f": "TestBit",
+        "FUN_0017abd8": "BnTo2B",
+        "FUN_0017ac9c": "BnPointTo2B",
+        "FUN_0017bf18": "BnInit",
+        "FUN_0017c04e": "BnInitializePoint",
+        "FUN_0017ea48": "CryptTestAlgorithm",
+        "FUN_001c3211": "BnCurveFree",
+        "FUN_001b84af": "CryptEccGenerateKey"
+      },
+      "pred": {
+        "var_18": "p",
+        "var_19": "q",
+        "FUN_0017a80f": "get_key",
+        "FUN_0017abd8": "set_key",
+        "FUN_0017ac9c": "set_iv",
+        "FUN_0017bf18": "get_salt",
+        "FUN_0017c04e": "get_key_and_iv",
+        "FUN_0017ea48": "set_key_and_iv_to_zero",
+        "FUN_001c3211": "set_key_to_zero",
+        "FUN_001b84af": "get_key_and_iv"
+      },
+      "score": [
+        0,
+        1,
+        9,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "this",
+        "FUN_0014f144": "KeyController::KeyController"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_0014f144": "SigDigger::NetForwarderUI::SigDigger::NetForwarderUI"
+      },
+      "score": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "c",
+        "var_2": "argc",
+        "var_3": "argv"
+      },
+      "pred": {
+        "var_1": "prog",
+        "var_2": "argc",
+        "var_3": "argv"
+      },
+      "score": [
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "ls",
+        "var_2": "name",
+        "var_3": "sz",
+        "FUN_0011e4ed": "luaX_newstring",
+        "FUN_00125497": "new_localvar",
+        "FUN_00125578": "new_localvarliteral_"
+      },
+      "pred": {
+        "var_1": "this",
+        "var_2": "arg",
+        "var_3": "arg2",
+        "FUN_0011e4ed": "llvm::DIBuilder::~DIBuilder",
+        "FUN_00125497": "llvm::DIBuilder::~DIBuilder",
+        "FUN_00125578": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        6,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "_INIT_1": "my_init"
+      },
+      "pred": {
+        "_INIT_1": "olsr_dyn_gw_init"
+      },
+      "score": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "p",
+        "var_3": "d1",
+        "var_5": "d2",
+        "FUN_00102698": "SetInterrupt",
+        "FUN_00107bd4": "PPerformRMath"
+      },
+      "pred": {
+        "var_2": "i",
+        "var_3": "a",
+        "var_5": "b",
+        "FUN_00102698": "set_error",
+        "FUN_00107bd4": "set_a_b_c"
+      },
+      "score": [
+        0,
+        1,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "wc_self",
+        "FUN_0010a02f": "wegl_surface_teardown",
+        "FUN_0010cb39": "x11_window_teardown",
+        "FUN_0010c1ed": "xegl_window_destroy"
+      },
+      "pred": {
+        "var_1": "data",
+        "FUN_0010a02f": "is_valid_data",
+        "FUN_0010cb39": "is_data_modified",
+        "FUN_0010c1ed": "is_data_dirty"
+      },
+      "score": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "scale_data",
+        "FUN_00143038": "scale_data_free"
+      },
+      "pred": {
+        "var_0": "object",
+        "FUN_00143038": "gtk_print_backend_module_finalize"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "card",
+        "var_4": "data",
+        "var_8": "tries_left",
+        "var_7": "r",
+        "var_5": "rbuflen",
+        "var_6": "rbuf",
+        "var_2": "priv",
+        "FUN_001ce559": "coolkey_pin_cmd"
+      },
+      "pred": {
+        "var_3": "this",
+        "var_4": "state",
+        "var_8": "error",
+        "var_7": "ret",
+        "var_5": "len",
+        "var_6": "buf",
+        "var_2": "this",
+        "FUN_001ce559": "parse_state_3"
+      },
+      "score": [
+        0,
+        0,
+        8,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "name",
+        "var_5": "itype",
+        "var_6": "detail_p",
+        "var_10": "force_quark",
+        "var_4": "signal_id",
+        "var_8": "buffer",
+        "FUN_00130baf": "signal_parse_name"
+      },
+      "pred": {
+        "var_3": "key",
+        "var_5": "key_name",
+        "var_6": "value",
+        "var_10": "is_from",
+        "var_4": "result",
+        "var_8": "tmp",
+        "FUN_00130baf": "get_value_from_key"
+      },
+      "score": [
+        0,
+        0,
+        7,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_5": "cv",
+        "FUN_001662f1": "XS_Gtk2__Gdk__Colormap_get_visual"
+      },
+      "pred": {
+        "var_5": "cv",
+        "FUN_001662f1": "XS_Gdk__Display__get_type"
+      },
+      "score": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "fd",
+        "var_3": "buf",
+        "var_6": "error",
+        "var_0": "bytes",
+        "FUN_00133371": "read_pid"
+      },
+      "pred": {
+        "var_2": "fd",
+        "var_3": "buf",
+        "var_6": "error",
+        "var_0": "n",
+        "FUN_00133371": "read_child_pipe"
+      },
+      "score": [
+        3,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "f",
+        "var_0": "rtn",
+        "FUN_00112143": "jfclose"
+      },
+      "pred": {
+        "var_1": "file",
+        "var_0": "rc",
+        "FUN_00112143": "file_close"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "self",
+        "FUN_001c4bdd": "_schedule_restart_on_batch_timeout"
+      },
+      "pred": {
+        "var_0": "self",
+        "FUN_001c4bdd": "iv_timer_init"
+      },
+      "score": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_11": "i",
+        "var_3": "j",
+        "var_10": "niblen",
+        "var_13": "array",
+        "var_4": "temp"
+      },
+      "pred": {
+        "var_11": "i",
+        "var_3": "j",
+        "var_10": "len",
+        "var_13": "buf",
+        "var_4": "s"
+      },
+      "score": [
+        2,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "label",
+        "var_3": "mode",
+        "FUN_0011bb99": "champlain_label_queue_redraw"
+      },
+      "pred": {
+        "var_1": "label",
+        "var_3": "single_line_mode",
+        "FUN_0011bb99": "champlain_label_queue_redraw"
+      },
+      "score": [
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "seen_fn_loc",
+        "var_1": "hash_text",
+        "var_2": "log_file",
+        "FUN_00105e56": "bst_err_print_and_look_for_blan",
+        "FUN_00111eea": "print_a_pool_str",
+        "FUN_001124aa": "print_fn_class",
+        "FUN_00102aa2": "already_seen_function_print"
+      },
+      "pred": {
+        "var_0": "this",
+        "var_1": "this->name",
+        "var_2": "this->is_type",
+        "FUN_00105e56": "this->is_function",
+        "FUN_00111eea": "this->is_type_name",
+        "FUN_001124aa": "this->is_type_name_free",
+        "FUN_00102aa2": "this->is_type_name_free_impl"
+      },
+      "score": [
+        0,
+        0,
+        7,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "win",
+        "FUN_0010ef28": "_sample_theme_new"
+      },
+      "pred": {
+        "var_1": "table",
+        "FUN_0010ef28": "create_example_table"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "xc",
+        "var_0": "hw",
+        "var_1": "half_wide_tab"
+      },
+      "pred": {
+        "var_2": "key",
+        "var_0": "entry",
+        "var_1": "anthy_half_wide_table"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "self",
+        "var_0": "expand",
+        "FUN_001760f2": "box_child_set_expand"
+      },
+      "pred": {
+        "var_1": "view",
+        "var_0": "expand",
+        "FUN_001760f2": "on_expand"
+      },
+      "score": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "window",
+        "FUN_0010886f": "postpone_clicked_cb"
+      },
+      "pred": {
+        "var_1": "object",
+        "FUN_0010886f": "drw_break_window_finalize"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "dest",
+        "var_0": "source",
+        "FUN_00133b11": "bolt_error_propagate"
+      },
+      "pred": {
+        "var_3": "error",
+        "var_0": "source",
+        "FUN_00133b11": "bolt_error_propagate"
+      },
+      "score": [
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "shell",
+        "var_1": "state",
+        "var_2": "seat",
+        "FUN_0011259a": "exposay_set_state"
+      },
+      "pred": {
+        "var_0": "this",
+        "var_1": "x",
+        "var_2": "y",
+        "FUN_0011259a": "set_position"
+      },
+      "score": [
+        0,
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "d",
+        "FUN_001491db": "ca_decoder_put_eof"
+      },
+      "pred": {
+        "var_0": "this",
+        "FUN_001491db": "llvm::DIBuilder::~DIBuilder"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "path",
+        "var_4": "stats",
+        "FUN_00102686": "fcitx_utils_isreg"
+      },
+      "pred": {
+        "var_3": "path",
+        "var_4": "info",
+        "FUN_00102686": "file_exists"
+      },
+      "score": [
+        1,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_001138e1": "fade_screen",
+        "FUN_001032ab": "create_menu"
+      },
+      "pred": {
+        "FUN_001138e1": "SDL_SetRect",
+        "FUN_001032ab": "SDL_Display_Text"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_00194341": "__glGetFragmentMaterialfvSGIXAvail"
+      },
+      "pred": {
+        "FUN_00194341": "__glGetFragmentMaterialfvSGIXAvail"
+      },
+      "score": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_4": "curbp",
+        "var_7": "curwp",
+        "var_9": "videoattribute",
+        "var_11": "hilite_suppressed",
+        "FUN_0019ce8d": "clear_match_attrs"
+      },
+      "pred": {
+        "var_4": "state",
+        "var_7": "next",
+        "var_9": "next_state",
+        "var_11": "next_is_terminal",
+        "FUN_0019ce8d": "get_next_state"
+      },
+      "score": [
+        0,
+        0,
+        5,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "constraint",
+        "var_4": "full_dev"
+      },
+      "pred": {
+        "var_2": "constraint",
+        "var_4": "p1"
+      },
+      "score": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_2": "tty",
+        "var_0": "p",
+        "var_1": "session_list",
+        "FUN_00104fc4": "tty_is_used"
+      },
+      "pred": {
+        "var_2": "target",
+        "var_0": "node",
+        "var_1": "root",
+        "FUN_00104fc4": "is_descendant"
+      },
+      "score": [
+        0,
+        1,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "f",
+        "FUN_00102a46": "ptb_data_rect"
+      },
+      "pred": {
+        "var_1": "this",
+        "FUN_00102a46": "QPalette::window"
+      },
+      "score": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_3": "value",
+        "var_0": "c",
+        "FUN_001912d2": "mult2buf"
+      },
+      "pred": {
+        "var_3": "s",
+        "var_0": "n",
+        "FUN_001912d2": "scale_3d_array"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_10": "ud",
+        "var_11": "song",
+        "var_7": "iter",
+        "var_4": "selec",
+        "var_5": "selected",
+        "var_9": "titer",
+        "var_3": "browser_tree",
+        "var_6": "browser_model",
+        "FUN_00105c13": "__revert_selected"
+      },
+      "pred": {
+        "var_10": "iter",
+        "var_11": "status",
+        "var_7": "l",
+        "var_4": "selection",
+        "var_5": "selected",
+        "var_9": "iter",
+        "var_3": "model",
+        "var_6": "iter",
+        "FUN_00105c13": "on_revert_cb"
+      },
+      "score": [
+        1,
+        1,
+        7,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "tfi",
+        "var_4": "c",
+        "var_2": "tgvi"
+      },
+      "pred": {
+        "var_1": "font",
+        "var_4": "index",
+        "var_2": "id"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "FUN_0017f1b6": "QString::~QString",
+        "FUN_002bc4ae": "ImportExport::Import::exec",
+        "FUN_002bc396": "ImportExport::Import::downloadKimJobCompleted"
+      },
+      "pred": {
+        "FUN_0017f1b6": "KJob::JobView::JobView::~JobView",
+        "FUN_002bc4ae": "KJob::JobView::JobView::~JobView",
+        "FUN_002bc396": "KJob::JobView::JobView::~JobView"
+      },
+      "score": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_1": "gobject",
+        "var_3": "gnome_rr_output_info_parent_class",
+        "FUN_0010e74c": "GNOME_RR_OUTPUT_INFO",
+        "FUN_0010e906": "gnome_rr_output_info_finalize"
+      },
+      "pred": {
+        "var_1": "object",
+        "var_3": "gtk_color_chooser_parent_class",
+        "FUN_0010e74c": "gtk_color_chooser_get_instance_private",
+        "FUN_0010e906": "gtk_color_chooser_finalize"
+      },
+      "score": [
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "gold": {
+        "var_0": "str",
+        "var_2": "prefix",
+        "FUN_00111e78": "startswith"
+      },
+      "pred": {
+        "var_0": "haystack",
+        "var_2": "needle",
+        "FUN_00111e78": "isSubstring"
+      },
+      "score": [
+        0,
+        0,
+        3,
+        0
+      ]
+    }
+  ]
+}
