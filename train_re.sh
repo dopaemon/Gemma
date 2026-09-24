@@ -12,7 +12,9 @@ KEEP_CHECKPOINTS=3   # rank 64 makes these ~600MB each; 1800 of them would fill 
 mkdir -p "$ADAPTER_DIR"
 
 RESUME_FLAG=()
-LAST_CKPT=$(ls "$ADAPTER_DIR"/*_adapters.safetensors 2>/dev/null | sort -V | tail -1 || true)
+# Newest by mtime, NOT by iteration number: mlx_lm restarts its step counter at 1
+# on every resume, so after one resume 0000500 holds more training than 0002000.
+LAST_CKPT=$(ls -t "$ADAPTER_DIR"/*_adapters.safetensors 2>/dev/null | head -1 || true)
 if [ -n "$LAST_CKPT" ]; then
     echo "Resuming from checkpoint: $LAST_CKPT"
     RESUME_FLAG=(--resume-adapter-file "$LAST_CKPT")
